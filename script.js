@@ -1,3 +1,8 @@
 function changeText() {
-  document.getElementById('button-lire-suite').innerText = 'Cacher le texte';
+  let bouton = document.getElementById('button-lire-suite');
+  if (bouton.innerText === 'Lire la suite ...') {
+    bouton.innerText = 'Cacher le texte';
+  } else {
+    bouton.innerText = 'Lire la suite ...';
+  }
 }
