@@ -1,0 +1,42 @@
+h3 {
+  text-decoration: underline;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+/* STORY */
+.story {
+  text-align: center;
+  border-top: 1px dotted black;
+  border-bottom: 1px dotted black;
+}
+
+.story > h3 {
+  margin-top: 20px;
+}
+
+.story > .row {
+  margin: 0;
+}
+
+.story > .row > .col-sm-8 {
+  background-color: grey;
+  border-radius: 15px;
+  padding: 10px 30px 30px;
+  margin: 20px 5px 20px 5px;
+}
+
+.story > .row > .col-sm-8 > h4 {
+  margin: 20px;
+}
+
+.story > .row > .col-sm-8 > .texte-histoire {
+  text-align: justify;
+}
+
+.story > .row > .col-sm-8 > button {
+  margin: 5px 5px 20px 5px; 
+}
