@@ -1,0 +1,174 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title Les rapaces de GAP
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
+header
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='#')
+            | Home
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='#') Matchs &agrave; l&apos;affiche
+        li.nav-item
+          a.nav-link(href='#') Joueurs
+        li.nav-item
+          a.nav-link(href='#') Contact
+  img(src='images/logo_rapaces.png' alt='rapaces')
+  h1 VS
+  img(src='images/logo_diables_rouges.png' alt='diables')
+  h3(id='') Petit Timer
+section.homePage
+section.team-gallery
+  h2 Galerie des joueurs
+  .row
+    // Player 1 & 2
+    .col-xs-6
+      img(src='' alt='')
+    .col-xs-6
+      img(src='' alt='')
+  // End player 1 & 2
+  .row
+    // Player 3 & 4
+    .col-xs-6
+      img(src='' alt='')
+    .col-xs-6
+      img(src='' alt='')
+  // End player 3 & 4
+  .row
+    // Player 5 & 6
+    .col-xs-6
+      img(src='' alt='')
+    .col-xs-6
+      img(src='' alt='')
+  // End player 5 & 6
+section.billing-matches
+  h2
+    | Matchs &agrave; l&apos;affiche
+    .container-fluid.next-matches
+      .row
+        .col-xs-12
+          h4 Saxoprint Ligue M
+          p 14/07/17
+          p 20:00 CET
+        .col-xs-4
+          img(src='' alt='')
+        .col-xs-4
+          img(src='' alt='')
+        .col-xs-4
+          img(src='' alt='')
+      .row
+        .col-xs-12
+          h4 Saxoprint Ligue M
+          p 14/07/17
+          p 20:00 CET
+        .col-xs-4
+          img(src='' alt='')
+        .col-xs-4
+          img(src='' alt='')
+        .col-xs-4
+          img(src='' alt='')
+      .row
+        .col-xs-12
+          h4 Saxoprint Ligue M
+          p 14/07/17
+          p 20:00 CET
+        .col-xs-4
+          img(src='' alt='')
+        .col-xs-4
+          img(src='' alt='')
+        .col-xs-4
+          img(src='' alt='')
+    // Next matches ends
+// coming-matches-ends
+section.story
+  h3 Success story
+  .row
+    .col-sm-8.offset-sm-2
+      p.texte-histoire
+        | Le club est cr&eacute;&eacute; en 1971 et s&apos;engage en championnat de France en 1952, o&ugrave; il &eacute;volue en deuxi&egrave;me s&eacute;rie. En 1955, c&apos;est l&apos;inauguration de la patinoire Roger Brown, qui devient artificielle en 1961. Les Gapen&ccedil;ais d&eacute;butent en 1re s&eacute;rie (division &eacute;lite)
+        | pour la saison 1962-1933. &Agrave; partir de 1962, le canadien Camil G&eacute;linas, entraineur de l&apos;ACBB &agrave; son heure de gloire, devient entraineur de toutes les cat&eacute;gories de Gap, &agrave; la demande du Pr&eacute;sident de la FFSG, Jean Ferrand2. Cela porte se fruits avec
+        | un premier titre de champion de France, en cat&eacute;gorie junior en 1965.
+      button#button-lire-suite(onclick='changeText()' data-toggle='collapse' data-target='#la-suite') Lire la suite ...
+      p#la-suite.collapse.texte-histoire
+        | En 1972, d&apos;autres travaux sur la patinoire (couverture de la piste) permettent l&apos;utilisation permanente de la glace2, et d&apos;accueillir les championnats du monde groupe C4. Pendant
+        | ce temps, l&apos;&eacute;quipe s&eacute;nior progresse encore, notamment gr&acirc;ce &agrave; l&apos;arriv&eacute;e du tch&egrave;que Zden&ecaron;k Bl&aacute;ha comme entraineur et remporte son premier titre de champion de France en 19775. Gap r&eacute;alise le doubl&eacute; l&apos;ann&eacute;e suivante6. Le club continue par la suite
+        | &agrave; &ecirc;tre un grand club formateur7, en remportant jusque dans les ann&eacute;es 1980 pas moins de 21 titres de champion de France dans les cat&eacute;gories mineur et &eacute;tant vice-champion de France en 1983-19848. En 1989, le club finit &agrave; l&apos;avant-dernier place de
+        | la Nationale 1A et peut se maintenir. Mais pr&eacute;f&egrave;re descendre pour mettre fin &agrave; l&apos;aventure professionnelle, qui co&ucirc;te cher9. Pour la saison 1992-1993, Gap remonte une premi&egrave;re fois en &eacute;lite, &agrave; la suite d&apos;un remaniement des divisions et de l&apos;abandon
+        | de la ligue nationale &agrave; 10 clubs10. En 1996, le club remporte la Division 1 et remonte &agrave; nouveau11. Nouvelle descente imm&eacute;diate, quand Gap &eacute;choue &agrave; se maintenir en poule de maintien12. Le club descend lentemet dans la hi&eacute;rarchie fran&ccedil;aise, devant
+        | m&ecirc;me disputer un barrage pour se maintenir en Division 1 lors de la saison 2001-200213. Mais le club rebondit la saison suivante, gr&acirc;ce &agrave; l&apos;&eacute;largissement de l&apos;&eacute;lite vers un Super 16. T&acirc;che difficile, puisqu&apos;avec le plus faible budget14, Gap est
+        | souvent dans le bas de tableau. Il finit m&ecirc;me par re-descendre au second &eacute;chelon15 en 2006. En 2009, gr&acirc;ce &agrave; un nouveau titre de champion de Division 1, le club revient dans la ligue &eacute;lite, la Ligue Magnus16. Aujourd&rsquo;hui, le club poss&egrave;de un des
+        | plus beaux palmar&egrave;s du hockey fran&ccedil;ais avec 29 titres nationaux, 37 podiums, 2 participations &agrave; la coupe d&rsquo;Europe, 1 coupe des As et 22 joueurs s&eacute;lectionn&eacute;es en &eacute;quipe nationale dont huit pour les Jeux olympiques2. Entre le d&eacute;but de la saison
+        | 2009-2010 et la fin de la saison 2012-2013, les matchs de Gap &agrave; domicile &eacute;taient diffus&eacute;s en direct vid&eacute;o sur le site des rapaces gr&acirc;ce &agrave; l&apos;&eacute;quipe du Rapace Live. Longtemps annonc&eacute; le projet de r&eacute;novation de la patinoire a enfin abouti. Les travaux
+        | s&apos;&eacute;chelonnent jusqu&apos;en ao&ucirc;t 2012. La patinoire est compl&egrave;tement refaite et sa capacit&eacute; est port&eacute;e &agrave; 2000 places. Lors de la saison 2011-2012, les rapaces jouent leurs matchs &laquo; &agrave; domicile &raquo; au Palais omnisports Marseille Grand Est. Le 23 octobre
+        | 2012, Georges Obninsky, pr&eacute;sident du club annonce sa d&eacute;mission 17 lors d&apos;une conf&eacute;rence de presse 18. Il est remplac&eacute; par Philippe Vial et J&eacute;r&ocirc;me Escallier. &Agrave; l&apos;issue de la saison 2016-2017, les Rapaces de Gap remportent la Ligue Magnus, devenant
+        | ainsi Champions de France pour la quatri&egrave;me fois de leur histoire.
+section.contact
+  .container
+    .row
+      .col-xs-6.col-md-4
+        a(href='https://www.nouvelle-aquitaine.com' target='blank')
+          img.logo-social(src='img/nouvelle-aquitaine.png' alt="='logo-nouvelle-aquitaine'")
+          img.logo-sponsors
+      .col-xs-6.col-md-4
+        a(href='http://www.bordeaux-metropole.fr/' target='blank')
+          img.logo-bordeaux(src='img/bordeaux.png' alt="='logo-bordeaux'")
+          img.logo-sponsors
+      .col-xs-6.col-md-4
+        a(href='https://www.booking.com/' target='blank')
+          img(src='img/B&B.png' alt="='logo-B&B'" class='logo-B&B')
+          img.logo-sponsors
+      .col-xs-6.col-md-4
+        a(href='https://www.decathlon.fr/' target='blank')
+          img.logo-decathlon(src='img/decathlon.png' alt="='logo-decathlon'")
+          img.logo-sponsors
+section.banner-sponsors
+  .container
+    h2 Contactez nous
+    .form-group
+      label Nom
+      input.form-control(type='text' placeholder='Saisissez votre nom')
+      label Email
+      input.form-control(type='email' placeholder='Saisissez votre adresse mail')
+      label T&eacute;l&eacute;phone
+      input.form-control(type='tel' placeholder='Saisissez votre numéro de téléphone')
+      label Message
+      input.form-control(type='message' placeholder='Saisissez votre message ici')
+      button(type='button' btn='' btn-danger='') Envoyer votre message
+footer
+  .twitter
+    a(href='https://www.twitter.com/rapaces/' target='blank')
+      img.logo-social(src='img/twitter.png' alt="='logo_twitter'")
+    .youtube
+      a(href='https://www.youtube.com/rapaces/' target='blank')
+        img.logo-social(src='img/youtube.png' alt="='logo_youtube'")
+    .container
+      p
+script(type='text/javascript' src='javascripts/script.js')
+script.
+  // Date et heure d'échéance du compte à rebourd !
+  var countDownDate = new Date("Mar 16, 2018 17:15:00").getTime();
+  // Met à jour le compteur chaque seconde.
+  var x = setInterval(function() {
+  // Cherche la date et heure actuelle
+  var now = new Date().getTime();
+  // Calcul la difference entre la date de fin et la date actuelle
+  var distance = countDownDate - now;
+  // Calcul du temps pour les jours, heures, minutes et secondes
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // Affiche le résultat de la difference dans l'ID DEMO
+  document.getElementById("demo").innerHTML = hours + ":" +
+  minutes + ":" + seconds + "";
+  }, 1000);
+script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
