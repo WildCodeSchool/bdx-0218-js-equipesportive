@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET admin page. */
+router.get('/admin', function(req, res, next) {
+  res.render('admin');
+});
+
 module.exports = router;
