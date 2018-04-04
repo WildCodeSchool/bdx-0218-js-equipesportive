@@ -3,6 +3,7 @@ head
   meta(charset='utf-8')
   title Les rapaces de GAP
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
 header
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -109,47 +110,76 @@ section.story
         | s&apos;&eacute;chelonnent jusqu&apos;en ao&ucirc;t 2012. La patinoire est compl&egrave;tement refaite et sa capacit&eacute; est port&eacute;e &agrave; 2000 places. Lors de la saison 2011-2012, les rapaces jouent leurs matchs &laquo; &agrave; domicile &raquo; au Palais omnisports Marseille Grand Est. Le 23 octobre
         | 2012, Georges Obninsky, pr&eacute;sident du club annonce sa d&eacute;mission 17 lors d&apos;une conf&eacute;rence de presse 18. Il est remplac&eacute; par Philippe Vial et J&eacute;r&ocirc;me Escallier. &Agrave; l&apos;issue de la saison 2016-2017, les Rapaces de Gap remportent la Ligue Magnus, devenant
         | ainsi Champions de France pour la quatri&egrave;me fois de leur histoire.
-section.contact
-  .container
-    .row
-      .col-xs-6.col-md-4
-        a(href='https://www.nouvelle-aquitaine.com' target='blank')
-          img.logo-social(src='img/nouvelle-aquitaine.png' alt="='logo-nouvelle-aquitaine'")
-          img.logo-sponsors
-      .col-xs-6.col-md-4
-        a(href='http://www.bordeaux-metropole.fr/' target='blank')
-          img.logo-bordeaux(src='img/bordeaux.png' alt="='logo-bordeaux'")
-          img.logo-sponsors
-      .col-xs-6.col-md-4
-        a(href='https://www.booking.com/' target='blank')
-          img(src='img/B&B.png' alt="='logo-B&B'" class='logo-B&B')
-          img.logo-sponsors
-      .col-xs-6.col-md-4
-        a(href='https://www.decathlon.fr/' target='blank')
-          img.logo-decathlon(src='img/decathlon.png' alt="='logo-decathlon'")
-          img.logo-sponsors
-section.banner-sponsors
-  .container
-    h2 Contactez nous
-    .form-group
-      label Nom
-      input.form-control(type='text' placeholder='Saisissez votre nom')
-      label Email
-      input.form-control(type='email' placeholder='Saisissez votre adresse mail')
-      label T&eacute;l&eacute;phone
-      input.form-control(type='tel' placeholder='Saisissez votre numéro de téléphone')
-      label Message
-      input.form-control(type='message' placeholder='Saisissez votre message ici')
-      button(type='button' btn='' btn-danger='') Envoyer votre message
-footer
-  .twitter
-    a(href='https://www.twitter.com/rapaces/' target='blank')
-      img.logo-social(src='img/twitter.png' alt="='logo_twitter'")
-    .youtube
-      a(href='https://www.youtube.com/rapaces/' target='blank')
-        img.logo-social(src='img/youtube.png' alt="='logo_youtube'")
-    .container
-      p
+
+
+        section.contact-f
+          .container
+            h1.brand Formulaire de contact
+            .wrapper
+              .company-info
+                h3 Contacts
+                ul
+                  li
+                    i.fa.fa-road
+                    |  95 Cours Mar&eacute;chal Juin, Bordeaux
+                  li
+                    i.fa.fa-phone
+                    |  05 57 81 43 81
+                  li
+                    i.fa.fa-envelope
+                    |  contact@Mr-Bison.com
+
+              .contact
+                h3 Envoyez nous vos id&eacute;es et vos propositions!
+                form(data-toggle='validator')
+                  p
+                    label Nom
+                    input(type='text', name='name', placeholder='Vandamme', required='')
+                  p
+                    label Pr&eacute;nom
+                    input(type='text', name='prenom', placeholder='Jean Claude', required='')
+                  p
+                    label Adress mail
+                    input(type='email', name='email', placeholder='example@hotmail.fr', required='')
+                  p
+                    label Portable
+                    input(type='tel', name='phone', placeholder='0640506020')
+                  p.full
+                    label Message
+                    textarea(name='message', rows='5', placeholder='Votre message ici!', required='')
+                  p.full
+                    button Envoyer
+
+        section.banner-sponsors
+          .container
+            .row
+              .col-xs-12.col-md-4
+                a(href='https://www.nouvelle-aquitaine.com', target='blank')
+                  img.logo-social(src='public/images/nouvelle-aquitaine.jpg', alt='logo-nouvelle-aquitaine')
+                  img.logo-sponsors
+              .col-xs-12.col-md-4
+                a(href='http://www.bordeaux-metropole.fr/', target='blank')
+                  img.logo-bordeaux(src='public/images/Bordeaux-metropole.png', alt='logo-bordeaux')
+                  img.logo-sponsors
+              .col-xs-12.col-md-4
+                a(href='https://www.decathlon.fr/', target='blank')
+                  img.logo-decathlon(src='public/images/decathlon.png', alt='logo-decathlon')
+                  img.logo-sponsors
+
+        img.footer-logo(src='public/images/footer.png', alt='footer-logo')
+        footer.container-fluid
+          .text-center.center-block
+            a(href='https://www.facebook.com/')
+              i#social-fb.fa.fa-facebook-square.fa-3x.social
+            a(href='https://www.youtube.com/')
+              i#social-yb.fa.fa-youtube-square.fa-3x.social
+            a(href='https://twitter.com/')
+              i#social-tw.fa.fa-twitter-square.fa-3x.social
+            a(href='https://plus.google.com/')
+              i#social-gp.fa.fa-google-plus-square.fa-3x.social
+          .footer-made Made by The Gitsy Kings with love and music
+
+
 script(type='text/javascript' src='javascripts/script.js')
 script.
   // Date et heure d'échéance du compte à rebourd !
