@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <title>Les rapaces de GAP</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
@@ -175,63 +176,91 @@
     </div>
   </section>
 
-  <section class='contact'>
-    <div class='container'>
-      <div class="row">
-        <div class="col-xs-6 col-md-4">
-          <a href='https://www.nouvelle-aquitaine.com' target='blank'><img src='img/nouvelle-aquitaine.png' alt=='logo-nouvelle-aquitaine' class='logo-social' />
-            <img class='logo-sponsors'>
-          </a>
+  <!-- SECTION HTML CONTACT FORMULAIRE BEN -->
+
+  <!-- CONTACT -->
+  <section class="contact-f">
+    <div class="container">
+      <h1 class="brand">Formulaire de contact</h1>
+      <div class="wrapper">
+        <div class="company-info">
+          <h3>Contacts</h3>
+          <ul>
+            <li><i class="fa fa-road"></i> 95 Cours Maréchal Juin, Bordeaux</li>
+            <li><i class="fa fa-phone"></i> 05 57 81 43 81</li>
+            <li><i class="fa fa-envelope"></i> contact@Mr-Bison.com</span></li>
+          </ul>
         </div>
 
-          <div class="col-xs-6 col-md-4">
-          <a href='http://www.bordeaux-metropole.fr/' target='blank'><img src='img/bordeaux.png' alt=='logo-bordeaux' class='logo-bordeaux' />
-            <img class='logo-sponsors'>
-          </a>
-        </div>
-
-          <div class="col-xs-6 col-md-4">
-          <a href='https://www.booking.com/' target='blank'><img src='img/B&B.png' alt=='logo-B&B' class='logo-B&B' />
-            <img class='logo-sponsors'>
-          </a>
-        </div>
-
-          <div class="col-xs-6 col-md-4">
-          <a href='https://www.decathlon.fr/' target='blank'><img src='img/decathlon.png' alt=='logo-decathlon' class='logo-decathlon' />
-            <img class='logo-sponsors'>
-          </a>
-        </div>
+  <!-- FORMULAIRE -->
+        <div class="contact">
+          <h3>Envoyez nous vos idées et vos propositions!</h3>
+          <form data-toggle="validator">
+              <p>
+              <label>Nom</label>
+              <input type="text" name="name" placeholder="Vandamme" required></input>
+              </p>
+              <p>
+              <label>Prénom</label>
+              <input type="text" name="prenom" placeholder="Jean Claude" required></input>
+              </p>
+              <p>
+              <label>Adress mail</label>
+              <input type="email" name="email" placeholder="example@hotmail.fr" required></input>
+              </p>
+              <p>
+              <label>Portable</label>
+              <input type="tel" name="phone" placeholder="0640506020">
+              </p>
+              <p class="full">
+              <label>Message</label>
+              <textarea name="message" name="message" rows="5" placeholder="Votre message ici!" required></textarea>
+              </p>
+              <p class="full">
+              <button>Envoyer</button>
+              </p>
+          </form>
         </div>
       </div>
+    </div>
+
   </section>
+
+  <!-- BANDO HTML BEN -->
+
   <section class='banner-sponsors'>
     <div class='container'>
-      <h2>Contactez nous</h2>
-    <div class='form-group'>
-      <label>Nom</label>
-      <input type='text' class='form-control' placeholder='Saisissez votre nom'>
-      <label>Email</label>
-      <input type='email' class='form-control' placeholder='Saisissez votre adresse mail'>
-      <label>Téléphone</label>
-      <input type='tel' class='form-control' placeholder='Saisissez votre numéro de téléphone'>
-      <label>Message</label>
-      <input type='message' class='form-control' placeholder='Saisissez votre message ici'>
-      <button type='button' btn btn-danger>Envoyer votre message</button>
-    </div>
-    </div>
-    </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <a href='https://www.nouvelle-aquitaine.com' target='blank'><img src='img/nouvelle-aquitaine.jpg' alt='logo-nouvelle-aquitaine' class='logo-social' />
+            <img class='logo-sponsors'>
+          </a>
+        </div>
+          <div class="col-xs-12 col-md-4">
+          <a href='http://www.bordeaux-metropole.fr/' target='blank'><img src='img/Bordeaux-metropole.png' alt='logo-bordeaux' class='logo-bordeaux' />
+            <img class='logo-sponsors'>
+          </a>
+        </div>
+          <div class="col-xs-12 col-md-4">
+          <a href='https://www.decathlon.fr/' target='blank'><img src='img/decathlon.png' alt='logo-decathlon' class='logo-decathlon' />
+            <img class='logo-sponsors'>
+          </a>
+        </div>
+        </div>
+      </div>
   </section>
-  <footer>
-    <div class='twitter'>
-      <a href='https://www.twitter.com/rapaces/' target='blank'><img src='img/twitter.png' alt=='logo_twitter' class='logo-social' /></a>
-      <div class='youtube'>
-        <a href='https://www.youtube.com/rapaces/' target='blank'><img src='img/youtube.png' alt=='logo_youtube' class='logo-social' /></a>
+      <!-- FOOTER HTML BEN -->
+      <img class="footer-logo" src="img/footer.png" alt="footer-logo">
+  <footer class="container-fluid">
+      <div class="text-center center-block">
+                    <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                    <a href="https://www.youtube.com/"><i id="social-yb" class="fa fa-youtube-square fa-3x social"></i></a>
+                    <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+      	            <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
       </div>
-      <div class='container'>
-        <p>
-        </p>
-      </div>
+      <div class="footer-made">Made by The Gitsy Kings with love and music</div>
   </footer>
+
 </body>
 
 <script type="text/javascript" src="script.js"></script>
