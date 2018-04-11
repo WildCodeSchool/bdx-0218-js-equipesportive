@@ -3,90 +3,456 @@ head
   meta(charset='utf-8')
   title Les rapaces de GAP
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
 header
-  nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.mr-auto
-        li.nav-item.active
-          a.nav-link(href='#')
-            | Home
-            span.sr-only (current)
-        li.nav-item
-          a.nav-link(href='#') Matchs &agrave; l&apos;affiche
-        li.nav-item
-          a.nav-link(href='#') Joueurs
-        li.nav-item
-          a.nav-link(href='#') Contact
-  img(src='images/logo_rapaces.png' alt='rapaces')
-  h1 VS
-  img(src='images/logo_diables_rouges.png' alt='diables')
-  h3(id='') Petit Timer
-section.homePage
-section.team-gallery
-  h2 Galerie des joueurs
-  .row
-    // Player 1 & 2
-    .col-xs-6
-      img(src='' alt='')
-    .col-xs-6
-      img(src='' alt='')
-  // End player 1 & 2
-  .row
-    // Player 3 & 4
-    .col-xs-6
-      img(src='' alt='')
-    .col-xs-6
-      img(src='' alt='')
-  // End player 3 & 4
-  .row
-    // Player 5 & 6
-    .col-xs-6
-      img(src='' alt='')
-    .col-xs-6
-      img(src='' alt='')
-  // End player 5 & 6
-section.billing-matches
-  h2
-    | Matchs &agrave; l&apos;affiche
-    .container-fluid.next-matches
-      .row
-        .col-xs-12
-          h4 Saxoprint Ligue M
-          p 14/07/17
-          p 20:00 CET
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-      .row
-        .col-xs-12
-          h4 Saxoprint Ligue M
-          p 14/07/17
-          p 20:00 CET
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-      .row
-        .col-xs-12
-          h4 Saxoprint Ligue M
-          p 14/07/17
-          p 20:00 CET
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-    // Next matches ends
-// coming-matches-ends
+  nav.navbar.navbar-expand-lg.navbar-light
+    .mx-auto.d-sm-flex.d-block.flex-sm-nowrap
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto.center-nav
+          li.nav-item.active
+            a.nav-link(href='#')
+              | Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='#') Matchs à l'affiche
+          li.nav-item
+            a.nav-link(href='#') Joueurs
+          li.nav-item
+            a.nav-link(href='#') Contact
+  section.home
+    .container-fluid.homePage
+      .logo
+        img.img-fluid.mx-auto.d-block.logoUn(src='images/img/rapaces.png', alt='rapaces')
+        img.img-fluid.mx-auto.d-block.versus(src='images/img/vs.png', alt='versus')
+        img.img-fluid.mx-auto.d-block.logoDeux(src='images/img/caen.png', alt='diables')
+      #demo
+      video.homeVid(autoplay='', muted='', loop='')
+        source(src='images/home.mp4', title='introVIdeo')
+
+  
+  section.team-gallery
+    h2 Le Club
+    ul#teamGallery.nav.nav-tabs(role='tablist')
+      li.nav-item
+        a#players-tab.nav-link.active(data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
+      li.nav-item
+        a#staff-tab.nav-link(data-toggle='tab', href='#staff', role='tab', aria-controls='staff', aria-selected='false') Le Staff
+    #teamGalleryContent.tab-content
+      #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
+        h3 Galerie des joueurs
+        // Button trigger modal
+        // Modal
+        // Players 1 & 2
+        .photo-row
+          .photo-container
+            a(data-toggle='modal', data-target='#player1-modal')
+              img(src= photo[0], alt='Photo de #{prenom[0]} #{nom[0]} ')
+            .photo-caption
+              .flag
+                img(src= flag[0], alt='')
+              .caption
+                figcaption #{prenom[0]} #{nom[0]}
+              .jersey
+                p #1
+          #player1-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player1-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  video(autoplay='autoplay', loop='loop')
+                    source(src= media[0], type='video/mp4')
+                  ul.player-identity
+                    li
+                      strong #{prenom[0]} #{nom[0]}
+                    li
+                      strong Poste :
+                      |  #{poste[0]}
+                    li
+                      strong Shoot :
+                      |  #{shoot[0]}
+                    li
+                      strong Naissance :
+                      |  #{naissance[0]}
+                    li
+                      strong Age :
+                      |  #{age[0]} ans
+                    li
+                      strong Nationalité :
+                      img(src= flag[0], style='height: 15px;')
+                    li
+                      strong Poids :
+                      |  #{poids[0]}
+                    li
+                      strong Taille :
+                      |  #{taille[0]}
+          .photo-container
+            a(data-toggle='modal', data-target='#player2-modal')
+              img(src= photo[1], alt='Photo de #{prenom[1]} #{nom[1]}')
+            .photo-caption
+              .flag
+                img(src= flag[1], alt='')
+              .caption
+                figcaption #{prenom[1]} #{nom[1]}
+              .jersey
+                p #25
+          #player2-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player2-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  video(autoplay='autoplay', loop='loop')
+                    source(src= media[1], type='video/mp4')
+                  ul.player-identity
+                    li
+                      strong #{prenom[1]} #{nom[1]}
+                    li
+                      strong Poste :
+                      |  #{poste[1]}
+                    li
+                      strong Shoot :
+                      |  #{shoot[1]}
+                    li
+                      strong Naissance :
+                      |  #{naissance[1]}
+                    li
+                      strong Age :
+                      |  #{age[1]} ans
+                    li
+                      strong Nationalité :
+                      img(src= flag[1], style='height: 15px;')
+                    li
+                      strong Poids :
+                      |  #{poids[1]}
+                    li
+                      strong Taille :
+                      |  #{taille[1]}
+        // End players 1 & 2
+        // Players 3 & 4
+        .photo-row
+          .photo-container
+            a(data-toggle='modal', data-target='#player3-modal')
+              img(src= photo[2], alt='Photo de #{prenom[2]} #{nom[2]} ')
+            .photo-caption
+              .flag
+                img(src= flag[2], alt='')
+              .caption
+                figcaption #{prenom[2]} #{nom[2]}
+              .jersey
+                p #7
+          #player3-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player3-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  video(autoplay='autoplay', loop='loop')
+                    source(src= media[2], type='video/mp4')
+                  ul.player-identity
+                    li
+                      strong #{prenom[2]} #{nom[2]}
+                    li
+                      strong Poste :
+                      |  #{poste[2]}
+                    li
+                      strong Shoot :
+                      |  #{shoot[2]}
+                    li
+                      strong Naissance :
+                      |  #{naissance[2]}
+                    li
+                      strong Age :
+                      |  #{age[2]} ans
+                    li
+                      strong Nationalité :
+                      img(src= flag[2], style='height: 15px;')
+                    li
+                      strong Poids :
+                      |  #{poids[2]}
+                    li
+                      strong Taille :
+                      |  #{taille[2]}
+          .photo-container
+            a(data-toggle='modal', data-target='#player4-modal')
+              img(src= photo[3], alt='Photo de #{prenom[3]} #{nom[3]} ')
+            .photo-caption
+              .flag
+                img(src= flag[3], alt='')
+              .caption
+                figcaption #{prenom[3]} #{nom[3]}
+              .jersey
+                p #27
+          #player4-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player4-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  video(autoplay='autoplay', loop='loop')
+                    source(src= media[3], type='video/mp4')
+                  ul.player-identity
+                    li
+                      strong #{prenom[3]} #{nom[3]}
+                    li
+                      strong Poste :
+                      |  #{poste[3]}
+                    li
+                      strong Shoot :
+                      |  #{shoot[3]}
+                    li
+                      strong Naissance :
+                      |  #{naissance[3]}
+                    li
+                      strong Age :
+                      |  #{age[3]} ans
+                    li
+                      strong Nationalité :
+                      img(src= flag[3], style='height: 15px;')
+                    li
+                      strong Poids :
+                      |  #{poids[3]}
+                    li
+                      strong Taille :
+                      |  #{taille[3]}
+        // Players 5 & 6
+        .photo-row
+          .photo-container
+            a(data-toggle='modal', data-target='#player5-modal')
+              img(src= photo[4], alt='Photo de #{prenom[4]} #{nom[4]} ')
+            .photo-caption
+              .flag
+                img(src= flag[4], alt='')
+              .caption
+                figcaption #{prenom[4]} #{nom[4]}
+              .jersey
+                p #9
+          #player5-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player5-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  video(autoplay='autoplay', loop='loop')
+                    source(src= media[4], type='video/mp4')
+                  ul.player-identity
+                    li
+                      strong #{prenom[4]} #{nom[4]}
+                    li
+                      strong Poste :
+                      |  #{poste[4]}
+                    li
+                      strong Shoot :
+                      |  #{shoot[4]}
+                    li
+                      strong Naissance :
+                      |  #{naissance[4]}
+                    li
+                      strong Age :
+                      |  #{age[4]} ans
+                    li
+                      strong Nationalité :
+                      img(src= flag[4], style='height: 15px;')
+                    li
+                      strong Poids :
+                      |  #{poids[4]}
+                    li
+                      strong Taille :
+                      |  #{taille[4]}
+          .photo-container
+            a(data-toggle='modal', data-target='#player6-modal')
+              img(src= photo[5], alt='Photo de #{prenom[5]} #{nom[5]} ')
+            .photo-caption
+              .flag
+                img(src= flag[5], alt='')
+              .caption
+                figcaption #{prenom[5]} #{nom[5]}
+              .jersey
+                p #27
+          #player6-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player6-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  video(autoplay='autoplay', loop='loop')
+                    source(src= media[5], type='video/mp4')
+                  ul.player-identity
+                    li
+                      strong #{prenom[5]} #{nom[5]}
+                    li
+                      strong Poste :
+                      |  #{poste[5]}
+                    li
+                      strong Shoot :
+                      |  #{shoot[5]}
+                    li
+                      strong Naissance :
+                      |  #{naissance[5]}
+                    li
+                      strong Age :
+                      |  #{age[5]} ans
+                    li
+                      strong Nationalité :
+                      img(src= flag[5], style='height: 15px;')
+                    li
+                      strong Poids :
+                      |  #{poids[5]}
+                    li
+                      strong Taille :
+                      |  #{taille[5]}
+        // End players 5 & 6
+      #staff.tab-pane.fade(role='tabpanel', aria-labelledby='staff-tab')
+        h3 Le Staff
+        // Staff-member 1 & 2
+        .photo-row
+          .photo-container
+            a(data-toggle='modal', data-target='#staff1-modal')
+              img(src='images/Staff/grandvoinet_aurore.png', alt='')
+            .photo-caption
+              .flag
+                img(src='images/Staff/france.png', alt='')
+              .caption
+                figcaption Aurore Granvoinet
+              .jersey
+          #staff1-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff1-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  img(src='images/Staff/grandvoinet_aurore.png', alt='')
+                  ul.player-identity
+                    li
+                      strong AURORE GRANDVOINET
+                    li
+                      strong Poste :
+                      |  Préparatrice Physique
+                    li
+                      strong Nationalité :
+                      img(src='images/Staff/france.png', style='height: 15px;')
+          .photo-container
+            a(data-toggle='modal', data-target='#staff2-modal')
+              img(src='images/Staff/blais_assistant.png', alt='')
+            .photo-caption
+              .flag
+                img(src='images/Staff/france.png', alt='')
+              .caption
+                figcaption Eric Blais
+              .jersey
+          #staff2-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff2-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  img(src='images/Staff/blais_assistant.png', alt='')
+                  ul.player-identity
+                    li
+                      strong ERIC BLAIS
+                    li
+                      strong Poste :
+                      |  Assistant Coach
+                    li
+                      strong Nationalité :
+                      img(src='images/Staff/france.png', style='height: 15px;')
+        // End Staff-member 1 & 2
+        // Staff Member 3 & 4
+        .photo-row
+          .photo-container
+            a(data-toggle='modal', data-target='#staff3-modal')
+              img(src='images/Staff/basile_coach.png', alt='')
+            .photo-caption
+              .flag
+                img(src='images/flags/canada.png', alt='')
+              .caption
+                figcaption Luciano Basile
+              .jersey
+          #staff3-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff3-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  img(src='images/Staff/basile_coach.png', alt='')
+                  ul.player-identity
+                    li
+                      strong LUCIANO BASILE
+                    li
+                      strong Poste :
+                      |  Head Coach
+                    li
+                      strong Nationalité :
+                      img(src='images/flags/canada.png', style='height: 15px;')
+          .photo-container
+            a(data-toggle='modal', data-target='#staff4-modal')
+              img(src='images/Staff/escallier_president.png', alt='')
+            .photo-caption
+              .flag
+                img(src='images/Staff/france.png', alt='')
+              .caption
+                figcaption Jerôme Escallier
+              .jersey
+          #staff4-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff4-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  img(src='images/Staff/escallier_president.png', alt='')
+                  ul.player-identity
+                    li
+                      strong JEROME ESCALLIER
+                    li
+                      strong Poste :
+                      |  Président
+                    li
+                      strong Nationalité :
+                      img(src='images/Staff/france.png', style='height: 15px;')
+        // End Staff-member 3 & 4
+        // Staff member 5
+        .photo-row
+          .photo-container
+            a(data-toggle='modal', data-target='#staff5-modal')
+              img(src='images/Staff/oprandu_manager.png', alt='')
+            .photo-caption
+              .flag
+                img(src='images/Staff/france.png', alt='')
+              .caption
+                figcaption Sébastien Oprandi
+              .jersey
+          #staff5-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff5-modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                  img(src='images/Staff/oprandu_manager.png', alt='')
+                  ul.player-identity
+                    li
+                      strong SEBASTIEN OPRANDI
+                    li
+                      strong Poste :
+                      |  Manager
+                    li
+                      strong Nationalité :
+                      img(src='img/Staff/france.png', style='height: 15px;')
+        // End Staff-member 5
+        
 section.story
   h3 Success story
   .row
@@ -109,47 +475,76 @@ section.story
         | s&apos;&eacute;chelonnent jusqu&apos;en ao&ucirc;t 2012. La patinoire est compl&egrave;tement refaite et sa capacit&eacute; est port&eacute;e &agrave; 2000 places. Lors de la saison 2011-2012, les rapaces jouent leurs matchs &laquo; &agrave; domicile &raquo; au Palais omnisports Marseille Grand Est. Le 23 octobre
         | 2012, Georges Obninsky, pr&eacute;sident du club annonce sa d&eacute;mission 17 lors d&apos;une conf&eacute;rence de presse 18. Il est remplac&eacute; par Philippe Vial et J&eacute;r&ocirc;me Escallier. &Agrave; l&apos;issue de la saison 2016-2017, les Rapaces de Gap remportent la Ligue Magnus, devenant
         | ainsi Champions de France pour la quatri&egrave;me fois de leur histoire.
-section.contact
+
+
+section.contact-f
   .container
-    .row
-      .col-xs-6.col-md-4
-        a(href='https://www.nouvelle-aquitaine.com' target='blank')
-          img.logo-social(src='img/nouvelle-aquitaine.png' alt="='logo-nouvelle-aquitaine'")
-          img.logo-sponsors
-      .col-xs-6.col-md-4
-        a(href='http://www.bordeaux-metropole.fr/' target='blank')
-          img.logo-bordeaux(src='img/bordeaux.png' alt="='logo-bordeaux'")
-          img.logo-sponsors
-      .col-xs-6.col-md-4
-        a(href='https://www.booking.com/' target='blank')
-          img(src='img/B&B.png' alt="='logo-B&B'" class='logo-B&B')
-          img.logo-sponsors
-      .col-xs-6.col-md-4
-        a(href='https://www.decathlon.fr/' target='blank')
-          img.logo-decathlon(src='img/decathlon.png' alt="='logo-decathlon'")
-          img.logo-sponsors
+    h1.brand Formulaire de contact
+    .wrapper
+      .company-info
+        h3 Contacts
+        ul
+          li
+            i.fa.fa-road
+            |  95 Cours Mar&eacute;chal Juin, Bordeaux
+          li
+            i.fa.fa-phone
+            |  05 57 81 43 81
+          li
+            i.fa.fa-envelope
+            |  contact@Mr-Bison.com
+
+      .contact
+        h3 Envoyez nous vos id&eacute;es et vos propositions!
+        form(data-toggle='validator')
+          p
+            label Nom
+            input(type='text', name='name', placeholder='Vandamme', required='')
+          p
+            label Pr&eacute;nom
+            input(type='text', name='prenom', placeholder='Jean Claude', required='')
+          p
+            label Adress mail
+            input(type='email', name='email', placeholder='example@hotmail.fr', required='')
+          p
+            label Portable
+            input(type='tel', name='phone', placeholder='0640506020')
+          p.full
+            label Message
+            textarea(name='message', rows='5', placeholder='Votre message ici!', required='')
+          p.full
+            button Envoyer
+
 section.banner-sponsors
   .container
-    h2 Contactez nous
-    .form-group
-      label Nom
-      input.form-control(type='text' placeholder='Saisissez votre nom')
-      label Email
-      input.form-control(type='email' placeholder='Saisissez votre adresse mail')
-      label T&eacute;l&eacute;phone
-      input.form-control(type='tel' placeholder='Saisissez votre numéro de téléphone')
-      label Message
-      input.form-control(type='message' placeholder='Saisissez votre message ici')
-      button(type='button' btn='' btn-danger='') Envoyer votre message
-footer
-  .twitter
-    a(href='https://www.twitter.com/rapaces/' target='blank')
-      img.logo-social(src='img/twitter.png' alt="='logo_twitter'")
-  .youtube
-    a(href='https://www.youtube.com/rapaces/' target='blank')
-      img.logo-social(src='img/youtube.png' alt="='logo_youtube'")
-    .container
-      p
+    .row
+      .col-xs-12.col-md-4
+        a(href='https://www.nouvelle-aquitaine.com', target='blank')
+          img.logo-social(src='images/nouvelle-aquitaine.jpg', alt='logo-nouvelle-aquitaine')
+          img.logo-sponsors
+      .col-xs-12.col-md-4
+        a(href='http://www.bordeaux-metropole.fr/', target='blank')
+          img.logo-bordeaux(src='images/Bordeaux-metropole.png', alt='logo-bordeaux')
+          img.logo-sponsors
+      .col-xs-12.col-md-4
+        a(href='https://www.decathlon.fr/', target='blank')
+          img.logo-decathlon(src='images/decathlon.png', alt='logo-decathlon')
+          img.logo-sponsors
+
+img.footer-logo(src='images/footer.png', alt='footer-logo')
+footer.container-fluid
+  .text-center.center-block
+    a(href='https://www.facebook.com/')
+      i#social-fb.fa.fa-facebook-square.fa-3x.social
+    a(href='https://www.youtube.com/')
+      i#social-yb.fa.fa-youtube-square.fa-3x.social
+    a(href='https://twitter.com/')
+      i#social-tw.fa.fa-twitter-square.fa-3x.social
+    a(href='https://plus.google.com/')
+      i#social-gp.fa.fa-google-plus-square.fa-3x.social
+  .footer-made Made by The Gitsy Kings with love and music
+
+        
 script(type='text/javascript' src='javascripts/script.js')
 script.
   // Date et heure d'échéance du compte à rebourd !
