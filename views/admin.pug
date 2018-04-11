@@ -1,0 +1,37 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title Les rapaces de GAP
+  link(rel='stylesheet' type='text/css' href='stylesheets/admin.css')
+
+body
+  p test
+  h2 Administration
+  div
+    h3 Changer la video d'en-tête
+    //- https://jsfiddle.net/dhyzV/1173/
+    input#get_file(type='button' value='Grab file')
+    input#my_file(type='file')
+    #customfileupload Select a file
+    hr.orSeparator
+    input(type='url' value='URL' name='video')
+    input(type='submit' value='Mettre à jour la video')
+  
+  div
+    h3 Modifier/Ajouter les matchs à venir
+    p Match 1 : 
+    p Ajouter un match : 
+    
+  div
+    h3 Modifier/Ajouter les membres
+    p Membre 1 : 
+    p Ajouter un membre : 
+
+
+    
+
+  
+
+  script(type='text/javascript' src='javascripts/admin.js')
+  script(src='https://code.jquery.com/jquery-3.3.1.js')
+  script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
