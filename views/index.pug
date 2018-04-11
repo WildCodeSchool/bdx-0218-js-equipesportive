@@ -6,26 +6,32 @@ head
   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
 header
-  nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.mr-auto
-        li.nav-item.active
-          a.nav-link(href='#')
-            | Home
-            span.sr-only (current)
-        li.nav-item
-          a.nav-link(href='#') Matchs &agrave; l&apos;affiche
-        li.nav-item
-          a.nav-link(href='#') Joueurs
-        li.nav-item
-          a.nav-link(href='#') Contact
-  img(src='images/logo_rapaces.png' alt='rapaces')
-  h1 VS
-  img(src='images/logo_diables_rouges.png' alt='diables')
-  h3(id='') Petit Timer
-section.homePage
+  nav.navbar.navbar-expand-lg.navbar-light
+    .mx-auto.d-sm-flex.d-block.flex-sm-nowrap
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto.center-nav
+          li.nav-item.active
+            a.nav-link(href='#')
+              | Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='#') Matchs à l'affiche
+          li.nav-item
+            a.nav-link(href='#') Joueurs
+          li.nav-item
+            a.nav-link(href='#') Contact
+  section.home
+    .container-fluid.homePage
+      .logo
+        img.img-fluid.mx-auto.d-block.logoUn(src='images/img/rapaces.png', alt='rapaces')
+        img.img-fluid.mx-auto.d-block.versus(src='images/img/vs.png', alt='versus')
+        img.img-fluid.mx-auto.d-block.logoDeux(src='images/img/caen.png', alt='diables')
+      #demo
+      video.homeVid(autoplay='', muted='', loop='')
+        source(src='images/home.mp4', title='introVIdeo')
+
   
   section.team-gallery
     h2 Le Club
@@ -447,45 +453,6 @@ section.homePage
                       img(src='img/Staff/france.png', style='height: 15px;')
         // End Staff-member 5
         
-section.billing-matches
-  h2
-    | Matchs &agrave; l&apos;affiche
-    .container-fluid.next-matches
-      .row
-        .col-xs-12
-          h4 Saxoprint Ligue M
-          p 14/07/17
-          p 20:00 CET
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-      .row
-        .col-xs-12
-          h4 Saxoprint Ligue M
-          p 14/07/17
-          p 20:00 CET
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-      .row
-        .col-xs-12
-          h4 Saxoprint Ligue M
-          p 14/07/17
-          p 20:00 CET
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-        .col-xs-4
-          img(src='' alt='')
-    // Next matches ends
-// coming-matches-ends
 section.story
   h3 Success story
   .row

@@ -5,9 +5,10 @@ const mysql = require('mysql');
 let sqlConnexion = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Z0upette",
+  password: "Makwesh8",
   database: "Rapaces_de_gap"
 });
+
 
 
 

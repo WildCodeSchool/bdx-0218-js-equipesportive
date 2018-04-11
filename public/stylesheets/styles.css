@@ -1,3 +1,165 @@
+/* Maco 
+
+HOMEPAGE -----------------------------------------
+
+*/
+
+
+/* Nabvar------------------------------------------
+*/
+
+.navbar li {
+  font-size: 2rem;
+}
+
+.navbar-light {
+  background-color: #4AA0D9;
+  border-color: rgb(56, 56, 226);
+}
+
+/* section {
+  height: 100vh;
+  width: 100vw;
+} */
+
+.homeVid {
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homePage {
+  background-image: url('../images/img/passion.jpg');
+  height: 100%;
+  width: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+}
+
+
+/* .versus {
+margin-left: auto;
+margin-right: auto;
+position: absolute;
+top: 40%;
+left: 50%;
+transform: translate(-50%, -50%);
+} */
+
+.logo {
+  position: absolute;
+  height: 1%;
+  width: 100%;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.logo img {
+  width: 50%;
+  margin: 0;
+}
+
+.logo .versus {
+  width: 100%;
+}
+
+#demo {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 8rem;
+}
+
+.next-matches {
+  background-color: saddlebrown;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+      height: 300%;
+      top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+      width: 300%;
+      left: -100%;
+  }
+}
+
+@media (max-device-width: 768px) {
+  video {
+      display: none
+  }
+  .home {
+      height: 100vh;
+  }
+  .logo .versus {
+      width: 100%;
+  }
+  #demo{
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 3rem;
+  }
+}
+
+@media (min-device-width: 780px) {
+  .homePage {
+      background-image: none;
+  }
+  .logo {
+      display: flex;
+      justify-content: space-around;
+  }
+  .logoUn {
+      order: 1;
+  }
+  .logoDeux {
+      order: 3;
+  }
+  .versus {
+      order: 2;
+  }
+  .logo .versus {
+      margin-right: auto;
+      width: 50vh;
+      height: 50vh;
+      opacity: 0.8;
+  }
+  .logo .logoUn {
+      width: auto;
+      height: 40vh;
+      margin-top: 12vh;
+  }
+  .logo .logoDeux {
+      width: auto;
+      height: 60vh;
+  }
+  #demo {
+      color: black;
+      padding: 0px 15px 0px 15px;
+      border: 15px solid black;
+      border-radius: 25px;
+      position: absolute;
+      top: 80%;
+      opacity: 0.8;
+  }
+}
+
 h3 {
   text-decoration: underline;
 }
