@@ -7,8 +7,8 @@ const mg = require('nodemailer-mailgun-transport');
 let sqlConnexion = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Makwesh8",
-  database: "Rapaces_de_gap"
+  password: "",
+  database: "rapaces"
 });
 
 let selectQuery = 'SELECT * FROM joueurs'; //requête sur table joueurs
