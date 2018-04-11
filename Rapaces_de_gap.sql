@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 11 Avril 2018 à 10:13
+-- Généré le :  Mer 11 Avril 2018 à 11:55
 -- Version du serveur :  5.7.21-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.28-0ubuntu0.16.04.1
 
@@ -46,12 +46,12 @@ CREATE TABLE `joueurs` (
 --
 
 INSERT INTO `joueurs` (`id`, `nom`, `prenom`, `poste`, `shoot`, `naissance`, `age`, `nationnalité`, `poids`, `taille`, `photo`, `media`) VALUES
-(1, 'Lerg', 'Jeff', 'Gardien', 'Gaucher', '1986-04-09', 32, 'img/flags/usa.png', '74 KG', '168 CM', 'img/joueurs/jeff_lerg.png', 'img/medias/01-lerg.mp4'),
-(2, 'Ritz', 'Maxime', 'Défenseur', 'Droitier', '1998-03-03', 20, 'img/flags/france.png', '73 KG', '172 CM', 'img/joueurs/maxime_ritz.png', 'img/medias/25-ritz.mp4'),
-(3, 'Crinon', 'Pierre', 'Défenseur', 'Gaucher', '1995-08-02', 23, 'img/flags/france.png', '100 KG', '195 CM', 'img/joueurs/pierre_crinon.png', 'img/medias/07-crinon.mp4'),
-(4, 'Di Dio Balsamo', 'Cédric ', 'Attaquant', 'Gaucher', '1994-03-27', 24, 'img/flags/france.png', '75 KG', '179 CM', 'img/joueurs/cedric_didiobalsamo.png', 'img/medias/27-di-dio-balsamo.mp4'),
-(5, 'McDonald', 'Chad', 'Attaquant', 'Droitier', '1993-02-25', 25, 'img/flags/usa.png', '78 KG', '178 CM', 'img/joueurs/chad_mcdonald.png', 'img/medias/09-macdonald.mp4'),
-(6, 'Rama', 'Joris', 'Attaquant', 'Gaucher', '1999-02-17', 19, 'img/flags/usa.png', '70 KG', '179 CM', 'img/joueurs/joris_rama.png', 'img/medias/24-rama.mp4');
+(1, 'Lerg', 'Jeff', 'Gardien', 'Gaucher', '1986-04-09', 32, 'images/flags/usa.png', '74 KG', '168 CM', 'images/joueurs/jeff_lerg.png', 'images/medias/01-lerg.mp4'),
+(2, 'Ritz', 'Maxime', 'Défenseur', 'Droitier', '1998-03-03', 20, 'images/flags/france.png', '73 KG', '172 CM', 'images/joueurs/maxime_ritz.png', 'images/medias/25-ritz.mp4'),
+(3, 'Crinon', 'Pierre', 'Défenseur', 'Gaucher', '1995-08-02', 23, 'images/flags/france.png', '100 KG', '195 CM', 'images/joueurs/pierre_crinon.png', 'images/medias/07-crinon.mp4'),
+(4, 'Di Dio Balsamo', 'Cédric ', 'Attaquant', 'Gaucher', '1994-03-27', 24, 'images/flags/france.png', '75 KG', '179 CM', 'images/joueurs/cedric_didiobalsamo.png', 'images/medias/27-di-dio-balsamo.mp4'),
+(5, 'McDonald', 'Chad', 'Attaquant', 'Droitier', '1993-02-25', 25, 'images/flags/usa.png', '78 KG', '178 CM', 'images/joueurs/chad_mcdonald.png', 'images/medias/09-macdonald.mp4'),
+(6, 'Rama', 'Joris', 'Attaquant', 'Gaucher', '1999-02-17', 19, 'images/flags/usa.png', '70 KG', '179 CM', 'images/joueurs/joris_rama.png', 'images/medias/24-rama.mp4');
 
 -- --------------------------------------------------------
 
