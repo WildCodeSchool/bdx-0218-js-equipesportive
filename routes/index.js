@@ -1,6 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const mysql = require('mysql');
+const nodemailer = require("nodemailer");
+const mg = require('nodemailer-mailgun-transport');
 //initalisation de la connexion à mysql
 let sqlConnexion = mysql.createConnection({
   host: "localhost",
@@ -8,10 +10,6 @@ let sqlConnexion = mysql.createConnection({
   password: "Makwesh8",
   database: "Rapaces_de_gap"
 });
-
-
-
-
 
 let selectQuery = 'SELECT * FROM joueurs'; //requête sur table joueurs
 
@@ -39,7 +37,30 @@ let media = [];
 //sur get lancement de la requête sql
 
 
+function sendMail(lastname,firstname,mail,phone,message) {
+  var auth = {
+    auth: {
+      api_key: 'key-a49784d269ad7f285852325f51c85e5a',
+      domain: 'sandbox4705080d1e034004bdd80a27208ed7bd.mailgun.org'
+    }
+  }
 
+  var nodemailerMailgun = nodemailer.createTransport(mg(auth));
+
+  nodemailerMailgun.sendMail({
+    from: `${firstname} ${lastname} <${mail}>`, // Expediteur
+    to: mail, // Destinataires
+    subject: `Formulaire de contact, message de ${firstname} ${lastname}`, // Sujet
+    text: message, // plaintext body
+    html: message // html body
+  }, (error, response) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Message sent: " + response.message);
+    }
+  });
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -89,10 +110,17 @@ router.get('/', function(req, res, next) {
   nom, poste, shoot, naissance, age, flag, poids, taille, media });
 });
 
+/* FORM */
+router.post('/form', function (req, res, next) {
+  sendMail(req.body.lastname, req.body.firstname, req.body.mail, req.body.phone, req.body.message);
+  res.end('Merci')
+});
+
 /* GET admin page. */
 router.get('/admin', function(req, res, next) {
   res.render('admin');
 });
+
 /*
 sqlConnexion.query(
   staffQuery,
