@@ -1,12 +1,32 @@
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 1rem;
+  margin-bottom: 2.2rem;
+}
+
+h3 {
+  font-size: 12pt;
+  margin: 1rem;
+}
+
+a {
+  color: orange;
+}
+
+a:hover {
+  color: #FFAD66;
+}
+
 #my_file {
     display: none;
 }
 
 #get_file {
     background: #f9f9f9;
-    border: 1px solid #88c;
+    border: 2px solid black;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 0px;
     margin: 10px;
     cursor: pointer;
 }
@@ -17,12 +37,8 @@
     font-size: 14px;
     padding: 10px 30px 10px 10px;
     width: 250px;
-    border: 1px solid #999;
-    box-shadow: inset 1px 1px 5px #ccc;
-    -webkit-box-shadow: inset 1px 1px 5px #ccc;
-    -moz-box-shadow: inset 0px 0px 4px #ccc;
-    -ms-box-shadow: inset 0px 0px 4px #ccc;
-    -o-box-shadow: inset 0px 0px 4px #ccc;
+    color: #c4c4c4;
+    border: 0px solid #999;
     z-index: 1;
     white-space: nowrap;
     overflow: hidden;
@@ -41,4 +57,48 @@ hr.orSeparator:after {
 	padding: 0 10px;
 	background: #FFFFFF;
 	font-size: 15px;
+}
+
+.video {
+  margin: 2rem;
+  text-align: center;
+}
+
+.video .url-video {
+  border: 1px solid black;
+  text-align: center;
+  padding: 0.2rem;
+  margin: 0.6rem;
+}
+
+.video .submit-video {
+  margin: 1rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.panel-group-main {
+  margin: 1.5rem;
+
+}
+
+#subCollapse1 .video {
+  margin: 0.2rem;
+}
+
+.panel-group .panel-body {
+  background-color: black;
+}
+
+.panel-body {
+  background-color: grey;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+}
+
+#subAccordion p {
+  display: inline;
 }

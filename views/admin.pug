@@ -1,37 +1,213 @@
 doctype html
 head
   meta(charset='utf-8')
-  title Les rapaces de GAP
+  title Les rapaces de GAP | Panneau d'administration
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/admin.css')
 
 body
-  p test
   h2 Administration
-  div
-    h3 Changer la video d'en-tête
+  h3 Changer la video d'en-tête
+  .video
     //- https://jsfiddle.net/dhyzV/1173/
-    input#get_file(type='button' value='Grab file')
+    input#get_file(type='button' value='Choisir une video')
     input#my_file(type='file')
-    #customfileupload Select a file
+    #customfileupload Pas de fichier
     hr.orSeparator
-    input(type='url' value='URL' name='video')
-    input(type='submit' value='Mettre à jour la video')
+    input.url-video(type='url' placeholder='Entrez l\'adresse URL' name='video')
+    input.submit-video(type='submit' value='Mettre à jour la video')
   
-  div
+  .matchs
     h3 Modifier/Ajouter les matchs à venir
-    p Match 1 : 
-    p Ajouter un match : 
+    //- Collapsible Match
+    #accordion.panel-group-main
+      .panel.panel-default
+        .panel-heading
+          p.panel-title
+            a(data-toggle='collapse' data-parent='#accordion' href='#collapse1')
+              | Match 1
+        #collapse1.panel-collapse.collapse.in
+          .panel-body
+            
+            //- Collapsible Edit Match
+            #subAccordion.panel-group
+              .panel.panel-default
+                .panel-heading
+                  p.panel-title
+                    a(data-toggle='collapse' data-parent='#subAccordion' href='#subCollapse1')
+                      p Logo équipe adverse actuel :
+                      img(src='https://via.placeholder.com/100x100' alt='logo equipe adverse')
+                #subCollapse1.panel-collapse.collapse.in
+                  .panel-body
+                    .video
+                      //- https://jsfiddle.net/dhyzV/1173/
+                      input#get_file(type='button' value='Choisir une image')
+                      input#my_file(type='file')
+                      #customfileupload Pas de fichier
+                      hr.orSeparator
+                      input.url-video(type='url' placeholder='Entrez l\'adresse URL' name='logo')
+                      input.submit-video(type='submit' value='Mettre à jour')
+                hr
+                    
+              .panel.panel-default
+                .panel-heading
+                  p.panel-title
+                    a(data-toggle='collapse' data-parent='#subAccordion' href='#subCollapse2')
+                      p Nom de l'équipe adverse
+                #subCollapse2.panel-collapse.collapse
+                  .panel-body
+                    input(type='text' value='Nom de l\'équipe' name='nom_equipe_adverse')
+                    input(type='submit' value='Mettre à jour')
+                hr
+              .panel.panel-default
+                .panel-heading
+                  p.panel-title
+                    a(data-toggle='collapse' data-parent='#subAccordion' href='#subCollapse3')
+                      p Date et heure de rencontre
+                #subCollapse3.panel-collapse.collapse
+                  .panel-body
+                    input(type='date' value='Nom de l\'équipe' name='date_rencontre')
+                    input(type='time' value='Nom de l\'équipe' name='time_rencontre')
+                    input(type='submit' value='Mettre à jour')
+                      
+      .panel.panel-default
+        .panel-heading
+          p.panel-title
+            a(data-toggle='collapse' data-parent='#accordion' href='#collapse2')
+              | Ajouter un Match
+        #collapse2.panel-collapse.collapse
+          .panel-body
+            
+            //- Collapsible Add Match
+            input#get_file(type='button' value='Choisir une image')
+            input#my_file(type='file')
+            #customfileupload Select a file
+            hr.orSeparator
+            input(type='url' value='URL' name='logo')
+            hr
+            input(type='text' value='' name='nom_equipe_adverse')
+            input(type='date' value='' name='date_rencontre')
+            input(type='time' value='' name='time_rencontre')
+            input(type='submit' value='Ajouter le match')
     
   div
     h3 Modifier/Ajouter les membres
-    p Membre 1 : 
-    p Ajouter un membre : 
-
+    
+    //- Collapsible Membres
+    #accordion.panel-group-main
+      .panel.panel-default
+        .panel-heading
+          p.panel-title
+            a(data-toggle='collapse' data-parent='#accordion' href='#collapse-membre1')
+              | Membre 1
+        #collapse-membre1.panel-collapse.collapse.in
+          .panel-body
+            p Informations
+            | Poste
+            input(type='text' value='Actuel' name='poste')
+            br
+            | Shoot
+            input(type='text' value='Actuel' name='shoot')
+            br
+            | Date de naisance
+            input(type='date' value='Actuel' name='Date de naissance')
+            br
+            | Age
+            input(type='number' value='Actuel' name='age')
+            br
+            | Nationalité
+            input(type='text' value='Actuel' name='nationalite')
+            br
+            | Poid (kg)
+            input(type='number' value='Actuel' name='poid')
+            br
+            | Taille (cm)
+            input(type='number' value='Actuel' name='taille')
+            hr
+            
+            p Statistiques
+            | Matchs joués
+            input(type='number' value='Actuel' name='matchs_joues')
+            br
+            | Buts
+            input(type='number' value='Actuel' name='buts')
+            br
+            | Assist
+            input(type='number' value='Actuel' name='assist')
+            br
+            | Points (Assist + Buts)
+            input(type='number' value='Actuel' name='points')
+            br
+            | Pénalités
+            input(type='number' value='Actuel' name='penalites')
+            br
+            | Tirs
+            input(type='number' value='Actuel' name='tirs')
+            br
+            | Efficacité (Tirs réussis)
+            input(type='number' value='Actuel' name='efficacite')
+            br
+            input(type='submit' value='Mettre à jour')
+            
+      .panel.panel-default
+        .panel-heading
+          p.panel-title
+            a(data-toggle='collapse' data-parent='#accordion' href='#collapse-membre2')
+              | Ajouter un Membre
+        #collapse-membre2.panel-collapse.collapse
+          .panel-body
+            p Informations
+            | Poste
+            input(type='text' value='' name='poste')
+            br
+            | Shoot
+            input(type='text' value='' name='shoot')
+            br
+            | Date de naisance
+            input(type='date' value='' name='Date de naissance')
+            br
+            | Age
+            input(type='number' value='' name='age')
+            br
+            | Nationalité
+            input(type='text' value='' name='nationalite')
+            br
+            | Poid (kg)
+            input(type='number' value='' name='poid')
+            br
+            | Taille (cm)
+            input(type='number' value='' name='taille')
+            hr
+            
+            p Statistiques
+            | Matchs joués
+            input(type='number' value='' name='matchs_joues')
+            br
+            | Buts
+            input(type='number' value='' name='buts')
+            br
+            | Assist
+            input(type='number' value='' name='assist')
+            br
+            | Points (Assist + Buts)
+            input(type='number' value='' name='points')
+            br
+            | Pénalités
+            input(type='number' value='' name='penalites')
+            br
+            | Tirs
+            input(type='number' value='' name='tirs')
+            br
+            | Efficacité (Tirs réussis)
+            input(type='number' value='' name='efficacite')
+            br
+            input(type='submit' value='Ajouter')
+            
 
     
 
   
 
   script(type='text/javascript' src='javascripts/admin.js')
-  script(src='https://code.jquery.com/jquery-3.3.1.js')
-  script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
