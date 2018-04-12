@@ -113,7 +113,7 @@ router.get('/', function(req, res, next) {
 /* FORM */
 router.post('/form', function (req, res, next) {
   sendMail(req.body.lastname, req.body.firstname, req.body.mail, req.body.phone, req.body.message);
-  res.end('Merci')
+  res.redirect('/#form');
 });
 
 /* GET admin page. */

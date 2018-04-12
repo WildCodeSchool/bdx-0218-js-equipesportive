@@ -6,3 +6,9 @@ function changeText() {
     bouton.innerText = 'Lire la suite ...';
   }
 }
+
+function submitForm() {
+  console.log('test');
+  document.getElementById('sendButton').value = 'Message envoyé !'
+  alert('Votre message a bien été envoyé.')
+}

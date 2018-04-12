@@ -1,4 +1,4 @@
-/* Maco 
+/* Maco
 
 HOMEPAGE -----------------------------------------
 
@@ -188,6 +188,7 @@ h3 {
   padding: 15px 30px 5px;
   margin-top: 20px;
   margin-bottom: 40px;
+  box-shadow: 0 0 20px 0 rgba(43, 52, 62, 0.7);
 }
 
 .story > .row > .col-sm-8 > .texte-histoire {

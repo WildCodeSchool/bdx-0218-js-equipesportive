@@ -479,7 +479,7 @@ section.story
 
 section.contact-f
   .container
-    h1.brand Formulaire de contact
+    h1.brand#form Formulaire de contact
     .wrapper
       .company-info
         h3 Contacts
@@ -495,8 +495,8 @@ section.contact-f
             |  contact@Mr-Bison.com
 
       .contact
-        h3 Envoyez nous vos id&eacute;es et vos propositions!
-        form(action='/form', method='POST' data-toggle='validator')
+        h3 Envoyez nous vos idées et vos propositions!
+        form(action='/form', method='POST' data-toggle='validator' onsubmit='submitForm()')
           p
             label Nom
             input(type='text', name='lastname', placeholder='Vandamme', required='')
@@ -513,7 +513,7 @@ section.contact-f
             label Message
             textarea(name='message', rows='5', placeholder='Votre message ici!', required='')
           p.full
-            input(type='submit', value='Envoyer')
+            input#sendButton(type='submit', value='Envoyer')
 
 section.banner-sponsors
   .container
