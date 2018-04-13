@@ -94,69 +94,71 @@ body
     h3 Modifier/Ajouter les membres
     
     //- Collapsible Membres
-    #accordion.panel-group-main
+    #accordion.panel-group-main                  
+      - for (let i = 0; i < joueurs.length; i++)
+        - let collapseID = 'collapse-membre' + i;
+        .panel.panel-default
+          .panel-heading
+            p.panel-title
+              a(data-toggle='collapse' data-parent='#accordion' href='#' + collapseID)
+                | #{joueurs[i].prenom} #{joueurs[i].nom}
+          div(id = collapseID).panel-collapse.collapse.in
+            .panel-body
+              form 
+                p Informations
+                p
+                  label Poste
+                  input(type='text' value=joueurs[i].poste name='poste')
+                p
+                  label Shoot
+                  input(type='text' value=joueurs[i].shoot name='shoot')
+                p
+                  label Date de naisance
+                  input(type='date' value=joueurs[i].naissance name='Date de naissance')
+                p
+                  label Age
+                  input(type='number' value=joueurs[i].age name='age')
+                p
+                  label Nationalité
+                  input(type='text' value=joueurs[i].nationnalité name='nationalite')
+                p
+                  label Poids (kg)
+                  input(type='number' value=joueurs[i].poids name='poid')
+                p
+                  label Taille (cm)
+                  input(type='number' value=joueurs[i].taille name='taille')
+                hr
+              
+                p Statistiques
+                p
+                  label Matchs joués
+                  input(type='number' value='' name='matchs_joues')
+                p
+                  label Buts
+                  input(type='number' value='' name='buts')
+                p
+                  label Assist
+                  input(type='number' value='' name='assist')
+                p
+                  label Points (Assist + Buts)
+                  input(type='number' value='' name='points')
+                p
+                  label Pénalités
+                  input(type='number' value='' name='penalites')
+                p
+                  label Tirs
+                  input(type='number' value='' name='tirs')
+                p
+                  label Efficacité (Tirs réussis)
+                  input(type='number' value='' name='efficacite')
+                input(type='submit' value='Mettre à jour')
+  
       .panel.panel-default
         .panel-heading
           p.panel-title
-            a(data-toggle='collapse' data-parent='#accordion' href='#collapse-membre1')
-              | Membre 1
-        #collapse-membre1.panel-collapse.collapse.in
-          .panel-body
-            form 
-              p Informations
-              p
-                label Poste
-                input(type='text' value='' name='poste')
-              p
-                label Shoot
-                input(type='text' value='' name='shoot')
-              p
-                label Date de naisance
-                input(type='date' value='' name='Date de naissance')
-              p
-                label Age
-                input(type='number' value='' name='age')
-              p
-                label Nationalité
-                input(type='text' value='' name='nationalite')
-              p
-                label Poid (kg)
-                input(type='number' value='' name='poid')
-              p
-                label Taille (cm)
-                input(type='number' value='' name='taille')
-              hr
-            
-              p Statistiques
-              p
-                label Matchs joués
-                input(type='number' value='' name='matchs_joues')
-              p
-                label Buts
-                input(type='number' value='' name='buts')
-              p
-                label Assist
-                input(type='number' value='' name='assist')
-              p
-                label Points (Assist + Buts)
-                input(type='number' value='' name='points')
-              p
-                label Pénalités
-                input(type='number' value='' name='penalites')
-              p
-                label Tirs
-                input(type='number' value='' name='tirs')
-              p
-                label Efficacité (Tirs réussis)
-                input(type='number' value='' name='efficacite')
-              input(type='submit' value='Mettre à jour')
-            
-      .panel.panel-default
-        .panel-heading
-          p.panel-title
-            a(data-toggle='collapse' data-parent='#accordion' href='#collapse-membre2')
+            a(data-toggle='collapse' data-parent='#accordion' href='#collapse-add-membre')
               | Ajouter un Membre
-        #collapse-membre2.panel-collapse.collapse
+        #collapse-add-membre.panel-collapse.collapse
           .panel-body
             form 
               p Informations
@@ -182,7 +184,7 @@ body
                 label Taille (cm)
                 input(type='number' value='' name='taille')
               hr
-            
+      
               p Statistiques
               p
                 label Matchs joués
@@ -206,10 +208,6 @@ body
                 label Efficacité (Tirs réussis)
                 input(type='number' value='' name='efficacite')
               input(type='submit' value='Ajouter')
-          
-
-    
-
   
 
   script(type='text/javascript' src='javascripts/admin.js')
