@@ -8,7 +8,7 @@ let sqlConnexion = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "Makwesh8",
-  database: "Rapaces_de_gap",
+  database: "Rapaces",
   multipleStatements: true
 });
  //requête sur table joueurs & staff
