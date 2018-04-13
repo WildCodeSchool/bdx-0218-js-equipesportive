@@ -1,459 +1,173 @@
 doctype html
 head
   meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, user-scalable=no')
   title Les rapaces de GAP
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
 header
-  nav.navbar.navbar-expand-lg.navbar-light
+  nav.navbar.navbar-expand-lg.navbar-light.fixed-top
     .mx-auto.d-sm-flex.d-block.flex-sm-nowrap
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto.center-nav
-          li.nav-item.active
-            a.nav-link(href='#')
+          li.nav-item
+            a.nav-link(href='#home')
               | Home
               span.sr-only (current)
           li.nav-item
-            a.nav-link(href='#') Matchs à l'affiche
+            a.nav-link(href='#matchs') Matchs à l'affiche
           li.nav-item
-            a.nav-link(href='#') Joueurs
+            a.nav-link(href='#team') Joueurs
           li.nav-item
-            a.nav-link(href='#') Contact
-section.home
-.container-fluid.homePage
-  .logo
-    img.img-fluid.mx-auto.d-block.logoUn(src='images/img/rapaces.png', alt='rapaces')
-    img.img-fluid.mx-auto.d-block.versus(src='images/img/vs.png', alt='versus')
-    img.img-fluid.mx-auto.d-block.logoDeux(src='images/img/caen.png', alt='diables')
-  #demo
-  video.homeVid(autoplay='', muted='', loop='')
-    source(src='images/home.mp4', title='introVIdeo')
+            a.nav-link(href='#story') Histoire
+          li.nav-item
+            a.nav-link(href='#contact') Contact
+  section.home#home
+    .container-fluid.homePage
+      .logo
+        img.img-fluid.mx-auto.d-block.logoUn(src='images/img/rapaces.png', alt='rapaces')
+        img.img-fluid.mx-auto.d-block.versus(src='images/vs2.png', alt='versus')
+        img.img-fluid.mx-auto.d-block.logoDeux(src='images/equipes/chamonix.png', alt='diables')
+      #demo
+      video.homeVid(autoplay='', muted='', loop='')
+        source(src='images/home.mp4', title='introVIdeo')
+  section.titreMatchs#matchs
+      h2 Matchs à l'affiche
 
-
-section.team-gallery
-h2 Le Club
-ul#teamGallery.nav.nav-tabs(role='tablist')
-  li.nav-item
-    a#players-tab.nav-link.active(data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
-  li.nav-item
-    a#staff-tab.nav-link(data-toggle='tab', href='#staff', role='tab', aria-controls='staff', aria-selected='false') Le Staff
-#teamGalleryContent.tab-content
-  #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
-    h3 Galerie des joueurs
-    // Button trigger modal
-    // Modal
-    // Players 1 & 2
-    .photo-row
-      .photo-container
-        a(data-toggle='modal', data-target='#player1-modal')
-          img(src= photo[0], alt='Photo de #{prenom[0]} #{nom[0]} ')
-        .photo-caption
-          .flag
-            img(src= flag[0], alt='')
-          .caption
-            figcaption #{prenom[0]} #{nom[0]}
-          .jersey
-            p #1
-      #player1-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player1-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              video(autoplay='autoplay', loop='loop')
-                source(src= media[0], type='video/mp4')
-              ul.player-identity
-                li
-                  strong #{prenom[0]} #{nom[0]}
-                li
-                  strong Poste :
-                  |  #{poste[0]}
-                li
-                  strong Shoot :
-                  |  #{shoot[0]}
-                li
-                  strong Naissance :
-                  |  #{naissance[0]}
-                li
-                  strong Age :
-                  |  #{age[0]} ans
-                li
-                  strong Nationalité :
-                  img(src= flag[0], style='height: 15px;')
-                li
-                  strong Poids :
-                  |  #{poids[0]}
-                li
-                  strong Taille :
-                  |  #{taille[0]}
-      .photo-container
-        a(data-toggle='modal', data-target='#player2-modal')
-          img(src= photo[1], alt='Photo de #{prenom[1]} #{nom[1]}')
-        .photo-caption
-          .flag
-            img(src= flag[1], alt='')
-          .caption
-            figcaption #{prenom[1]} #{nom[1]}
-          .jersey
-            p #25
-      #player2-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player2-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              video(autoplay='autoplay', loop='loop')
-                source(src= media[1], type='video/mp4')
-              ul.player-identity
-                li
-                  strong #{prenom[1]} #{nom[1]}
-                li
-                  strong Poste :
-                  |  #{poste[1]}
-                li
-                  strong Shoot :
-                  |  #{shoot[1]}
-                li
-                  strong Naissance :
-                  |  #{naissance[1]}
-                li
-                  strong Age :
-                  |  #{age[1]} ans
-                li
-                  strong Nationalité :
-                  img(src= flag[1], style='height: 15px;')
-                li
-                  strong Poids :
-                  |  #{poids[1]}
-                li
-                  strong Taille :
-                  |  #{taille[1]}
-    // End players 1 & 2
-    // Players 3 & 4
-    .photo-row
-      .photo-container
-        a(data-toggle='modal', data-target='#player3-modal')
-          img(src= photo[2], alt='Photo de #{prenom[2]} #{nom[2]} ')
-        .photo-caption
-          .flag
-            img(src= flag[2], alt='')
-          .caption
-            figcaption #{prenom[2]} #{nom[2]}
-          .jersey
-            p #7
-      #player3-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player3-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              video(autoplay='autoplay', loop='loop')
-                source(src= media[2], type='video/mp4')
-              ul.player-identity
-                li
-                  strong #{prenom[2]} #{nom[2]}
-                li
-                  strong Poste :
-                  |  #{poste[2]}
-                li
-                  strong Shoot :
-                  |  #{shoot[2]}
-                li
-                  strong Naissance :
-                  |  #{naissance[2]}
-                li
-                  strong Age :
-                  |  #{age[2]} ans
-                li
-                  strong Nationalité :
-                  img(src= flag[2], style='height: 15px;')
-                li
-                  strong Poids :
-                  |  #{poids[2]}
-                li
-                  strong Taille :
-                  |  #{taille[2]}
-      .photo-container
-        a(data-toggle='modal', data-target='#player4-modal')
-          img(src= photo[3], alt='Photo de #{prenom[3]} #{nom[3]} ')
-        .photo-caption
-          .flag
-            img(src= flag[3], alt='')
-          .caption
-            figcaption #{prenom[3]} #{nom[3]}
-          .jersey
-            p #27
-      #player4-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player4-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              video(autoplay='autoplay', loop='loop')
-                source(src= media[3], type='video/mp4')
-              ul.player-identity
-                li
-                  strong #{prenom[3]} #{nom[3]}
-                li
-                  strong Poste :
-                  |  #{poste[3]}
-                li
-                  strong Shoot :
-                  |  #{shoot[3]}
-                li
-                  strong Naissance :
-                  |  #{naissance[3]}
-                li
-                  strong Age :
-                  |  #{age[3]} ans
-                li
-                  strong Nationalité :
-                  img(src= flag[3], style='height: 15px;')
-                li
-                  strong Poids :
-                  |  #{poids[3]}
-                li
-                  strong Taille :
-                  |  #{taille[3]}
-    // Players 5 & 6
-    .photo-row
-      .photo-container
-        a(data-toggle='modal', data-target='#player5-modal')
-          img(src= photo[4], alt='Photo de #{prenom[4]} #{nom[4]} ')
-        .photo-caption
-          .flag
-            img(src= flag[4], alt='')
-          .caption
-            figcaption #{prenom[4]} #{nom[4]}
-          .jersey
-            p #9
-      #player5-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player5-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              video(autoplay='autoplay', loop='loop')
-                source(src= media[4], type='video/mp4')
-              ul.player-identity
-                li
-                  strong #{prenom[4]} #{nom[4]}
-                li
-                  strong Poste :
-                  |  #{poste[4]}
-                li
-                  strong Shoot :
-                  |  #{shoot[4]}
-                li
-                  strong Naissance :
-                  |  #{naissance[4]}
-                li
-                  strong Age :
-                  |  #{age[4]} ans
-                li
-                  strong Nationalité :
-                  img(src= flag[4], style='height: 15px;')
-                li
-                  strong Poids :
-                  |  #{poids[4]}
-                li
-                  strong Taille :
-                  |  #{taille[4]}
-      .photo-container
-        a(data-toggle='modal', data-target='#player6-modal')
-          img(src= photo[5], alt='Photo de #{prenom[5]} #{nom[5]} ')
-        .photo-caption
-          .flag
-            img(src= flag[5], alt='')
-          .caption
-            figcaption #{prenom[5]} #{nom[5]}
-          .jersey
-            p #27
-      #player6-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='player6-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              video(autoplay='autoplay', loop='loop')
-                source(src= media[5], type='video/mp4')
-              ul.player-identity
-                li
-                  strong #{prenom[5]} #{nom[5]}
-                li
-                  strong Poste :
-                  |  #{poste[5]}
-                li
-                  strong Shoot :
-                  |  #{shoot[5]}
-                li
-                  strong Naissance :
-                  |  #{naissance[5]}
-                li
-                  strong Age :
-                  |  #{age[5]} ans
-                li
-                  strong Nationalité :
-                  img(src= flag[5], style='height: 15px;')
-                li
-                  strong Poids :
-                  |  #{poids[5]}
-                li
-                  strong Taille :
-                  |  #{taille[5]}
-    // End players 5 & 6
-  #staff.tab-pane.fade(role='tabpanel', aria-labelledby='staff-tab')
-    h3 Le Staff
-    // Staff-member 1 & 2
-    .photo-row
-      .photo-container
-        a(data-toggle='modal', data-target='#staff1-modal')
-          img(src='images/Staff/grandvoinet_aurore.png', alt='')
-        .photo-caption
-          .flag
-            img(src='images/Staff/france.png', alt='')
-          .caption
-            figcaption Aurore Granvoinet
-          .jersey
-      #staff1-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff1-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              img(src='images/Staff/grandvoinet_aurore.png', alt='')
-              ul.player-identity
-                li
-                  strong AURORE GRANDVOINET
-                li
-                  strong Poste :
-                  |  Préparatrice Physique
-                li
-                  strong Nationalité :
-                  img(src='images/Staff/france.png', style='height: 15px;')
-      .photo-container
-        a(data-toggle='modal', data-target='#staff2-modal')
-          img(src='images/Staff/blais_assistant.png', alt='')
-        .photo-caption
-          .flag
-            img(src='images/Staff/france.png', alt='')
-          .caption
-            figcaption Eric Blais
-          .jersey
-      #staff2-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff2-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              img(src='images/Staff/blais_assistant.png', alt='')
-              ul.player-identity
-                li
-                  strong ERIC BLAIS
-                li
-                  strong Poste :
-                  |  Assistant Coach
-                li
-                  strong Nationalité :
-                  img(src='images/Staff/france.png', style='height: 15px;')
-    // End Staff-member 1 & 2
-    // Staff Member 3 & 4
-    .photo-row
-      .photo-container
-        a(data-toggle='modal', data-target='#staff3-modal')
-          img(src='images/Staff/basile_coach.png', alt='')
-        .photo-caption
-          .flag
-            img(src='images/flags/canada.png', alt='')
-          .caption
-            figcaption Luciano Basile
-          .jersey
-      #staff3-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff3-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              img(src='images/Staff/basile_coach.png', alt='')
-              ul.player-identity
-                li
-                  strong LUCIANO BASILE
-                li
-                  strong Poste :
-                  |  Head Coach
-                li
-                  strong Nationalité :
-                  img(src='images/flags/canada.png', style='height: 15px;')
-      .photo-container
-        a(data-toggle='modal', data-target='#staff4-modal')
-          img(src='images/Staff/escallier_president.png', alt='')
-        .photo-caption
-          .flag
-            img(src='images/Staff/france.png', alt='')
-          .caption
-            figcaption Jerôme Escallier
-          .jersey
-      #staff4-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff4-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              img(src='images/Staff/escallier_president.png', alt='')
-              ul.player-identity
-                li
-                  strong JEROME ESCALLIER
-                li
-                  strong Poste :
-                  |  Président
-                li
-                  strong Nationalité :
-                  img(src='images/Staff/france.png', style='height: 15px;')
-    // End Staff-member 3 & 4
-    // Staff member 5
-    .photo-row
-      .photo-container
-        a(data-toggle='modal', data-target='#staff5-modal')
-          img(src='images/Staff/oprandu_manager.png', alt='')
-        .photo-caption
-          .flag
-            img(src='images/Staff/france.png', alt='')
-          .caption
-            figcaption Sébastien Oprandi
-          .jersey
-      #staff5-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='staff5-modalLabel', aria-hidden='true')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-            .modal-body
-              img(src='images/Staff/oprandu_manager.png', alt='')
-              ul.player-identity
-                li
-                  strong SEBASTIEN OPRANDI
-                li
-                  strong Poste :
-                  |  Manager
-                li
-                  strong Nationalité :
-                  img(src='img/Staff/france.png', style='height: 15px;')
-    // End Staff-member 5
+  section.comingMatchs
+      .container-fluid
+        .row.matchs
+            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
+            p 
+              |Samedi 12 Avril
+              br
+              |20:00
+              c
+              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/chamonix.png")
+        .row.matchs
+          
+            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/rouen.png")
+            p 
+              |Samedi 19 Avril
+              br
+              |21:00
+              c 
+              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/gap.png")
+        .row.matchs
       
-section.story
+            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
+            p 
+              |Samedi 2 Juin
+              br
+              |21:00
+              c 
+              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/amiens.png")
+  
+  
+  section.team-gallery#team
+    h2 Le Club
+    ul#teamGallery.nav.nav-tabs(role='tablist')
+      li.nav-item
+        a#players-tab.nav-link.active(data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
+      li.nav-item
+        a#staff-tab.nav-link(data-toggle='tab', href='#staff', role='tab', aria-controls='staff', aria-selected='false') Le Staff
+    #teamGalleryContent.tab-content
+      #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
+        h3 Galerie des joueurs
+        .container
+          .row            
+            - for (let x = 0; x < joueurs.length; x++)
+              -let modalTag = 'player' + x +'-modal';  
+              - let dNone = '';        
+              if (x > 5)
+                - dNone = 'd-none d-lg-block';
+              div(class= dNone).col-xs-1.col-md-6.col-lg-3                  
+                .photo-container
+                  .photo-background
+                  a(data-toggle='modal', data-target='#player' + x +'-modal')
+                    img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
+                  .photo-caption
+                    .flag
+                      img(src= joueurs[x].nationnalité, alt='Drapeau')
+                    .caption
+                      figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
+                    .jersey
+                      p #1              
+              div(id = modalTag).modal.fade(tabindex='-1', role='dialog', aria-labelledby= modalTag, aria-hidden='true')
+                .modal-dialog(role='document')
+                  .modal-content
+                    .modal-header
+                      button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    .modal-body
+                      video(autoplay='autoplay', loop='loop')
+                        source(src= joueurs[x].media, type='video/mp4')
+                      ul.player-identity
+                        li
+                          strong #{joueurs[x].prenom} #{joueurs[x].nom}
+                        li
+                          strong Poste :
+                          |  #{joueurs[x].poste}
+                        li
+                          strong Shoot :
+                          |  #{joueurs[x].shoot}
+                        li
+                          strong Naissance :
+                          |  #{joueurs[x].naissance}
+                        li
+                          strong Age :
+                          |  #{joueurs[x].age} ans
+                        li
+                          strong Nationalité :
+                          img(src= joueurs[x].nationnalité, style='height: 15px;')
+                        li
+                          strong Poids :
+                          |  #{joueurs[x].poids}
+                        li
+                          strong Taille :
+                          |  #{joueurs[x].taille} 
+      #staff.tab-pane.fade(role='tabpanel', aria-labelledby='staff-tab')
+        h3 Le Staff
+        .container
+          .row 
+            - for (let y = 0; y < staffs.length; y++)
+              -let modalTagSt = 'staff' + y +'-modal';   
+              .col-xs-1.col-md-6.col-lg-3
+                .photo-container
+                  .photo-background
+                  a(data-toggle='modal', data-target='#staff' + y +'-modal')
+                    img(src= staffs[y].photo, alt='')
+                  .photo-caption
+                    .flag
+                      img(src= staffs[y].nationnalité, alt='')
+                    .caption
+                      figcaption #{staffs[y].nom}
+                    .jersey
+                div(id = modalTagSt).modal.fade(tabindex='-1', role='dialog', aria-labelledby=modalTagSt, aria-hidden='true')
+                  .modal-dialog(role='document')
+                    .modal-content
+                      .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                          span(aria-hidden='true') ×
+                      .modal-body
+                        img(src=staffs[y].photo, alt='')
+                        ul.player-identity
+                          li
+                            strong #{staffs[y].nom}
+                          li
+                            strong Poste :
+                            |  #{staffs[y].poste}
+                          li
+                            strong Nationalité :
+                            img(src= staffs[y].nationnalité, style='height: 15px;')                    
+        
+section.story#story
   h3 Success story
   .row
     .col-sm-8.offset-sm-2
@@ -477,7 +191,7 @@ section.story
         | ainsi Champions de France pour la quatri&egrave;me fois de leur histoire.
 
 
-section.contact-f
+section.contact-f#contact
   .container
     h1.brand#form Formulaire de contact
     .wrapper
@@ -547,25 +261,8 @@ footer.container-fluid
   .footer-made Made by The Gitsy Kings with love and music
 
         
-script(type='text/javascript' src='javascripts/script.js')
-script.
-  // Date et heure d'échéance du compte à rebourd !
-  var countDownDate = new Date("Mar 16, 2018 17:15:00").getTime();
-  // Met à jour le compteur chaque seconde.
-  var x = setInterval(function() {
-  // Cherche la date et heure actuelle
-  var now = new Date().getTime();
-  // Calcul la difference entre la date de fin et la date actuelle
-  var distance = countDownDate - now;
-  // Calcul du temps pour les jours, heures, minutes et secondes
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  // Affiche le résultat de la difference dans l'ID DEMO
-  document.getElementById("demo").innerHTML = hours + ":" +
-  minutes + ":" + seconds + "";
-  }, 1000);
+script(type='text/javascript' src='javascripts/timer.js')
+
 script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
 script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
