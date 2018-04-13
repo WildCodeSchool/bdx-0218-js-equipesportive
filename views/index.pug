@@ -71,17 +71,17 @@ header
   
   
   section.team-gallery#team
-    h2 Le Club
+    h2 Galerie des joueurs
     ul#teamGallery.nav.nav-tabs(role='tablist')
       li.nav-item
-        a#players-tab.nav-link.active(data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
+        a#players-tab.nav-link(data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
       li.nav-item
         a#staff-tab.nav-link(data-toggle='tab', href='#staff', role='tab', aria-controls='staff', aria-selected='false') Le Staff
     #teamGalleryContent.tab-content
       #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
-        h3 Galerie des joueurs
+        
         .container
-          .row            
+          .row#players            
             - for (let x = 0; x < joueurs.length; x++)
               -let modalTag = 'player' + x +'-modal';  
               - let dNone = '';        
@@ -133,7 +133,6 @@ header
                           strong Taille :
                           |  #{joueurs[x].taille} 
       #staff.tab-pane.fade(role='tabpanel', aria-labelledby='staff-tab')
-        h3 Le Staff
         .container
           .row 
             - for (let y = 0; y < staffs.length; y++)
@@ -166,9 +165,9 @@ header
                           li
                             strong Nationalité :
                             img(src= staffs[y].nationnalité, style='height: 15px;')                    
-        
+    h2 Success story     
 section.story#story
-  h3 Success story
+  
   .row
     .col-sm-8.offset-sm-2
       p.texte-histoire
@@ -190,10 +189,10 @@ section.story#story
         | 2012, Georges Obninsky, pr&eacute;sident du club annonce sa d&eacute;mission 17 lors d&apos;une conf&eacute;rence de presse 18. Il est remplac&eacute; par Philippe Vial et J&eacute;r&ocirc;me Escallier. &Agrave; l&apos;issue de la saison 2016-2017, les Rapaces de Gap remportent la Ligue Magnus, devenant
         | ainsi Champions de France pour la quatri&egrave;me fois de leur histoire.
 
-
+h2.brand#form Formulaire de contact
 section.contact-f#contact
   .container
-    h1.brand#form Formulaire de contact
+    
     .wrapper
       .company-info
         h3 Contacts
@@ -231,7 +230,7 @@ section.contact-f#contact
 
 section.banner-sponsors
   .container
-    .row
+    .row.cont
       .col-xs-12.col-md-4
         a(href='https://www.nouvelle-aquitaine.com', target='blank')
           img.logo-social(src='images/nouvelle-aquitaine.jpg', alt='logo-nouvelle-aquitaine')

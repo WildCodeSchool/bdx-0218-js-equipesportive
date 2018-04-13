@@ -20,7 +20,9 @@ HOMEPAGE -----------------------------------------
 }
 
 /*Fin compteur*/
-
+li, h3{
+  font-family: bangers;
+}
 .navbar ul li {
   font-size: 2rem;
   font-family: Bangers;
@@ -60,7 +62,7 @@ HOMEPAGE -----------------------------------------
   text-align: center;
 }
 
-.titreMatchs {
+.titreMatchs, h2 {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -290,6 +292,9 @@ h3 {
 }
 
 /*Players section*/
+#players, #staff {
+  background-color: #4AA0D9;
+}
 
 #teamGallery {
   display: flex;
@@ -297,13 +302,13 @@ h3 {
 }
 
 #teamGalleryContent .container .row .col-lg-3 {
-  margin: 0 0 5% 0;
+  margin: 8vh 0 5% 0;
 }
 
 #teamGalleryContent h3,
 .team-gallery h2 {
   text-align: center;
-  margin: 5%;
+  margin: auto;
 }
 
 #teamGalleryContent .photo-container {
@@ -463,11 +468,8 @@ h3 {
 .contact {
   margin-top: 1%;
 }
-
 .brand {
-  color: #606060;
   font-size: 2.2rem;
-  padding-bottom: 3%;
 }
 
 .wrapper {
