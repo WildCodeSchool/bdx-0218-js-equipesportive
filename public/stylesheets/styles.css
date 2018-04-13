@@ -461,6 +461,10 @@ footer {
   padding:0;
 }
 
+footer a {
+  color: #4AA0D9;
+}
+
 .footer-logo {
   width: 100%;
   margin-top: 30px;
@@ -472,3 +476,8 @@ footer {
   font-style: italic;
   font-size: 0.65rem;
   color: white;
+}
+
+footer .adminLogin {
+  color: grey;
+}
