@@ -3,18 +3,21 @@ const router = express.Router();
 const mysql = require('mysql');
 const nodemailer = require("nodemailer");
 const mg = require('nodemailer-mailgun-transport');
+
 //initalisation de la connexion à mysql server
 let sqlConnexion = mysql.createConnection({
   host: "localhost",
   user: "root",
+<<<<<<< HEAD
   password: "Makwesh8",
   database: "Rapaces",
   multipleStatements: true
 });
+
  //requête sur table joueurs & staff
 let selectQuery = 'SELECT * FROM joueurs;SELECT * FROM staff';
 
-//sur get lancement de la requête sql
+//sur get lancement de la requête sql sur index
 router.get('/', (req, res, next) => {
   sqlConnexion.query(selectQuery, function (err, rows) {
     if (err) throw err;
@@ -24,6 +27,16 @@ router.get('/', (req, res, next) => {
   });
 })
 //fin de la query section joueurs
+
+/* GET admin page. */
+router.get('/admin', function(req, res, next) {
+  sqlConnexion.query(selectQuery, function (err, rows) {
+    if (err) throw err;
+    let joueurs = rows[0];
+    let staffs = rows[1];
+    res.render('admin', { staffs, joueurs }); //envoi du rendu de la vue et de la variable contenant les données joueurs et staff
+  });
+});
 
 function sendMail(lastname,firstname,mail,phone,message) {
   var auth = {
@@ -54,11 +67,6 @@ function sendMail(lastname,firstname,mail,phone,message) {
 router.post('/form', function (req, res, next) {
   sendMail(req.body.lastname, req.body.firstname, req.body.mail, req.body.phone, req.body.message);
   res.redirect('/#form');
-});
-
-/* GET admin page. */
-router.get('/admin', function(req, res, next) {
-  res.render('admin');
 });
 
 
