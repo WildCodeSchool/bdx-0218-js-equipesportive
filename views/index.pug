@@ -1,39 +1,76 @@
 doctype html
 head
   meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, user-scalable=no')
   title Les rapaces de GAP
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
 header
-  nav.navbar.navbar-expand-lg.navbar-light
+  nav.navbar.navbar-expand-lg.navbar-light.fixed-top
     .mx-auto.d-sm-flex.d-block.flex-sm-nowrap
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto.center-nav
-          li.nav-item.active
-            a.nav-link(href='#')
+          li.nav-item
+            a.nav-link(href='#home')
               | Home
               span.sr-only (current)
           li.nav-item
-            a.nav-link(href='#') Matchs à l'affiche
+            a.nav-link(href='#matchs') Matchs à l'affiche
           li.nav-item
-            a.nav-link(href='#') Joueurs
+            a.nav-link(href='#team') Joueurs
           li.nav-item
-            a.nav-link(href='#') Contact
-  section.home
+            a.nav-link(href='#story') Histoire
+          li.nav-item
+            a.nav-link(href='#contact') Contact
+  section.home#home
     .container-fluid.homePage
       .logo
         img.img-fluid.mx-auto.d-block.logoUn(src='images/img/rapaces.png', alt='rapaces')
-        img.img-fluid.mx-auto.d-block.versus(src='images/img/vs.png', alt='versus')
-        img.img-fluid.mx-auto.d-block.logoDeux(src='images/img/caen.png', alt='diables')
+        img.img-fluid.mx-auto.d-block.versus(src='images/vs2.png', alt='versus')
+        img.img-fluid.mx-auto.d-block.logoDeux(src='images/equipes/chamonix.png', alt='diables')
       #demo
       video.homeVid(autoplay='', muted='', loop='')
         source(src='images/home.mp4', title='introVIdeo')
+  section.titreMatchs#matchs
+      h2 Matchs à l'affiche
 
+  section.comingMatchs
+      .container-fluid
+        .row.matchs
+            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
+            p 
+              |Samedi 12 Avril
+              br
+              |20:00
+              c
+              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/chamonix.png")
+        .row.matchs
+          
+            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/rouen.png")
+            p 
+              |Samedi 19 Avril
+              br
+              |21:00
+              c 
+              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/gap.png")
+        .row.matchs
+      
+            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
+            p 
+              |Samedi 2 Juin
+              br
+              |21:00
+              c 
+              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/amiens.png")
   
-  section.team-gallery
+  
+  section.team-gallery#team
     h2 Le Club
     ul#teamGallery.nav.nav-tabs(role='tablist')
       li.nav-item
@@ -130,7 +167,7 @@ header
                             strong Nationalité :
                             img(src= staffs[y].nationnalité, style='height: 15px;')                    
         
-section.story
+section.story#story
   h3 Success story
   .row
     .col-sm-8.offset-sm-2
@@ -154,7 +191,7 @@ section.story
         | ainsi Champions de France pour la quatri&egrave;me fois de leur histoire.
 
 
-section.contact-f
+section.contact-f#contact
   .container
     h1.brand#form Formulaire de contact
     .wrapper
@@ -219,28 +256,13 @@ footer.container-fluid
       i#social-tw.fa.fa-twitter-square.fa-3x.social
     a(href='https://plus.google.com/')
       i#social-gp.fa.fa-google-plus-square.fa-3x.social
+    br
+    a.adminLogin(href='/admin') Login Admin
   .footer-made Made by The Gitsy Kings with love and music
 
         
-script(type='text/javascript' src='javascripts/script.js')
-script.
-  // Date et heure d'échéance du compte à rebourd !
-  var countDownDate = new Date("Mar 16, 2018 17:15:00").getTime();
-  // Met à jour le compteur chaque seconde.
-  var x = setInterval(function() {
-  // Cherche la date et heure actuelle
-  var now = new Date().getTime();
-  // Calcul la difference entre la date de fin et la date actuelle
-  var distance = countDownDate - now;
-  // Calcul du temps pour les jours, heures, minutes et secondes
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  // Affiche le résultat de la difference dans l'ID DEMO
-  document.getElementById("demo").innerHTML = hours + ":" +
-  minutes + ":" + seconds + "";
-  }, 1000);
+script(type='text/javascript' src='javascripts/timer.js')
+
 script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
 script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
