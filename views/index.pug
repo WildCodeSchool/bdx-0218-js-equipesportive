@@ -25,6 +25,17 @@ header
             a.nav-link(href='#story') Histoire
           li.nav-item
             a.nav-link(href='#contact') Contact
+          li.nav-item
+            a.nav-link(onclick="document.getElementById('id01').style.display='block'" href='#') Connexion 
+            #id01.modal
+              form.modal-content.animate(action='/', method='post')
+                .imgcontainer
+                  span.close(onclick="document.getElementById('id01').style.display='none'" title='Close Modal') &times;
+                  img.avatar(src='images/neo.jpg' alt='Avatar')
+                .container
+                  input(type='text' placeholder='Entrez votre nom d\'utilisateur' name='username' required='')
+                  input(type='password' placeholder='Entrez votre mot de passe' name='password' required='')
+                  button(type='submit') Connexion           
   section.home#home
     .container-fluid.homePage
       .logo
@@ -261,6 +272,7 @@ footer.container-fluid
 
         
 script(type='text/javascript' src='javascripts/timer.js')
+script(type='text/javascript' src='javascripts/login.js')
 
 script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
