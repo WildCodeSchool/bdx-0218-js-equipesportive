@@ -6,10 +6,10 @@ const mg = require('nodemailer-mailgun-transport');
 
 //initalisation de la connexion à mysql server
 let sqlConnexion = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "doyouknowthebendo",
-  database: "Rapaces_de_gap",
+  host: "sql7.freemysqlhosting.net",
+  user: "sql7233307",
+  password: "VXV4tMbIPY",
+  database: "sql7233307",
   multipleStatements: true
 });
 

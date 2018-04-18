@@ -1,19 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'doyouknowthebendo',
-  database : 'authentification'
-});
+var mysql = require('mysql');
+var connection = mysql.createConnection({host: "sql7.freemysqlhosting.net", user: "sql7233307", password: "VXV4tMbIPY", database: "sql7233307"});
 
 let select = 'SELECT * FROM records';
 
 let records;
-connection.query(select, function (err,rows) {
-if (err) throw err; records = rows;
+
+connection.query(select, function(err, rows) {
+  if (err)
+    throw err;
+  records = rows;
 })
 
 exports.findById = function(id, cb) {
