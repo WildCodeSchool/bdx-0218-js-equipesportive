@@ -12,18 +12,22 @@ var db = require('./db');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-
 // Configure the local strategy for use by Passport.
 
-passport.use(new Strategy(
-  function(username, password, cb) {
-    db.users.findByUsername(username, function(err, user) {
-      if (err) { return cb(err); }
-      if (!user) { return cb(null, false); }
-      if (user.password != password) { return cb(null, false); }
-      return cb(null, user);
-    });
-  }));
+passport.use(new Strategy(function(username, password, cb) {
+  db.users.findByUsername(username, function(err, user) {
+    if (err) {
+      return cb(err);
+    }
+    if (!user) {
+      return cb(null, false);
+    }
+    if (user.password != password) {
+      return cb(null, false);
+    }
+    return cb(null, user);
+  });
+}));
 
 // Configure Passport authenticated session persistence.
 
@@ -32,12 +36,13 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-  db.users.findById(id, function (err, user) {
-    if (err) { return cb(err); }
+  db.users.findById(id, function(err, user) {
+    if (err) {
+      return cb(err);
+    }
     cb(null, user);
   });
 });
-
 
 var app = express();
 
@@ -49,12 +54,12 @@ app.set('view engine', 'pug');
 // logging, parsing, and session handling.
 app.use(require('morgan')('combined'));
 app.use(require('cookie-parser')());
-app.use(require('body-parser').urlencoded({ extended: true }));
-app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(require('body-parser').urlencoded({extended: true}));
+app.use(require('express-session')({secret: 'keyboard cat', resave: false, saveUninitialized: false}));
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -67,34 +72,27 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // Define routes.
-app.get('/',
-  function(req, res) {
-    res.render('index', { user: req.user });
-  });
+app.get('/', function(req, res) {
+  res.render('index', {user: req.user});
+});
 /*
 app.get('/login',
   function(req, res){
     res.render('login');
   });*/
 
-app.post('/',
-  passport.authenticate('local', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/admin');
-  });
+app.post('/', passport.authenticate('local', {failureRedirect: '/'}), function(req, res) {
+  res.redirect('/admin');
+});
 
-app.get('/logout',
-  function(req, res){
-    req.logout();
-    res.redirect('/');
-  });
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
 
-app.get('/admin',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    res.render('admin', { user: req.user });
-  });
-
+app.get('/admin', require('connect-ensure-login').ensureLoggedIn(), function(req, res) {
+  res.render('admin', {user: req.user});
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -105,13 +103,13 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development'
+    ? err
+    : {};
 
   // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
-
-
 
 module.exports = app;

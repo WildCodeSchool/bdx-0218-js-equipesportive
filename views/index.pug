@@ -46,41 +46,41 @@ header
       video.homeVid(autoplay='', muted='', loop='')
         source(src='images/home.mp4', title='introVIdeo')
   section.titreMatchs#matchs
-      h2 Matchs à l'affiche
+    h2 Matchs à l'affiche
 
   section.comingMatchs
-      .container-fluid
-        .row.matchs
-            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
-            p 
-              |Samedi 12 Avril
-              br
-              |20:00
-              c
-              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/chamonix.png")
-        .row.matchs
-          
-            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/rouen.png")
-            p 
-              |Samedi 19 Avril
-              br
-              |21:00
-              c 
-              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/gap.png")
-        .row.matchs
-      
-            img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
-            p 
-              |Samedi 2 Juin
-              br
-              |21:00
-              c 
-              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-            img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/amiens.png")
-  
-  
+    .container-fluid
+      .row.matchs
+        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
+        p 
+          |Samedi 12 Avril
+          br
+          |20:00
+          c
+          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/chamonix.png")
+      .row.matchs
+
+        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/rouen.png")
+        p 
+          |Samedi 19 Avril
+          br
+          |21:00
+          c 
+          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/gap.png")
+      .row.matchs
+
+        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
+        p 
+          |Samedi 2 Juin
+          br
+          |21:00
+          c 
+          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/amiens.png")
+
+
   section.team-gallery#team
     h2 Galerie des joueurs
     ul#teamGallery.nav.nav-tabs(role='tablist')
@@ -90,7 +90,7 @@ header
         a#staff-tab.nav-link(data-toggle='tab', href='#staff', role='tab', aria-controls='staff', aria-selected='false') Le Staff
     #teamGalleryContent.tab-content
       #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
-        
+
         .container
           .row#players            
             - for (let x = 0; x < joueurs.length; x++)
@@ -178,7 +178,7 @@ header
                             img(src= staffs[y].nationnalité, style='height: 15px;')                    
     h2 Success story     
 section.story#story
-  
+
   .row
     .col-sm-8.offset-sm-2
       p.texte-histoire
@@ -203,7 +203,7 @@ section.story#story
 h2.brand#form Formulaire de contact
 section.contact-f#contact
   .container
-    
+
     .wrapper
       .company-info
         h3 Contacts
@@ -270,7 +270,7 @@ footer.container-fluid
     a.adminLogin(href='/admin') Login Admin
   .footer-made Made by The Gitsy Kings with love and music
 
-        
+
 script(type='text/javascript' src='javascripts/timer.js')
 script(type='text/javascript' src='javascripts/login.js')
 script(type='text/javascript' src='javascripts/script.js')
