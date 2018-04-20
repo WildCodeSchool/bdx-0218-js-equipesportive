@@ -3,11 +3,12 @@ const router = express.Router();
 const mysql = require('mysql');
 const nodemailer = require("nodemailer");
 const mg = require('nodemailer-mailgun-transport');
+const methodOverride = require('method-override')
 
 //modules pour l'upload
 const path = require('path');
-const multer  = require('multer');
-const upload = multer({ dest: 'tmp/'});
+const multer = require('multer');
+const upload = multer({dest: 'tmp/'});
 const fs = require('fs');
 
 //initalisation de la connexion à mysql server
@@ -39,7 +40,10 @@ router.get('/admin', function(req, res, next) {
   });
 });
 
-router.post('/edit-membre', function(req, res, next) {
+// EDIT Membres
+router.use(methodOverride('_method'))
+
+router.put('/edit-membre', function(req, res, next) {
   let updateJoueurs = `UPDATE joueurs
   SET poste='${req.body.poste}', shoot='${req.body.shoot}', naissance='${req.body.date_naissance}', age='${req.body.age}',
   pays='${req.body.pays}', poids='${req.body.poid}', taille='${req.body.taille}', played_matchs='${req.body.matchs_joues}',
@@ -47,6 +51,14 @@ router.post('/edit-membre', function(req, res, next) {
   shoots='${req.body.tirs}', efficiency='${req.body.efficacite}'
   WHERE id=${req.body.id}`
   sqlConnexion.query(updateJoueurs);
+  res.redirect('/admin');
+});
+
+// ADD Membre
+router.post('/add-membre', function(req, res, next) {
+  let addJoueur = `INSERT INTO joueurs VALUES (NULL, '${req.body.nom}', '${req.body.prenom}', '${req.body.poste}', '${req.body.shoot}', '${req.body.date_naissance}', '${req.body.age}', NULL, '${req.body.poid}', '${req.body.taille}', NULL, NULL, '${req.body.pays}',
+    '${req.body.matchs_joues}', '${req.body.buts}', '${req.body.assist}', '${req.body.points}', '${req.body.penalites}', '${req.body.tirs}', '${req.body.efficacite}', '${req.body.blanchissages}', '${req.body.arrets}', '${req.body.arrets_prct}')`
+  sqlConnexion.query(addJoueur);
   res.redirect('/admin');
 });
 
@@ -83,19 +95,19 @@ router.post('/form', function(req, res, next) {
 
 /* UPLOAD VIDEO */
 
-router.post('/upload', upload.single('chooseVideo'), function (req, res, next) {
+router.post('/upload', upload.single('chooseVideo'), function(req, res, next) {
   // traitement du formulaire
-    if (req.file.mimetype === 'video/mp4' && req.file.size < 100000000){
-      fs.rename(req.file.path, 'public/images/' + 'home.mp4', function(err){
-        if (err) {
-            res.send('wrong extension or file too big, please retry');
-        } else {
-            console.log('succedeed');
-            res.end();
-            res.redirect('/admin');
-        }
-      });
-    }
+  if (req.file.mimetype === 'video/mp4' && req.file.size < 100000000) {
+    fs.rename(req.file.path, 'public/images/' + 'home.mp4', function(err) {
+      if (err) {
+        res.send('wrong extension or file too big, please retry');
+      } else {
+        console.log('succedeed');
+        res.end();
+        res.redirect('/admin');
+      }
+    });
+  }
 })
 
 module.exports = router;

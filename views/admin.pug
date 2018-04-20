@@ -105,7 +105,7 @@ body
                 | #{joueurs[i].prenom} #{joueurs[i].nom}
           div(id = collapseID).panel-collapse.collapse.in
             .panel-body
-              form(action='/edit-membre', method='POST' data-toggle='validator')
+              form(method='POST' action='/edit-membre?_method=PUT' data-toggle='validator')
                 p Informations
                 p
                   label Poste
@@ -151,7 +151,16 @@ body
                   input(type='number' value=joueurs[i].shoots name='tirs')
                 p
                   label Efficacité (Tirs réussis)
-                  input(type='number' value=joueurs[i].efficiency name='efficacite')
+                  input(type='number' step="0.01" value=joueurs[i].efficiency name='efficacite')
+                p
+                  label Blanchissages
+                  input(type='number' value=joueurs[i].shutouts name='blanchissages')
+                p
+                  label Arrêts
+                  input(type='number' value=joueurs[i].saves name='arrets')
+                p
+                  label Arrêts (%)
+                  input(type='number' step="0.01" value=joueurs[i].saves_percent name='arrets_prct')
                   input(type='hidden' name='id' value=joueurs[i].id)
                 input(type='submit' value='Mettre à jour')
 
@@ -162,8 +171,14 @@ body
               | Ajouter un Membre
         #collapse-add-membre.panel-collapse.collapse
           .panel-body
-            form 
+            form(action='/add-membre', method='POST' data-toggle='validator')
               p Informations
+              p
+                label Prénom
+                input(type='text' value='' name='prenom')
+              p
+                label Nom
+                input(type='text' value='' name='nom')
               p
                 label Poste
                 input(type='text' value='' name='poste')
@@ -172,13 +187,13 @@ body
                 input(type='text' value='' name='shoot')
               p
                 label Date de naisance
-                input(type='date' value='' name='Date de naissance')
+                input(type='date' value='' name='date_naissance')
               p
                 label Age
                 input(type='number' value='' name='age')
               p
                 label Pays
-                input(type='text' value='' name='nationalite')
+                input(type='text' value='' name='pays')
               p
                 label Poid (kg)
                 input(type='number' value='' name='poid')
@@ -190,25 +205,34 @@ body
               p Statistiques
               p
                 label Matchs joués
-                input(type='number' value='' name='matchs_joues')
+                input(type='number' value=0 name='matchs_joues')
               p
                 label Buts
-                input(type='number' value='' name='buts')
+                input(type='number' value=0 name='buts')
               p
                 label Assist
-                input(type='number' value='' name='assist')
+                input(type='number' value=0 name='assist')
               p
                 label Points (Assist + Buts)
-                input(type='number' value='' name='points')
+                input(type='number' value=0 name='points')
               p
                 label Pénalités
-                input(type='number' value='' name='penalites')
+                input(type='number' value=0 name='penalites')
               p
                 label Tirs
-                input(type='number' value='' name='tirs')
+                input(type='number' value=0 name='tirs')
               p
                 label Efficacité (Tirs réussis)
-                input(type='number' value='' name='efficacite')
+                input(type='number' step="0.01" value=0 name='efficacite')
+              p
+                label Blanchissages
+                input(type='number' value=0 name='blanchissages')
+              p
+                label Arrêts
+                input(type='number' value=0 name='arrets')
+              p
+                label Arrêts (%)
+                input(type='number' step="0.01" value=0 name='arrets_prct')
               input(type='submit' value='Ajouter')
 
 
