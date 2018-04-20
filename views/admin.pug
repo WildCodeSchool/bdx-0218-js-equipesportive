@@ -10,12 +10,10 @@ body
   h2 Administration
   h3 Changer la video d'en-tête
   .video
-    form(method='POST', enctype='multipart/form-data' action='/upload')
+    form(method='POST', enctype='multipart/form-data' action='/upload')      
       input(type='file', accept='video/mp4' name='chooseVideo')
+      hr
       input(type='submit', value='Validez votre vidéo')
-    hr.orSeparator
-    input.url-video(type='url', placeholder="Entrez l'adresse URL", name='video')
-    input.submit-video(type='submit' value='Mettre à jour la video')
 
   .matchs
     h3 Modifier/Ajouter les matchs à venir
@@ -106,7 +104,7 @@ body
           div(id = collapseID).panel-collapse.collapse.in
             .panel-body
               form(method='POST' action='/edit-membre?_method=PUT' data-toggle='validator')
-                p Informations
+                p.tit Informations
                 p
                   label Poste
                   input(type='text' value=joueurs[i].poste name='poste')
@@ -130,7 +128,7 @@ body
                   input(type='number' value=joueurs[i].taille name='taille')
                 hr
 
-                p Statistiques
+                p.tit Statistiques
                 p
                   label Matchs joués
                   input(type='number' value=joueurs[i].played_matchs name='matchs_joues')

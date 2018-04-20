@@ -105,7 +105,7 @@ header
                     img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
                   .photo-caption
                     .flag
-                      img(src= joueurs[x].nationnalité, alt='Drapeau')
+                      img(src= joueurs[x].flag, alt='Drapeau')
                     .caption
                       figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
                     .jersey
@@ -136,7 +136,7 @@ header
                           |  #{joueurs[x].age} ans
                         li
                           strong Nationalité :
-                          img(src= joueurs[x].nationnalité, style='height: 15px;')
+                          img(src= joueurs[x].flag, style='height: 15px;')
                         li
                           strong Poids :
                           |  #{joueurs[x].poids}
@@ -155,7 +155,7 @@ header
                     img(src= staffs[y].photo, alt='')
                   .photo-caption
                     .flag
-                      img(src= staffs[y].nationnalité, alt='')
+                      img(src= staffs[y].flag, alt='')
                     .caption
                       figcaption #{staffs[y].nom}
                     .jersey
@@ -175,7 +175,7 @@ header
                             |  #{staffs[y].poste}
                           li
                             strong Nationalité :
-                            img(src= staffs[y].nationnalité, style='height: 15px;')                    
+                            img(src= staffs[y].flag, style='height: 15px;')                    
     h2 Success story     
 section.story#story
 
