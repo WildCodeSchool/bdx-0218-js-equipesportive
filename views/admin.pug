@@ -10,12 +10,11 @@ body
   h2 Administration
   h3 Changer la video d'en-tête
   .video
-    //- https://jsfiddle.net/dhyzV/1173/
-    input#get_file(type='button' value='Choisir une video')
-    input#my_file(type='file')
-    #customfileupload Pas de fichier
+    form(method='POST', enctype='multipart/form-data' action='/upload')
+      input(type='file', accept='video/mp4' name='chooseVideo')
+      input(type='submit', value='Validez votre vidéo')
     hr.orSeparator
-    input.url-video(type='url' placeholder='Entrez l\'adresse URL' name='video')
+    input.url-video(type='url', placeholder="Entrez l'adresse URL", name='video')
     input.submit-video(type='submit' value='Mettre à jour la video')
 
   .matchs

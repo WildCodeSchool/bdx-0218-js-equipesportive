@@ -8,3 +8,6 @@ document.getElementById('get_file').onclick = function() {
 $('input[type=file]').change(function (e) {
     $('#customfileupload').html($(this).val());
 });
+
+
+/* URL UPLOAD VIDEO */

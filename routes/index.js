@@ -4,6 +4,12 @@ const mysql = require('mysql');
 const nodemailer = require("nodemailer");
 const mg = require('nodemailer-mailgun-transport');
 
+//modules pour l'upload
+const path = require('path');
+const multer  = require('multer');
+const upload = multer({ dest: 'tmp/'});
+const fs = require('fs');
+
 //initalisation de la connexion à mysql server
 let sqlConnexion = mysql.createConnection({host: "sql7.freemysqlhosting.net", user: "sql7233307", password: "VXV4tMbIPY", database: "sql7233307", multipleStatements: true});
 
@@ -74,5 +80,22 @@ router.post('/form', function(req, res, next) {
   sendMail(req.body.lastname, req.body.firstname, req.body.mail, req.body.phone, req.body.message);
   res.redirect('/#form');
 });
+
+/* UPLOAD VIDEO */
+
+router.post('/upload', upload.single('chooseVideo'), function (req, res, next) {
+  // traitement du formulaire
+    if (req.file.mimetype === 'video/mp4' && req.file.size < 100000000){
+      fs.rename(req.file.path, 'public/images/' + 'home.mp4', function(err){
+        if (err) {
+            res.send('wrong extension or file too big, please retry');
+        } else {
+            console.log('succedeed');
+            res.end();
+            res.redirect('/admin');
+        }
+      });
+    }
+})
 
 module.exports = router;
