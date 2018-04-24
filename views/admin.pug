@@ -162,6 +162,10 @@ body
                   input(type='hidden' name='id' value=joueurs[i].id)
                 input(type='submit' value='Mettre à jour')
 
+              form(method='POST' action='/delete-membre?_method=DELETE' data-toggle='validator')
+                input(type='hidden' name='id' value=joueurs[i].id)
+                input(type='submit' value='Supprimer le joueur')
+
       .panel.panel-default
         .panel-heading
           p.panel-title

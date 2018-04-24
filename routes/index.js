@@ -8,11 +8,19 @@ const methodOverride = require('method-override')
 //modules pour l'upload
 const path = require('path');
 const multer = require('multer');
-const upload = multer({dest: 'tmp/'});
+const upload = multer({
+  dest: 'tmp/'
+});
 const fs = require('fs');
 
 //initalisation de la connexion à mysql server
-let sqlConnexion = mysql.createConnection({host: "sql7.freemysqlhosting.net", user: "sql7233307", password: "VXV4tMbIPY", database: "sql7233307", multipleStatements: true});
+let sqlConnexion = mysql.createConnection({
+  host: "sql7.freemysqlhosting.net",
+  user: "sql7233307",
+  password: "VXV4tMbIPY",
+  database: "sql7233307",
+  multipleStatements: true
+});
 
 //requête sur table joueurs & staff
 let selectQuery = 'SELECT * FROM joueurs;SELECT * FROM staff';
@@ -24,7 +32,10 @@ router.get('/', (req, res, next) => {
       throw err;
     let joueurs = rows[0];
     let staffs = rows[1];
-    res.render('index', {staffs, joueurs}); //envoi du rendu de la vue et de la variable contenant les données joueurs et staff
+    res.render('index', {
+      staffs,
+      joueurs
+    }); //envoi du rendu de la vue et de la variable contenant les données joueurs et staff
   });
 })
 
@@ -35,8 +46,10 @@ router.get('/admin', function(req, res, next) {
       throw err;
     let joueurs = rows[0];
     let staffs = rows[1];
-    console.log(joueurs[1].shoot);
-    res.render('admin', {staffs, joueurs}); //envoi du rendu de la vue et de la variable contenant les données joueurs et staff
+    res.render('admin', {
+      staffs,
+      joueurs
+    }); //envoi du rendu de la vue et de la variable contenant les données joueurs et staff
   });
 });
 
@@ -61,6 +74,12 @@ router.post('/add-membre', function(req, res, next) {
   sqlConnexion.query(addJoueur);
   res.redirect('/admin');
 });
+
+router.delete('/delete-membre', function(req, res, next) {
+  let deleteJoueur = `DELETE FROM joueurs WHERE id=${req.body.id}`
+  sqlConnexion.query(deleteJoueur);
+  res.redirect('/admin');
+})
 
 function sendMail(lastname, firstname, mail, phone, message) {
   var auth = {
