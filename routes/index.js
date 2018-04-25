@@ -53,12 +53,69 @@ router.get('/bendo', function(req, res, next) {
   });
 });
 
-// EDIT Membres
+// EDIT Membres && upload
 router.use(methodOverride('_method'))
 
-router.put('/edit-membre', function(req, res, next) {
+let chemin,
+chemin2,
+chemin3;
+
+router.put('/edit-membre',
+upload.array('choosePlayerVideo'),
+function(req, res, next) {
+
+  for (var i =0; i<=upload.array.length; i++)
+
+  {
+    // upload de vidéos, photos, drapeaux
+    if (req.files[i].mimetype === 'video/mp4' && req.files[i].size < 100000000) {
+      chemin = 'images/medias/' + req.files[i].originalname;
+
+      fs.rename(req.files[i].path, 'public/images/medias/' + req.files[i].originalname,
+      function(err) {
+        if (err) {
+          res.send('wrong extension or file too big, please retry');
+        } else {
+          console.log('succedded');
+          res.end();
+        }
+      });
+      }
+
+      else if (req.files[i].mimetype === 'image/png' && req.files[i].size < 100000000)
+      {
+
+      chemin2 = 'images/joueurs/' + req.files[i].originalname;
+
+      fs.rename(req.files[i].path, 'public/images/joueurs/' + req.files[i].originalname,
+      function(err) {
+        if (err) {
+          res.send('wrong extension or file too big, please retry');
+        } else {
+          console.log('succedded');
+          res.end();
+        }
+      });
+
+    }  else
+          {
+
+          chemin3 = 'images/flags/' + req.files[i].originalname;
+
+          fs.rename(req.files[i].path, 'public/images/flags/' + req.files[i].originalname,
+          function(err) {
+            if (err) {
+              res.send('wrong extension or file too big, please retry');
+            } else {
+              console.log('succedded');
+              res.end();
+            }
+          });
+        }
+  }
+
   let updateJoueurs = `UPDATE joueurs
-  SET poste='${req.body.poste}', shoot='${req.body.shoot}', naissance='${req.body.date_naissance}', age='${req.body.age}',
+  SET flag='${chemin3}',photo='${chemin2}',media='${chemin}', poste='${req.body.poste}', shoot='${req.body.shoot}', naissance='${req.body.date_naissance}', age='${req.body.age}',
   pays='${req.body.pays}', poids='${req.body.poid}', taille='${req.body.taille}', played_matchs='${req.body.matchs_joues}',
   goals='${req.body.buts}', assists='${req.body.assist}', points='${req.body.points}', penalty='${req.body.penalites}',
   shoots='${req.body.tirs}', efficiency='${req.body.efficacite}'
@@ -67,7 +124,11 @@ router.put('/edit-membre', function(req, res, next) {
   res.redirect('/bendo');
 });
 
-// ADD Membre
+// ADD Membre && upload
+
+
+
+
 router.post('/add-membre', function(req, res, next) {
   let addJoueur = `INSERT INTO joueurs VALUES (NULL, '${req.body.nom}', '${req.body.prenom}', '${req.body.poste}', '${req.body.shoot}', '${req.body.date_naissance}', '${req.body.age}', NULL, '${req.body.poid}', '${req.body.taille}', NULL, NULL, '${req.body.pays}',
     '${req.body.matchs_joues}', '${req.body.buts}', '${req.body.assist}', '${req.body.points}', '${req.body.penalites}', '${req.body.tirs}', '${req.body.efficacite}', '${req.body.blanchissages}', '${req.body.arrets}', '${req.body.arrets_prct}')`

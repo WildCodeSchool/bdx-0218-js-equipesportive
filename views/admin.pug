@@ -103,19 +103,19 @@ body
                 | #{joueurs[i].prenom} #{joueurs[i].nom}
           div(id = collapseID).panel-collapse.collapse.in
             .panel-body
-              form(method='POST' action='/edit-membre?_method=PUT' data-toggle='validator')
+              form(method='POST', enctype='multipart/form-data' action='/edit-membre?_method=PUT' data-toggle='validator')
                 p.tit Vidéos, photos et drapeaux
                 p
-                  label Vidéos
-                  input(type='file', accept='video/mp4' name='choosePlayerVideo')
+                  label Vidéos mp4
+                  input(type='file', accept='video/mp4' name='choosePlayerVideo' multiple)
                 hr                
                 p
-                  label Photos
-                  input(type='file', accept='image/png' name='choosePlayerImg')
+                  label Photos png
+                  input(type='file', accept='.png' name='choosePlayerVideo' multiple)
                 hr
                 p
-                  label Drapeaux
-                  input(type='file', accept='image/png' name='choosePlayerFlag')                
+                  label Drapeaux jpg
+                  input(type='file', accept='.jpg' name='choosePlayerVideo' multiple)                
                 hr  
                 p.tit Informations
                 p
@@ -190,15 +190,15 @@ body
               p.tit Vidéos, photos et drapeaux
               p
                 label Vidéos
-                input(type='file', accept='video/mp4' name='choosePlayerVideo')
+                input(type='file', accept='video/mp4' name='choosePlayerVideo2')
               hr                
               p
                 label Photos
-                input(type='file', accept='image/png' name='choosePlayerImg')
+                input(type='file', accept='image/png' name='choosePlayerVideo2')
               hr
               p
                 label Drapeaux
-                input(type='file', accept='image/png' name='choosePlayerFlag')                
+                input(type='file', accept='image/png' name='choosePlayerVideo2')                
               hr  
               p.tit Informations
               p
