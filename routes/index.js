@@ -124,13 +124,67 @@ function(req, res, next) {
   res.redirect('/bendo');
 });
 
+
+let chemin4,
+chemin5,
+chemin6;
+
 // ADD Membre && upload
+router.post('/add-membre', upload.array('choosePlayerVideo2'), function(req, res, next) {
 
 
+  for (var i =0; i<=upload.array.length; i++)
+
+  {
+    // upload de vidéos, photos, drapeaux ajout membres
+    if (req.files[i].mimetype === 'video/mp4' && req.files[i].size < 100000000) {
+      chemin4 = 'images/medias/' + req.files[i].originalname;
+
+      fs.rename(req.files[i].path, 'public/images/medias/' + req.files[i].originalname,
+      function(err) {
+        if (err) {
+          res.send('wrong extension or file too big, please retry');
+        } else {
+          console.log('succedded');
+          res.end();
+        }
+      });
+      }
+
+      else if (req.files[i].mimetype === 'image/png' && req.files[i].size < 100000000)
+      {
+
+      chemin5 = 'images/joueurs/' + req.files[i].originalname;
+
+      fs.rename(req.files[i].path, 'public/images/joueurs/' + req.files[i].originalname,
+      function(err) {
+        if (err) {
+          res.send('wrong extension or file too big, please retry');
+        } else {
+          console.log('succedded');
+          res.end();
+        }
+      });
+
+    }  else
+          {
+
+          chemin6 = 'images/flags/' + req.files[i].originalname;
+
+          fs.rename(req.files[i].path, 'public/images/flags/' + req.files[i].originalname,
+          function(err) {
+            if (err) {
+              res.send('wrong extension or file too big, please retry');
+            } else {
+              console.log('succedded');
+              res.end();
+            }
+          });
+        }
+  }
 
 
-router.post('/add-membre', function(req, res, next) {
-  let addJoueur = `INSERT INTO joueurs VALUES (NULL, '${req.body.nom}', '${req.body.prenom}', '${req.body.poste}', '${req.body.shoot}', '${req.body.date_naissance}', '${req.body.age}', NULL, '${req.body.poid}', '${req.body.taille}', NULL, NULL, '${req.body.pays}',
+  let addJoueur = `INSERT INTO joueurs VALUES (NULL, '${req.body.nom}', '${req.body.prenom}', '${req.body.poste}', '${req.body.shoot}', '${req.body.date_naissance}', '${req.body.age}', '${chemin6}', '${req.body.poid}', '${req.body.taille}', '${chemin5}', '${chemin4}', '${req.body.pays}',
     '${req.body.matchs_joues}', '${req.body.buts}', '${req.body.assist}', '${req.body.points}', '${req.body.penalites}', '${req.body.tirs}', '${req.body.efficacite}', '${req.body.blanchissages}', '${req.body.arrets}', '${req.body.arrets_prct}')`
   sqlConnexion.query(addJoueur);
   res.redirect('/bendo');

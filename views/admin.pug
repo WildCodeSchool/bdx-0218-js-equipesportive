@@ -110,11 +110,11 @@ body
                   input(type='file', accept='video/mp4' name='choosePlayerVideo' multiple)
                 hr                
                 p
-                  label Photos png
+                  label Photos 
                   input(type='file', accept='.png' name='choosePlayerVideo' multiple)
                 hr
                 p
-                  label Drapeaux jpg
+                  label Drapeaux
                   input(type='file', accept='.jpg' name='choosePlayerVideo' multiple)                
                 hr  
                 p.tit Informations
@@ -180,26 +180,26 @@ body
                 input(type='submit' value='Supprimer le joueur')
 
       .panel.panel-default
-        .panel-heading
+        .panel-headings
           p.panel-title
             a(data-toggle='collapse' data-parent='#accordion' href='#collapse-add-membre')
               | Ajouter un Membre
         #collapse-add-membre.panel-collapse.collapse
           .panel-body
-            form(action='/add-membre', method='POST' data-toggle='validator')
+            form(action='/add-membre', enctype='multipart/form-data' method='POST' data-toggle='validator')
               p.tit Vidéos, photos et drapeaux
               p
-                label Vidéos
-                input(type='file', accept='video/mp4' name='choosePlayerVideo2')
+                label Vidéos mp4
+                input(type='file', accept='video/mp4' name='choosePlayerVideo2' multiple)
               hr                
               p
-                label Photos
-                input(type='file', accept='image/png' name='choosePlayerVideo2')
+                label Photos 
+                input(type='file', accept='.png' name='choosePlayerVideo2' multiple)
               hr
               p
                 label Drapeaux
-                input(type='file', accept='image/png' name='choosePlayerVideo2')                
-              hr  
+                input(type='file', accept='.jpg' name='choosePlayerVideo2' multiple)                
+              hr   
               p.tit Informations
               p
                 label Prénom
