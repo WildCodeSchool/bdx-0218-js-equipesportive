@@ -71,17 +71,18 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // Define routes.
+/*
 app.get('/', function(req, res) {
   res.render('index', {user: req.user});
 });
-/*
+*/
 app.get('/login',
   function(req, res){
-    res.render('login');
-  });*/
+    res.render('login', {user: req.user});
+  });
 
-app.post('/', passport.authenticate('local', {failureRedirect: '/'}), function(req, res) {
-  res.redirect('/admin');
+app.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), function(req, res) {
+  res.redirect('/bendo');
 });
 
 app.get('/logout', function(req, res) {
@@ -89,7 +90,9 @@ app.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-app.get('/admin', require('connect-ensure-login').ensureLoggedIn(), function(req, res) {
+app.get('/bendo',
+require('connect-ensure-login').ensureLoggedIn('/login'),
+function(req, res) {
   res.render('admin', {user: req.user});
 });
 

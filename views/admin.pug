@@ -104,6 +104,19 @@ body
           div(id = collapseID).panel-collapse.collapse.in
             .panel-body
               form(method='POST' action='/edit-membre?_method=PUT' data-toggle='validator')
+                p.tit Vidéos, photos et drapeaux
+                p
+                  label Vidéos
+                  input(type='file', accept='video/mp4' name='choosePlayerVideo')
+                hr                
+                p
+                  label Photos
+                  input(type='file', accept='image/png' name='choosePlayerImg')
+                hr
+                p
+                  label Drapeaux
+                  input(type='file', accept='image/png' name='choosePlayerFlag')                
+                hr  
                 p.tit Informations
                 p
                   label Poste
@@ -174,7 +187,20 @@ body
         #collapse-add-membre.panel-collapse.collapse
           .panel-body
             form(action='/add-membre', method='POST' data-toggle='validator')
-              p Informations
+              p.tit Vidéos, photos et drapeaux
+              p
+                label Vidéos
+                input(type='file', accept='video/mp4' name='choosePlayerVideo')
+              hr                
+              p
+                label Photos
+                input(type='file', accept='image/png' name='choosePlayerImg')
+              hr
+              p
+                label Drapeaux
+                input(type='file', accept='image/png' name='choosePlayerFlag')                
+              hr  
+              p.tit Informations
               p
                 label Prénom
                 input(type='text' value='' name='prenom')
@@ -204,7 +230,7 @@ body
                 input(type='number' value='' name='taille')
               hr
 
-              p Statistiques
+              p.tit Statistiques
               p
                 label Matchs joués
                 input(type='number' value=0 name='matchs_joues')

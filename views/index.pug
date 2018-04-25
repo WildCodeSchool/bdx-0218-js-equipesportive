@@ -25,17 +25,6 @@ header
             a.nav-link(href='#story') Histoire
           li.nav-item
             a.nav-link(href='#contact') Contact
-          li.nav-item
-            a.nav-link(onclick="document.getElementById('id01').style.display='block'" href='#') Administration 
-            #id01.modal
-              form.modal-content.animate(action='/', method='post')
-                .imgcontainer
-                  span.close(onclick="document.getElementById('id01').style.display='none'" title='Close Modal') &times;
-                  img.avatar(src='images/neo.jpg' alt='Avatar')
-                .container
-                  input(type='text' placeholder='Entrez votre nom d\'utilisateur' name='username' required='')
-                  input(type='password' placeholder='Entrez votre mot de passe' name='password' required='')
-                  button(type='submit') Connexion           
   section.home#home
     .container-fluid.homePage
       .logo
@@ -243,12 +232,12 @@ section.banner-sponsors
   .container
     .row.cont
       .col-xs-12.col-md-4
-        a(href='https://www.nouvelle-aquitaine.com', target='blank')
-          img.logo-social(src='images/nouvelle-aquitaine.jpg', alt='logo-nouvelle-aquitaine')
+        a(href='http://www.regionpaca.fr/', target='blank')
+          img.logo-social(src='images/logo-région-paca.png', alt='logo-PACA')
           img.logo-sponsors
       .col-xs-12.col-md-4
-        a(href='http://www.bordeaux-metropole.fr/', target='blank')
-          img.logo-bordeaux(src='images/Bordeaux-metropole.png', alt='logo-bordeaux')
+        a(href='http://www.ville-gap.fr/', target='blank')
+          img.logo-bordeaux(src='images/Gap.png', alt='logo-GAP')
           img.logo-sponsors
       .col-xs-12.col-md-4
         a(href='https://www.decathlon.fr/', target='blank')
@@ -267,7 +256,7 @@ footer.container-fluid
     a(href='https://plus.google.com/')
       i#social-gp.fa.fa-google-plus-square.fa-3x.social
     br
-    a.adminLogin(href='/admin') Login Admin
+    a.adminLogin(href='/login') Login Admin
   .footer-made Made by The Gitsy Kings with love and music
 
 

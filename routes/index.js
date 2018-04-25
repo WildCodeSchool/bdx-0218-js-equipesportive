@@ -40,7 +40,7 @@ router.get('/', (req, res, next) => {
 })
 
 /* GET admin page. */
-router.get('/admin', function(req, res, next) {
+router.get('/bendo', function(req, res, next) {
   sqlConnexion.query(selectQuery, function(err, rows) {
     if (err)
       throw err;
@@ -64,7 +64,7 @@ router.put('/edit-membre', function(req, res, next) {
   shoots='${req.body.tirs}', efficiency='${req.body.efficacite}'
   WHERE id=${req.body.id}`
   sqlConnexion.query(updateJoueurs);
-  res.redirect('/admin');
+  res.redirect('/bendo');
 });
 
 // ADD Membre
@@ -72,13 +72,13 @@ router.post('/add-membre', function(req, res, next) {
   let addJoueur = `INSERT INTO joueurs VALUES (NULL, '${req.body.nom}', '${req.body.prenom}', '${req.body.poste}', '${req.body.shoot}', '${req.body.date_naissance}', '${req.body.age}', NULL, '${req.body.poid}', '${req.body.taille}', NULL, NULL, '${req.body.pays}',
     '${req.body.matchs_joues}', '${req.body.buts}', '${req.body.assist}', '${req.body.points}', '${req.body.penalites}', '${req.body.tirs}', '${req.body.efficacite}', '${req.body.blanchissages}', '${req.body.arrets}', '${req.body.arrets_prct}')`
   sqlConnexion.query(addJoueur);
-  res.redirect('/admin');
+  res.redirect('/bendo');
 });
 
 router.delete('/delete-membre', function(req, res, next) {
   let deleteJoueur = `DELETE FROM joueurs WHERE id=${req.body.id}`
   sqlConnexion.query(deleteJoueur);
-  res.redirect('/admin');
+  res.redirect('/bendo');
 })
 
 function sendMail(lastname, firstname, mail, phone, message) {
@@ -123,7 +123,7 @@ router.post('/upload', upload.single('chooseVideo'), function(req, res, next) {
       } else {
         console.log('succedeed');
         res.end();
-        res.redirect('/admin');
+        res.redirect('/bendo');
       }
     });
   }
