@@ -53,8 +53,137 @@ router.get('/bendo', function(req, res, next) {
   });
 });
 
-// EDIT Membres && upload
+
 router.use(methodOverride('_method'))
+
+
+//
+//
+//
+//
+//
+//
+
+                                            // EDIT STAFF && UPLOAD
+
+let chemin7,
+    chemin8;
+
+router.put('/edit-staff',
+upload.array('chooseStaff1'),
+function(req, res, next) {
+
+                                        // upload de vidéos, photos, drapeaux
+
+  /*  if (req.files[i].mimetype === 'image/png' && req.files[i].size < 100000000) {*/
+  chemin7 = 'images/Staff/' + req.files[0].originalname;
+
+  fs.rename(req.files[0].path, 'public/images/Staff/' + req.files[0].originalname,
+  function(err) {
+    if (err) {
+      res.send('wrong extension or file too big, please retry');
+    } else {
+      res.end();
+    }
+  });
+
+  chemin8 = 'images/flags/' + req.files[1].originalname;
+
+  fs.rename(req.files[1].path, 'public/images/flags/' + req.files[1].originalname,
+  function(err) {
+    if (err) {
+      res.send('wrong extension or file too big, please retry');
+    } else {
+      res.end();
+    }
+  });
+
+
+  let updateStaff = `UPDATE staff SET nationnalité='${chemin8}', photo='${chemin7}', nom='${req.body.nom}', poste='${req.body.poste}' WHERE id=${req.body.id}`
+  sqlConnexion.query(updateStaff);
+  res.redirect('/bendo');
+});
+
+//
+//
+//
+//
+//
+//
+                                              // ADD Membre && upload
+
+let chemin9,
+    chemin10;
+
+router.post('/add-staff',
+upload.array('chooseStaff2'),
+function(req, res, next) {
+
+                            // upload de vidéos, photos, drapeaux ajout membres
+
+  /*  if (req.files[i].mimetype === '.png' && req.files[i].size < 100000000) {*/
+      chemin9 = 'images/Staff/' + req.files[0].originalname;
+
+      fs.rename(req.files[0].path, 'public/images/Staff/' + req.files[0].originalname,
+      function(err) {
+        if (err) {
+          res.send('wrong extension or file too big, please retry');
+        } else {
+          res.end();
+        }
+      });
+    /*  } else
+          {*/
+
+          chemin10 = 'images/flags/' + req.files[1].originalname;
+
+          fs.rename(req.files[1].path, 'public/images/flags/' + req.files[1].originalname,
+          function(err) {
+            if (err) {
+              res.send('wrong extension or file too big, please retry');
+            } else {
+              res.end();
+            }
+          });
+      /*  }*/
+
+
+
+  let addStaff = `INSERT INTO staff VALUES (NULL,'${req.body.nom}','${req.body.poste}','${chemin10}','${chemin9}')`
+  sqlConnexion.query(addStaff);
+  res.redirect('/bendo');
+});
+
+
+
+//
+//
+//
+//
+//
+
+                                                        //DELETE STAFF
+
+
+
+
+router.delete('/delete-staff', function(req, res, next) {
+  let deleteStaff = `DELETE FROM staff WHERE id=${req.body.id}`
+  sqlConnexion.query(deleteStaff);
+  res.redirect('/bendo');
+})
+
+//
+//
+//
+//
+////
+//
+//
+//
+//
+
+// EDIT Membres && upload
 
 let chemin,
 chemin2,
@@ -76,7 +205,6 @@ function(req, res, next) {
         if (err) {
           res.send('wrong extension or file too big, please retry');
         } else {
-          console.log('succedded');
           res.end();
         }
       });
@@ -92,7 +220,6 @@ function(req, res, next) {
         if (err) {
           res.send('wrong extension or file too big, please retry');
         } else {
-          console.log('succedded');
           res.end();
         }
       });
@@ -107,7 +234,6 @@ function(req, res, next) {
             if (err) {
               res.send('wrong extension or file too big, please retry');
             } else {
-              console.log('succedded');
               res.end();
             }
           });
@@ -145,7 +271,6 @@ router.post('/add-membre', upload.array('choosePlayerVideo2'), function(req, res
         if (err) {
           res.send('wrong extension or file too big, please retry');
         } else {
-          console.log('succedded');
           res.end();
         }
       });
@@ -161,7 +286,6 @@ router.post('/add-membre', upload.array('choosePlayerVideo2'), function(req, res
         if (err) {
           res.send('wrong extension or file too big, please retry');
         } else {
-          console.log('succedded');
           res.end();
         }
       });
@@ -176,7 +300,6 @@ router.post('/add-membre', upload.array('choosePlayerVideo2'), function(req, res
             if (err) {
               res.send('wrong extension or file too big, please retry');
             } else {
-              console.log('succedded');
               res.end();
             }
           });
@@ -190,11 +313,18 @@ router.post('/add-membre', upload.array('choosePlayerVideo2'), function(req, res
   res.redirect('/bendo');
 });
 
+
+
+//DELETE MEMBERS
+
 router.delete('/delete-membre', function(req, res, next) {
   let deleteJoueur = `DELETE FROM joueurs WHERE id=${req.body.id}`
   sqlConnexion.query(deleteJoueur);
   res.redirect('/bendo');
 })
+
+
+// FORMULAIRE
 
 function sendMail(lastname, firstname, mail, phone, message) {
   var auth = {
@@ -221,7 +351,6 @@ function sendMail(lastname, firstname, mail, phone, message) {
   });
 }
 
-/* FORM */
 router.post('/form', function(req, res, next) {
   sendMail(req.body.lastname, req.body.firstname, req.body.mail, req.body.phone, req.body.message);
   res.redirect('/#form');
