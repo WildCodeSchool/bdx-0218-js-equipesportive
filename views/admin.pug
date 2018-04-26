@@ -120,58 +120,58 @@ body
                 p.tit Informations
                 p
                   label Poste
-                  input(type='text' value=joueurs[i].poste name='poste')
+                  input(type='text' value=joueurs[i].poste name='poste' required)
                 p
                   label Shoot
-                  input(type='text' value=joueurs[i].shoot name='shoot')
+                  input(type='text' value=joueurs[i].shoot name='shoot' required)
                 p
                   label Date de naisance
-                  input(type='date' value=date.toISOString().substring(0, 10) name='date_naissance')
+                  input(type='date' value=date.toISOString().substring(0, 10) name='date_naissance' required)
                 p
                   label Age
-                  input(type='number' value=joueurs[i].age name='age')
+                  input(type='number' value=joueurs[i].age name='age' required)
                 p
                   label Pays
-                  input(type='text' value=joueurs[i].pays name='pays')
+                  input(type='text' value=joueurs[i].pays name='pays' required)
                 p
                   label Poids (kg)
-                  input(type='number' value=joueurs[i].poids name='poid')
+                  input(type='number' value=joueurs[i].poids name='poid' required)
                 p
                   label Taille (cm)
-                  input(type='number' value=joueurs[i].taille name='taille')
+                  input(type='number' value=joueurs[i].taille name='taille' required)
                 hr
 
                 p.tit Statistiques
                 p
                   label Matchs joués
-                  input(type='number' value=joueurs[i].played_matchs name='matchs_joues')
+                  input(type='number' value=joueurs[i].played_matchs name='matchs_joues' required)
                 p
                   label Buts
-                  input(type='number' value=joueurs[i].goals name='buts')
+                  input(type='number' value=joueurs[i].goals name='buts' required)
                 p
                   label Assist
-                  input(type='number' value=joueurs[i].assists name='assist')
+                  input(type='number' value=joueurs[i].assists name='assist' required)
                 p
                   label Points (Assist + Buts)
-                  input(type='number' value=joueurs[i].points name='points')
+                  input(type='number' value=joueurs[i].points name='points' required)
                 p
                   label Pénalités
-                  input(type='number' value=joueurs[i].penalty name='penalites')
+                  input(type='number' value=joueurs[i].penalty name='penalites' required)
                 p
                   label Tirs
-                  input(type='number' value=joueurs[i].shoots name='tirs')
+                  input(type='number' value=joueurs[i].shoots name='tirs' required)
                 p
                   label Efficacité (Tirs réussis)
-                  input(type='number' step="0.01" value=joueurs[i].efficiency name='efficacite')
+                  input(type='number' step="0.01" value=joueurs[i].efficiency name='efficacite' required)
                 p
                   label Blanchissages
-                  input(type='number' value=joueurs[i].shutouts name='blanchissages')
+                  input(type='number' value=joueurs[i].shutouts name='blanchissages' required)
                 p
                   label Arrêts
-                  input(type='number' value=joueurs[i].saves name='arrets')
+                  input(type='number' value=joueurs[i].saves name='arrets' required)
                 p
                   label Arrêts (%)
-                  input(type='number' step="0.01" value=joueurs[i].saves_percent name='arrets_prct')
+                  input(type='number' step="0.01" value=joueurs[i].saves_percent name='arrets_prct' required)
                   input(type='hidden' name='id' value=joueurs[i].id)
                 input(type='submit' value='Mettre à jour')
 
@@ -186,7 +186,7 @@ body
               | Ajouter un Membre
         #collapse-add-membre.panel-collapse.collapse
           .panel-body
-            form(action='/add-membre', enctype='multipart/form-data' method='POST' data-toggle='validator')
+            form(action='/add-membre', enctype='multipart/form-data' method='POST' data-toggle='validator' required)
               p.tit Vidéos, photos et drapeaux
               p
                 label Vidéos mp4
@@ -203,64 +203,64 @@ body
               p.tit Informations
               p
                 label Prénom
-                input(type='text' value='' name='prenom')
+                input(type='text' value='' name='prenom' required)
               p
                 label Nom
-                input(type='text' value='' name='nom')
+                input(type='text' value='' name='nom' required)
               p
                 label Poste
-                input(type='text' value='' name='poste')
+                input(type='text' value='' name='poste' required)
               p
                 label Shoot
-                input(type='text' value='' name='shoot')
+                input(type='text' value='' name='shoot' required)
               p
                 label Date de naisance
-                input(type='date' value='' name='date_naissance')
+                input(type='date' value='' name='date_naissance' required)
               p
                 label Age
-                input(type='number' value='' name='age')
+                input(type='number' value='' name='age' required)
               p
                 label Pays
-                input(type='text' value='' name='pays')
+                input(type='text' value='' name='pays' required)
               p
                 label Poid (kg)
-                input(type='number' value='' name='poid')
+                input(type='number' value='' name='poid' required)
               p
                 label Taille (cm)
-                input(type='number' value='' name='taille')
+                input(type='number' value='' name='taille' required)
               hr
 
               p.tit Statistiques
               p
                 label Matchs joués
-                input(type='number' value=0 name='matchs_joues')
+                input(type='number' value=0 name='matchs_joues' required)
               p
                 label Buts
-                input(type='number' value=0 name='buts')
+                input(type='number' value=0 name='buts' required)
               p
                 label Assist
-                input(type='number' value=0 name='assist')
+                input(type='number' value=0 name='assist' required)
               p
                 label Points (Assist + Buts)
-                input(type='number' value=0 name='points')
+                input(type='number' value=0 name='points' required)
               p
                 label Pénalités
-                input(type='number' value=0 name='penalites')
+                input(type='number' value=0 name='penalites' required)
               p
                 label Tirs
-                input(type='number' value=0 name='tirs')
+                input(type='number' value=0 name='tirs' required)
               p
                 label Efficacité (Tirs réussis)
-                input(type='number' step="0.01" value=0 name='efficacite')
+                input(type='number' step="0.01" value=0 name='efficacite' required)
               p
                 label Blanchissages
-                input(type='number' value=0 name='blanchissages')
+                input(type='number' value=0 name='blanchissages' required)
               p
                 label Arrêts
-                input(type='number' value=0 name='arrets')
+                input(type='number' value=0 name='arrets' required)
               p
                 label Arrêts (%)
-                input(type='number' step="0.01" value=0 name='arrets_prct')
+                input(type='number' step="0.01" value=0 name='arrets_prct' required)
               input(type='submit' value='Ajouter')
 
 
