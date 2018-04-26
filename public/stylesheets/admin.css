@@ -1,0 +1,207 @@
+@import "//fonts.googleapis.com/css?family=Bangers";
+body {
+  background-color: #4aa0d9;
+}
+
+.logo{
+  height: 20vh;
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2,
+h3 {
+  font-family: Bangers;
+}
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 1rem;
+  margin-bottom: 2.2rem;
+  border: 2px solid white;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 300px 100px;
+}
+
+h3 {
+  font-size: 15pt;
+  margin: 1rem;
+  background-color: white;
+  text-align: center;
+}
+
+a {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  font-family: Bangers;
+}
+
+a:hover {
+  text-align: center;
+  color: black;
+  background-color: white;
+  background-size: 30px 100px;
+}
+
+#my_file {
+  display: none;
+}
+
+#get_file {
+  background: #f9f9f9;
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 0px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#customfileupload {
+  display: inline;
+  background-color: #fff;
+  font-size: 14px;
+  padding: 10px 30px 10px 10px;
+  width: 250px;
+  color: #c4c4c4;
+  border: 0px solid #999;
+  z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+hr.orSeparator {
+  border: 0;
+  border-top: 2px solid #a8a9ad;
+  text-align: center;
+  width: 25vw;
+}
+
+hr.orSeparator:after {
+  content: 'OU';
+  position: relative;
+  top: -10px;
+  padding: 0 10px;
+  background: #4aa0d9;
+  font-size: 15px;
+}
+
+.video {
+  margin: 2rem;
+  text-align: center;
+}
+
+.video .url-video {
+  border: 1px solid black;
+  text-align: center;
+  padding: 0.2rem;
+  margin: 0.6rem;
+}
+
+.video .submit-video {
+  margin: 1rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.panel-group-main {
+  margin: 1.5rem;
+}
+
+#subCollapse1 .video {
+  margin: 0.2rem;
+}
+
+.panel-group .panel-body {
+  background-color: #4aa0d9;
+}
+
+.panel-body {
+  background-color: grey;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+}
+
+.panel-body form p label {
+  margin-right: 50px;
+}
+
+#subAccordion p {
+  display: inline;
+}
+
+.video input{
+  background-color: white;
+}
+.video {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 40%;
+  margin: 0 auto;
+  color: black;
+}
+
+p label, p input {
+  display: inline-block;
+}
+
+p label {
+  width: 30%;
+  text-align: right;
+}
+
+p label + p input {
+  width: 30%;
+  margin: 0 30% 0 4%;
+}
+
+p input + p input {
+  float: left;
+}
+
+form .tit{
+  background-color: #4aa0d9;
+  color: black;
+}
+
+
+
+
+@media (max-device-width: 768px) {
+
+form .info{
+  width: 80%;
+  margin: 0 auto;
+}
+
+label .info, input .info{
+  display: inline-block;
+}
+
+label .info {
+  width: 30%;
+  text-align: right;
+}
+
+label .info + input .info{
+  width: 30%;
+  margin: 0 30% 0 4%;
+}
+
+input .info + input .info {
+  float: left;
+}
+}
