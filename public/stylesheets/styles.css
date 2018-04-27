@@ -721,3 +721,7 @@ footer .adminLogin {
 footer .mentions, footer .CGU {
   color: grey;
 }
+
+.heart {
+  color: red;
+}
