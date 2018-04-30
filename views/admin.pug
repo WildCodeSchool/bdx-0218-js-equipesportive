@@ -264,6 +264,74 @@ body
               input(type='submit' value='Ajouter')
 
 
+                      //- PARTIE STAFF && STUFFS && THINGS
+
+  div
+    h3 Modifier/Ajouter les membres du staff
+
+    //- Collapsible Membres
+    #accordion.panel-group-main                  
+      - for (let i = 0; i < staffs.length; i++)
+        - let collapseID2 = 'collapse-membre2' + i;
+        .panel.panel-default
+          .panel-heading
+            p.panel-title
+              a(data-toggle='collapse' data-parent='#accordion' href='#' + collapseID2)
+                | #{staffs[i].prenom} #{staffs[i].nom}
+          div(id = collapseID2).panel-collapse.collapse.in
+            .panel-body
+              form(method='POST', enctype='multipart/form-data' action='/edit-staff?_method=PUT' data-toggle='validator')
+                p.tit Photos et drapeaux
+                p
+                  label Photos 
+                  input(type='file', accept='.png' name='chooseStaff1' multiple)
+                hr
+                p
+                  label Drapeaux
+                  input(type='file', accept='.jpg' name='chooseStaff1' multiple)                
+                hr  
+                p.tit Informations
+                p
+                  label Poste
+                  input(type='text' value=staffs[i].poste name='poste' required)
+                p
+                  label Nom
+                  input(type='text' value=staffs[i].nom name='nom' required)
+                  input(type='hidden' name='id' value=staffs[i].id)
+                input(type='submit' value='Mettre à jour le staff')
+
+              form(method='POST' action='/delete-staff?_method=DELETE' data-toggle='validator')
+                input(type='hidden' name='id' value=staffs[i].id)
+                input(type='submit' value='Supprimer la fiche staff')
+
+      .panel.panel-default
+        .panel-headings
+          p.panel-title
+            a(data-toggle='collapse' data-parent='#accordion' href='#collapse-add-membre2')
+              | Ajouter un Membre du staff
+        #collapse-add-membre2.panel-collapse.collapse
+          .panel-body
+            form(action='/add-staff', enctype='multipart/form-data' method='POST' data-toggle='validator' required)
+              p.tit Photos et drapeaux
+              p
+                label Photos 
+                input(type='file', accept='.png' name='chooseStaff2' multiple)
+              hr
+              p
+                label Drapeaux
+                input(type='file', accept='.jpg' name='chooseStaff2' multiple)                
+              hr   
+              p.tit Informations
+              p
+                label Nom
+                input(type='text' value='' name='nom' required)
+              p
+                label Poste
+                input(type='text' value='' name='poste' required)
+              input(type='submit' value='Ajouter')
+                
+                //- FIN PARTIE STAFF
+
   script(type='text/javascript' src='javascripts/admin.js')
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
   script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
