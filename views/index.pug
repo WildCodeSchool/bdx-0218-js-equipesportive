@@ -28,48 +28,23 @@ header
   section.home#home
     .container-fluid.homePage
       .logo
-        img.img-fluid.mx-auto.d-block.logoUn(src='images/img/rapaces.png', alt='rapaces')
+        img.img-fluid.mx-auto.d-block.logoUn(src=(equipes[(matchs[0].id_domicile) - 1].logo))
         img.img-fluid.mx-auto.d-block.versus(src='images/vs2.png', alt='versus')
-        img.img-fluid.mx-auto.d-block.logoDeux(src='images/equipes/chamonix.png', alt='diables')
-      #demo
+        img.img-fluid.mx-auto.d-block.logoDeux(src=(equipes[(matchs[0].id_exterieur) - 1].logo))
+      #demo(data-current-date=matchs[0].heure)
       video.homeVid(autoplay='', muted='', loop='')
         source(src='images/home.mp4', title='introVIdeo')
   section.titreMatchs#matchs
     h2 Matchs à l'affiche
 
   section.comingMatchs
-    .container-fluid
-      .row.matchs
-        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
-        p 
-          |Samedi 12 Avril
-          br
-          |20:00
-          c
-          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/chamonix.png")
-      .row.matchs
-
-        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/rouen.png")
-        p 
-          |Samedi 19 Avril
-          br
-          |21:00
-          c 
-          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/gap.png")
-      .row.matchs
-
-        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
-        p 
-          |Samedi 2 Juin
-          br
-          |21:00
-          c 
-          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/amiens.png")
-
-
+      -for(let i = 0; i < matchs.length; i++)
+        .container-fluid
+          .row.matchs
+              img.img-fluid.mx-auto.d-block.equipeUne(src=(equipes[(matchs[i].id_domicile) -1 ].logo))
+              p #{matchs[i].heure.toISOString().slice(0,10)}
+                img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+              img.img-fluid.mx-auto.d-block.equipeDeux(src=(equipes[(matchs[i].id_exterieur)- 1].logo))
   section.team-gallery#team
     h2 Galerie des joueurs
     ul#teamGallery.nav.nav-tabs(role='tablist')

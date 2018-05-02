@@ -19,55 +19,78 @@ body
     h3 Modifier/Ajouter les matchs à venir
     //- Collapsible Match
     #accordion.panel-group-main
-      .panel.panel-default
-        .panel-heading
-          p.panel-title
-            a(data-toggle='collapse' data-parent='#accordion' href='#collapse1')
-              | Match 1
+      - for (let i = 0; i < matchs.length; i++)
+        -let matchCollapse = 'collapse-match' + i;
+        .panel.panel-default
+          .panel-heading
+            p.panel-title
+              a(data-toggle='collapse' data-parent='#accordion' href='#' + matchCollapse)
+                  |#{matchs[i].id}
+          div(id = matchCollapse).collapse.in
+            .panel-body.panel-collapse
+              //- Collapsible Edit Match
+              #subAccordion.panel-group
+                .panel.panel-default
+                  .panel-heading
+                    p.panel-title
+                      a(data-toggle='collapse-match' data-parent='#subAccordion' href='#' + matchCollapse)
+                  div(id = matchCollapse)
+                    P Choix Equipe Domicile
+                    form(method='POST' action='/edit-dom?_method=PUT')
+                      select(name='teams')
+                        option(name='equipe' value= 1) Amiens
+                        option(name='equipe' value= 2) Angers
+                        option(name='equipe' value= 3) Bordeaux
+                        option(name='equipe' value= 4) Epinal
+                        option(name='equipe' value= 5) Gap
+                        option(name='equipe' value= 6) Grenoble
+                        option(name='equipe' value= 7) Lyon
+                        option(name='equipe' value= 8) Nice
+                        option(name='equipe' value= 9) Rouen
+                        option(name='equipe' value= 10) Chamonix
+                        option(name='equipe' value= 11) Strasbourg
+                      br
+                      br
+                      input(type='hidden' name='idM' value=matchs[i].id)
+                      input(type='submit' name='home' value='Validez !')
+
+                    form(method='POST' action='/edit-date?_method=PUT')                    
+                      label(for='matchdate')
+                        | Veuillez choisir une date:
+                      input(type='hidden' name='idMD' value=matchs[i].id)
+                      input(type='datetime-local' name='matchdate' value='')
+                      input(type='submit' value='Modifier Date')
+                    br
+                    br
+                    P Choix Equipe Exterieur
+                    form(method='POST' action='/edit-ext?_method=PUT')
+                      select(name='teams2')
+                        option(name='equipe' value= 1) Amiens
+                        option(name='equipe' value= 2) Angers
+                        option(name='equipe' value= 3) Bordeaux
+                        option(name='equipe' value= 4) Epinal
+                        option(name='equipe' value= 5) Gap
+                        option(name='equipe' value= 6) Grenoble
+                        option(name='equipe' value= 7) Lyon
+                        option(name='equipe' value= 8) Nice
+                        option(name='equipe' value= 9) Rouen
+                        option(name='equipe' value= 10) Chamonix
+                        option(name='equipe' value= 11) Strasbourg
+                      br
+                      br
+                      input(type='hidden' name='idM2' value=matchs[i].id)
+                      input(type='submit' name='home' value='Validez !')    
+                    form(method='POST' action='/delete-match?_method=DELETE' data-toggle='validator')
+                      input(type='hidden' name='idMD' value=matchs[i].id)
+                      input(type='submit' value='Supprimer le Match')
+                          
         #collapse1.panel-collapse.collapse.in
           .panel-body
 
             //- Collapsible Edit Match
             #subAccordion.panel-group
-              .panel.panel-default
-                .panel-heading
-                  p.panel-title
-                    a(data-toggle='collapse' data-parent='#subAccordion' href='#subCollapse1')
-                      p Logo équipe adverse actuel :
-                      img(src='https://via.placeholder.com/100x100' alt='logo equipe adverse')
-                #subCollapse1.panel-collapse.collapse.in
-                  .panel-body
-                    .video
-                      //- https://jsfiddle.net/dhyzV/1173/
-                      input#get_file(type='button' value='Choisir une image')
-                      input#my_file(type='file')
-                      #customfileupload Pas de fichier
-                      hr.orSeparator
-                      input.url-video(type='url' placeholder='Entrez l\'adresse URL' name='logo')
-                      input.submit-video(type='submit' value='Mettre à jour')
-                hr
 
-              .panel.panel-default
-                .panel-heading
-                  p.panel-title
-                    a(data-toggle='collapse' data-parent='#subAccordion' href='#subCollapse2')
-                      p Nom de l'équipe adverse
-                #subCollapse2.panel-collapse.collapse
-                  .panel-body
-                    input(type='text' value='Nom de l\'équipe' name='nom_equipe_adverse')
-                    input(type='submit' value='Mettre à jour')
-                hr
-              .panel.panel-default
-                .panel-heading
-                  p.panel-title
-                    a(data-toggle='collapse' data-parent='#subAccordion' href='#subCollapse3')
-                      p Date et heure de rencontre
-                #subCollapse3.panel-collapse.collapse
-                  .panel-body
-                    input(type='date' value='Nom de l\'équipe' name='date_rencontre')
-                    input(type='time' value='Nom de l\'équipe' name='time_rencontre')
-                    input(type='submit' value='Mettre à jour')
-
+      div
       .panel.panel-default
         .panel-heading
           p.panel-title
@@ -76,17 +99,10 @@ body
         #collapse2.panel-collapse.collapse
           .panel-body
 
-            //- Collapsible Add Match
-            input#get_file(type='button' value='Choisir une image')
-            input#my_file(type='file')
-            #customfileupload Select a file
-            hr.orSeparator
-            input(type='url' value='URL' name='logo')
-            hr
-            input(type='text' value='' name='nom_equipe_adverse')
-            input(type='date' value='' name='date_rencontre')
-            input(type='time' value='' name='time_rencontre')
-            input(type='submit' value='Ajouter le match')
+              form(method='POST' action='/add-match?_method=POST' data-toggle='validator')
+                  input(type='hidden' name='idMN' value=matchs.length + 1)
+                  input(type='submit' value='Ajouter un Match')
+
 
   div
     h3 Modifier/Ajouter les membres

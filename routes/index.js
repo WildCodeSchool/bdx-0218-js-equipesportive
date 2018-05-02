@@ -23,7 +23,7 @@ let sqlConnexion = mysql.createConnection({
 });
 
 //requête sur table joueurs & staff
-let selectQuery = 'SELECT * FROM joueurs;SELECT * FROM staff';
+let selectQuery = 'SELECT * FROM joueurs;SELECT * FROM staff; SELECT * FROM matchs; SELECT * FROM equipes; SElECT * FROM equipes INNER JOIN matchs ON equipes.id = matchs.id_domicile' ;
 
 //sur get lancement de la requête sql sur index
 router.get('/', (req, res, next) => {
@@ -32,9 +32,15 @@ router.get('/', (req, res, next) => {
       throw err;
     let joueurs = rows[0];
     let staffs = rows[1];
+    let matchs = rows[2];
+    let equipes = rows[3];
+    let fk = rows [4];
     res.render('index', {
       staffs,
-      joueurs
+      joueurs,
+      matchs,
+      equipes,
+      fk
     }); //envoi du rendu de la vue et de la variable contenant les données joueurs et staff
   });
 })
@@ -46,15 +52,73 @@ router.get('/bendo', function(req, res, next) {
       throw err;
     let joueurs = rows[0];
     let staffs = rows[1];
+    let matchs = rows[2];
+    let equipes = rows[3];
     res.render('admin', {
       staffs,
-      joueurs
+      joueurs,
+      matchs,
+      equipes
     }); //envoi du rendu de la vue et de la variable contenant les données joueurs et staff
   });
 });
 
-// EDIT Membres && upload
+//EDIT Matchs
 router.use(methodOverride('_method'))
+
+router.put('/edit-dom', function(req, res, next) {
+  let updateMatchs = `SET foreign_key_checks = 0;
+  UPDATE matchs
+  SET id_domicile='${req.body.teams}'
+  WHERE id='${req.body.idM}';
+  SET foreign_key_checks = 1;`
+  sqlConnexion.query(updateMatchs);
+  res.redirect('/bendo');
+});
+
+router.put('/edit-ext', function(req, res, next) {
+  let updateMatchs = `SET foreign_key_checks = 0;
+  UPDATE matchs
+  SET  id_exterieur='${req.body.teams2}'
+  WHERE id='${req.body.idM2}';
+  SET foreign_key_checks = 1;`
+  sqlConnexion.query(updateMatchs);
+  res.redirect('/bendo');
+});
+
+router.put('/edit-date', function(req, res, next) {
+  console.log(req.body.matchdate + '__________________________________________');
+  console.log(req.body.idM + '____________________________')
+  let updateDate = `
+  UPDATE matchs
+  SET  heure='${req.body.matchdate}'
+  WHERE id='${req.body.idMD}';
+ `
+  sqlConnexion.query(updateDate);
+  res.redirect('/bendo');
+});
+
+router.delete('/delete-match', function(req, res, next) {
+  let deleteJoueur = `DELETE FROM matchs WHERE id=${req.body.idMD}`
+  sqlConnexion.query(deleteJoueur);
+  res.redirect('/bendo');
+})
+
+
+
+router.post('/add-match', function(req, res, next) {
+console.log(req.body.matchs + req.body.matchs2 + '______________________________');
+let addMatch = `SET foreign_key_checks = 0;
+INSERT INTO matchs (id, id_domicile, heure, id_exterieur) 
+VALUES ('${req.body.idMN}' ,'1', '2022-04-03 04:06:00
+', '2');
+SET foreign_key_checks = 1;`
+sqlConnexion.query(addMatch);
+res.redirect('/bendo');
+});
+
+// EDIT Membres && upload
+
 
 let chemin,
 chemin2,

@@ -3,6 +3,16 @@ body {
   background-color: #4aa0d9;
 }
 
+
+.dom p.test {
+  background-color: #4aa0d9;
+  font-family: Bangers;
+  color: white;
+  padding: 0 2vh 0 2vh; 
+  font-size: 1.5rem;
+  border-radius: 20px;
+
+}
 .logo{
   height: 20vh;
   width: 20vw;
@@ -174,7 +184,10 @@ p input + p input {
 
 form .tit{
   background-color: #4aa0d9;
-  color: black;
+  color: white;
+  font-family: Bangers;
+  font-size: 1.5rem;
+  border-radius: 20px;
 }
 
 
