@@ -1,6 +1,8 @@
 - for (let x = 0; x < joueurs.length; x++)
   -let modalTag = 'player' + x +'-modal';  
   -let dNone = '';
+  -let date = new Date(joueurs[x].naissance)
+  -let months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
   div(id = modalTag).modal.fade(tabindex='-1', role='dialog', aria-labelledby= modalTag, aria-hidden='true')
     .modal-dialog(role='document')
       .modal-content
@@ -21,7 +23,7 @@
               |  #{joueurs[x].shoot}
             li
               strong Naissance :
-              |  #{joueurs[x].naissance}
+              |  #{date.getDate()} #{months[date.getMonth()]} #{date.getFullYear()}
             li
               strong Age :
               |  #{joueurs[x].age} ans
