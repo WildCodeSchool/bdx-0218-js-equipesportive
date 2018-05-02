@@ -424,9 +424,20 @@ span.password {
   margin: auto;
   position: relative;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 15px;
   box-shadow: 0 0 20px 0 rgba(43, 52, 62, 0.7);
 }
+
+
+#teamGalleryContent .staff-aligned {
+  min-width: 100%;
+  display: flex;
+}
+
+#teamGalleryContent .staff-aligned img {
+  margin: auto;
+}
+
 
 #teamGalleryContent .photo-container img {
   transition: all linear 0.2s;
@@ -583,6 +594,7 @@ span.password {
 
 .wrapper {
   box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
+  border-radius: 15px;
 }
 
 .wrapper>* {
@@ -591,6 +603,7 @@ span.password {
 
 .company-info {
   background: #4AA0D9;
+  border-radius: 15px 0 0 15px;
 }
 
 .contact h3 {

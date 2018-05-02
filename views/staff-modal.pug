@@ -8,7 +8,8 @@
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
           .modal-body
-            img(src=staffs[y].photo, alt='')
+            .staff-aligned
+              img(src=staffs[y].photo, alt='')
             ul.player-identity
               li
                 strong #{staffs[y].nom}
@@ -17,4 +18,4 @@
                 |  #{staffs[y].poste}
               li
                 strong Nationalité :
-                img(src= staffs[y].flag, style='height: 15px;')
+                img(src= staffs[y].nationnalité, style='height: 15px;')
