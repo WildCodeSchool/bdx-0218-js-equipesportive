@@ -7,6 +7,7 @@ head
   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
   link(rel='stylesheet', type='text/css', href='/stylesheets/loading-bar.css')
+    
 header
   nav.navbar.navbar-expand-lg.navbar-light
     .mx-auto.d-sm-flex.d-block.flex-sm-nowrap
@@ -36,25 +37,26 @@ header
       video.homeVid(autoplay='', muted='', loop='')
         source(src='images/home.mp4', title='introVIdeo')
   section.titreMatchs#matchs
-    h2 Matchs à l'affiche
 
-  section.comingMatchs
-      -for(let i = 0; i < matchs.length; i++)
-        .container-fluid
-          .row.matchs
-              img.img-fluid.mx-auto.d-block.equipeUne(src=(equipes[(matchs[i].id_domicile) -1 ].logo))
-              p #{matchs[i].heure.toISOString().slice(0,10)}
-                img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-              img.img-fluid.mx-auto.d-block.equipeDeux(src=(equipes[(matchs[i].id_exterieur)- 1].logo))
-  section.team-gallery#team
-    h2 Galerie des joueurs
-    ul#teamGallery.nav.nav-tabs(role='tablist')
-      li.nav-item
-        a#players-tab.nav-link(data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
-      li.nav-item
-        a#staff-tab.nav-link(data-toggle='tab', href='#staff', role='tab', aria-controls='staff', aria-selected='false') Le Staff
-    #teamGalleryContent.tab-content
-      #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
+h2 Matchs à l'affiche
+section.comingMatchs
+    -for(let i = 0; i < matchs.length; i++)
+      .container-fluid
+        .row.matchs
+            img.img-fluid.mx-auto.d-block.equipeUne(src=(equipes[(matchs[i].id_domicile) -1 ].logo))
+            p #{matchs[i].heure.toISOString().slice(0,10)}
+              img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+            img.img-fluid.mx-auto.d-block.equipeDeux(src=(equipes[(matchs[i].id_exterieur)- 1].logo))
+
+section.team-gallery#team
+  h2 Galerie des joueurs
+  ul#teamGallery.nav.nav-tabs(role='tablist')
+    li.nav-item
+      a#players-tab.nav-link(data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
+    li.nav-item
+      a#staff-tab.nav-link(data-toggle='tab', href='#staff', role='tab', aria-controls='staff', aria-selected='false') Le Staff
+  #teamGalleryContent.tab-content
+    #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
 
       .container.d-none.d-lg-block
 
@@ -115,11 +117,7 @@ header
             span.carousel-control-prev-icon
           a.right.carousel-control-next(href="#header-carousel", role="button", data-slide="next")
             span.carousel-control-next-icon
-
     include ./modal.pug
-
-
-
 
     #staff.tab-pane.fade(role='tabpanel', aria-labelledby='staff-tab')
       .container.d-none.d-lg-block
@@ -176,7 +174,7 @@ header
             span.carousel-control-next-icon
 
     include ./staff-modal.pug                    
-  h2 Success story     
+h2 Success story    
 section.story#story
 
   .row
@@ -201,7 +199,7 @@ section.contact-f#contact
         ul
           li
             i.fa.fa-road
-            |  95 Cours Mar&eacute;chal Juin, Bordeaux
+            |  95 Cours Maréchal Juin, Bordeaux
           li
             i.fa.fa-phone
             |  05 57 81 43 81
