@@ -173,7 +173,7 @@ li, h3 {
   margin-right: auto;
   width: 10vh;
   height: auto;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 .logo .logoUn {
@@ -185,7 +185,7 @@ li, h3 {
 .logo .logoDeux {
   width: 40vw;
   height: auto;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 @media (min-device-width: 780px) {
