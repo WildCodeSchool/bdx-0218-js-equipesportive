@@ -6,8 +6,9 @@ head
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
+  link(rel='stylesheet', type='text/css', href='/stylesheets/loading-bar.css')
 header
-  nav.navbar.navbar-expand-lg.navbar-light.fixed-top
+  nav.navbar.navbar-expand-lg.navbar-light
     .mx-auto.d-sm-flex.d-block.flex-sm-nowrap
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
@@ -55,114 +56,140 @@ header
     #teamGalleryContent.tab-content
       #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
 
-        .container
-          .row#players            
-            - for (let x = 0; x < joueurs.length; x++)
-              -let modalTag = 'player' + x +'-modal';  
-              - let dNone = '';        
-              if (x > 5)
-                - dNone = 'd-none d-lg-block';
-              div(class= dNone).col-xs-1.col-md-6.col-lg-3                  
-                .photo-container
-                  .photo-background
-                  a(data-toggle='modal', data-target='#player' + x +'-modal')
-                    img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
-                  .photo-caption
-                    .flag
-                      img(src= joueurs[x].flag, alt='Drapeau')
-                    .caption
-                      figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
-                    .jersey
-                      p #1              
-              div(id = modalTag).modal.fade(tabindex='-1', role='dialog', aria-labelledby= modalTag, aria-hidden='true')
-                .modal-dialog(role='document')
-                  .modal-content
-                    .modal-header
-                      button.close(type='button', data-dismiss='modal', aria-label='Close')
-                        span(aria-hidden='true') ×
-                    .modal-body
-                      video(autoplay='autoplay', loop='loop')
-                        source(src= joueurs[x].media, type='video/mp4')
-                      ul.player-identity
-                        li
-                          strong #{joueurs[x].prenom} #{joueurs[x].nom}
-                        li
-                          strong Poste :
-                          |  #{joueurs[x].poste}
-                        li
-                          strong Shoot :
-                          |  #{joueurs[x].shoot}
-                        li
-                          strong Naissance :
-                          |  #{joueurs[x].naissance}
-                        li
-                          strong Age :
-                          |  #{joueurs[x].age} ans
-                        li
-                          strong Nationalité :
-                          img(src= joueurs[x].flag, style='height: 15px;')
-                        li
-                          strong Poids :
-                          |  #{joueurs[x].poids}
-                        li
-                          strong Taille :
-                          |  #{joueurs[x].taille} 
-      #staff.tab-pane.fade(role='tabpanel', aria-labelledby='staff-tab')
-        .container
-          .row 
-            - for (let y = 0; y < staffs.length; y++)
-              -let modalTagSt = 'staff' + y +'-modal';   
-              .col-xs-1.col-md-6.col-lg-3
-                .photo-container
-                  .photo-background
-                  a(data-toggle='modal', data-target='#staff' + y +'-modal')
-                    img(src= staffs[y].photo, alt='')
-                  .photo-caption
-                    .flag
-                      img(src= staffs[y].flag, alt='')
-                    .caption
-                      figcaption #{staffs[y].nom}
-                    .jersey
-                div(id = modalTagSt).modal.fade(tabindex='-1', role='dialog', aria-labelledby=modalTagSt, aria-hidden='true')
-                  .modal-dialog(role='document')
-                    .modal-content
-                      .modal-header
-                        button.close(type='button', data-dismiss='modal', aria-label='Close')
-                          span(aria-hidden='true') ×
-                      .modal-body
-                        img(src=staffs[y].photo, alt='')
-                        ul.player-identity
-                          li
-                            strong #{staffs[y].nom}
-                          li
-                            strong Poste :
-                            |  #{staffs[y].poste}
-                          li
-                            strong Nationalité :
-                            img(src= staffs[y].flag, style='height: 15px;')                    
-    h2 Success story     
+      .container.d-none.d-lg-block
+
+        .row            
+          - for (let x = 0; x < joueurs.length; x++)
+            -let modalTag = 'player' + x +'-modal';                
+            .col-xs-1.col-md-6.col-lg-3
+              .photo-container
+                .photo-background
+                a(data-toggle='modal', data-target='#player' + x +'-modal')
+                  img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
+                .photo-caption
+                  .flag
+                    img(src= joueurs[x].flag, alt='Drapeau')
+                  .caption
+                    figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
+                  .jersey
+                    p #1          
+
+
+
+      .container.d-md-block.d-lg-none
+        #header-carousel.carousel.slide(data-ride="carousel",data-interval="4000")
+          .carousel-inner
+            -var x = 0
+            -let modalTag = 'player' + x +'-modal'; 
+            for joueur in joueurs
+              if x == 0
+                .carousel-item.active
+                  .photo-container
+                    .photo-background
+                    a(data-toggle='modal', data-target='#player' + x +'-modal')
+                      img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
+                    .photo-caption
+                      .flag
+                        img(src= joueurs[x].flag, alt='Drapeau')
+                      .caption
+                        figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
+                      .jersey
+                        p #1    
+                -x++
+              else
+                .carousel-item
+                  .photo-container
+                    .photo-background
+                    a(data-toggle='modal', data-target='#player' + x +'-modal')
+                      img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
+                    .photo-caption
+                      .flag
+                        img(src= joueurs[x].flag, alt='Drapeau')
+                      .caption
+                        figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
+                      .jersey
+                        p #1
+                -x++
+
+          a.left.carousel-control-prev(href="#header-carousel", role="button", data-slide="prev")
+            span.carousel-control-prev-icon
+          a.right.carousel-control-next(href="#header-carousel", role="button", data-slide="next")
+            span.carousel-control-next-icon
+
+    include ./modal.pug
+
+
+
+
+    #staff.tab-pane.fade(role='tabpanel', aria-labelledby='staff-tab')
+      .container.d-none.d-lg-block
+        .row 
+          - for (let y = 0; y < staffs.length; y++)
+            -let modalTagSt = 'staff' + y +'-modal';   
+            .col-xs-1.col-md-6.col-lg-3
+              .photo-container
+                .photo-background
+                a(data-toggle='modal', data-target='#staff' + y +'-modal')
+                  img(src= staffs[y].photo, alt='')
+                .photo-caption
+                  .flag
+                    img(src= staffs[y].flag, alt='')
+                  .caption
+                    figcaption #{staffs[y].nom}
+                  .jersey
+      .container.d-md-block.d-lg-none
+        #staff-carousel.carousel.slide(data-ride="carousel",data-interval="4000")
+          .carousel-inner
+            -var y = 0
+            -let modalTagSt = 'staff' + y +'-modal'; 
+            for staff in staffs
+              if y == 0
+                .carousel-item.active
+                  .photo-container
+                    .photo-background
+                    a(data-toggle='modal', data-target='#staff' + y +'-modal')
+                      img(src= staffs[y].photo, alt='')
+                    .photo-caption
+                      .flag
+                        img(src= staffs[y].flag, alt='')
+                      .caption
+                        figcaption #{staffs[y].nom}
+                      .jersey
+                -y++
+              else
+                .carousel-item
+                  .photo-container
+                    .photo-background
+                    a(data-toggle='modal', data-target='#staff' + y +'-modal')
+                      img(src= staffs[y].photo, alt='')
+                    .photo-caption
+                      .flag
+                        img(src= staffs[y].flag, alt='')
+                      .caption
+                        figcaption #{staffs[y].nom}
+                      .jersey
+                -y++
+
+          a.left.carousel-control-prev(href="#staff-carousel", role="button", data-slide="prev")
+            span.carousel-control-prev-icon
+          a.right.carousel-control-next(href="#staff-carousel", role="button", data-slide="next")
+            span.carousel-control-next-icon
+
+    include ./staff-modal.pug                    
+  h2 Success story     
 section.story#story
 
   .row
     .col-sm-8.offset-sm-2
       p.texte-histoire
-        | Le club est cr&eacute;&eacute; en 1971 et s&apos;engage en championnat de France en 1952, o&ugrave; il &eacute;volue en deuxi&egrave;me s&eacute;rie. En 1955, c&apos;est l&apos;inauguration de la patinoire Roger Brown, qui devient artificielle en 1961. Les Gapen&ccedil;ais d&eacute;butent en 1re s&eacute;rie (division &eacute;lite)
-        | pour la saison 1962-1933. &Agrave; partir de 1962, le canadien Camil G&eacute;linas, entraineur de l&apos;ACBB &agrave; son heure de gloire, devient entraineur de toutes les cat&eacute;gories de Gap, &agrave; la demande du Pr&eacute;sident de la FFSG, Jean Ferrand2. Cela porte se fruits avec
-        | un premier titre de champion de France, en cat&eacute;gorie junior en 1965.
+        | Le club est créé en 1971 et s'engage en championnat de France en 1952, où il évolue en deuxième série. En 1955, c'est l'inauguration de la patinoire Roger Brown, qui devient artificielle en 1961. Les Gapençais débutent en 1re série (division élite) pour la saison 1962-1933. À partir de 1962, le canadien Camil Gélinas, entraineur de l'ACBB à son heure de gloire, devient entraineur de toutes les catégories de Gap, à la demande du Président de la FFSG, Jean Ferrand2. Cela porte se fruits | avec un premier titre de champion de France, en catégorie junior en 1965.
       button#button-lire-suite(onclick='changeText()' data-toggle='collapse' data-target='#la-suite') Lire la suite ...
       p#la-suite.collapse.texte-histoire
-        | En 1972, d&apos;autres travaux sur la patinoire (couverture de la piste) permettent l&apos;utilisation permanente de la glace2, et d&apos;accueillir les championnats du monde groupe C4. Pendant
-        | ce temps, l&apos;&eacute;quipe s&eacute;nior progresse encore, notamment gr&acirc;ce &agrave; l&apos;arriv&eacute;e du tch&egrave;que Zden&ecaron;k Bl&aacute;ha comme entraineur et remporte son premier titre de champion de France en 19775. Gap r&eacute;alise le doubl&eacute; l&apos;ann&eacute;e suivante6. Le club continue par la suite
-        | &agrave; &ecirc;tre un grand club formateur7, en remportant jusque dans les ann&eacute;es 1980 pas moins de 21 titres de champion de France dans les cat&eacute;gories mineur et &eacute;tant vice-champion de France en 1983-19848. En 1989, le club finit &agrave; l&apos;avant-dernier place de
-        | la Nationale 1A et peut se maintenir. Mais pr&eacute;f&egrave;re descendre pour mettre fin &agrave; l&apos;aventure professionnelle, qui co&ucirc;te cher9. Pour la saison 1992-1993, Gap remonte une premi&egrave;re fois en &eacute;lite, &agrave; la suite d&apos;un remaniement des divisions et de l&apos;abandon
-        | de la ligue nationale &agrave; 10 clubs10. En 1996, le club remporte la Division 1 et remonte &agrave; nouveau11. Nouvelle descente imm&eacute;diate, quand Gap &eacute;choue &agrave; se maintenir en poule de maintien12. Le club descend lentemet dans la hi&eacute;rarchie fran&ccedil;aise, devant
-        | m&ecirc;me disputer un barrage pour se maintenir en Division 1 lors de la saison 2001-200213. Mais le club rebondit la saison suivante, gr&acirc;ce &agrave; l&apos;&eacute;largissement de l&apos;&eacute;lite vers un Super 16. T&acirc;che difficile, puisqu&apos;avec le plus faible budget14, Gap est
-        | souvent dans le bas de tableau. Il finit m&ecirc;me par re-descendre au second &eacute;chelon15 en 2006. En 2009, gr&acirc;ce &agrave; un nouveau titre de champion de Division 1, le club revient dans la ligue &eacute;lite, la Ligue Magnus16. Aujourd&rsquo;hui, le club poss&egrave;de un des
-        | plus beaux palmar&egrave;s du hockey fran&ccedil;ais avec 29 titres nationaux, 37 podiums, 2 participations &agrave; la coupe d&rsquo;Europe, 1 coupe des As et 22 joueurs s&eacute;lectionn&eacute;es en &eacute;quipe nationale dont huit pour les Jeux olympiques2. Entre le d&eacute;but de la saison
-        | 2009-2010 et la fin de la saison 2012-2013, les matchs de Gap &agrave; domicile &eacute;taient diffus&eacute;s en direct vid&eacute;o sur le site des rapaces gr&acirc;ce &agrave; l&apos;&eacute;quipe du Rapace Live. Longtemps annonc&eacute; le projet de r&eacute;novation de la patinoire a enfin abouti. Les travaux
-        | s&apos;&eacute;chelonnent jusqu&apos;en ao&ucirc;t 2012. La patinoire est compl&egrave;tement refaite et sa capacit&eacute; est port&eacute;e &agrave; 2000 places. Lors de la saison 2011-2012, les rapaces jouent leurs matchs &laquo; &agrave; domicile &raquo; au Palais omnisports Marseille Grand Est. Le 23 octobre
-        | 2012, Georges Obninsky, pr&eacute;sident du club annonce sa d&eacute;mission 17 lors d&apos;une conf&eacute;rence de presse 18. Il est remplac&eacute; par Philippe Vial et J&eacute;r&ocirc;me Escallier. &Agrave; l&apos;issue de la saison 2016-2017, les Rapaces de Gap remportent la Ligue Magnus, devenant
-        | ainsi Champions de France pour la quatri&egrave;me fois de leur histoire.
+        | En 1972, d'autres travaux sur la patinoire (couverture de la piste) permettent l'utilisation permanente de la glace2, et d'accueillir les championnats du monde groupe C4. Pendant ce temps, l'équipe sénior progresse encore, notamment grâce à l'arrivée du tchèque Zdeněk Bláha comme entraineur et remporte son premier titre de champion de France en 19775. Gap réalise le doublé l'année suivante6. Le club continue par la suite à être un grand club formateur7, en remportant jusque dans les
+        | années 1980 pas moins de 21 titres de champion de France dans les catégories mineur et étant vice-champion de France en 1983-19848. En 1989, le club finit à l'avant-dernier place de la Nationale 1A et peut se maintenir. Mais préfère descendre pour mettre fin à l'aventure professionnelle, qui coûte cher9. Pour la saison 1992-1993, Gap remonte une première fois en élite, à la suite d'un remaniement des divisions et de l'abandon de la ligue nationale à 10 clubs10. En 1996, le club
+        | remporte la Division 1 et remonte à nouveau11. Nouvelle descente immédiate, quand Gap échoue à se maintenir en poule de maintien12. Le club descend lentemet dans la hiérarchie française, devant même disputer un barrage pour se maintenir en Division 1 lors de la saison 2001-200213. Mais le club rebondit la saison suivante, grâce à l'élargissement de l'élite vers un Super 16. Tâche difficile, puisqu'avec le plus faible budget14, Gap est souvent dans le bas de tableau. Il finit même par | re-descendre au second échelon15 en 2006. En 2009, grâce à un nouveau titre de champion de Division 1, le club revient dans la ligue élite, la Ligue Magnus16. Aujourd’hui, le club possède un des plus beaux palmarès du hockey français avec 29 titres nationaux, 37 podiums, 2 participations à la coupe d’Europe, 1 coupe des As et 22 joueurs sélectionnées en équipe nationale dont huit pour les Jeux olympiques2. Entre le début de la saison 2009-2010 et la fin de la saison 2012-2013, les
+        | matchs de Gap à domicile étaient diffusés en direct vidéo sur le site des rapaces grâce à l'équipe du Rapace Live. Longtemps annoncé le projet de rénovation de la patinoire a enfin abouti. Les travaux s'échelonnent jusqu'en août 2012. La patinoire est complètement refaite et sa capacité est portée à 2000 places. Lors de la saison 2011-2012, les rapaces jouent leurs matchs « à domicile » au Palais omnisports Marseille Grand Est. Le 23 octobre 2012, Georges Obninsky, président du club
+        | annonce sa démission 17 lors d'une conférence de presse 18. Il est remplacé par Philippe Vial et Jérôme Escallier. À l'issue de la saison 2016-2017, les Rapaces de Gap remportent la Ligue Magnus, devenant ainsi Champions de France pour la quatrième fois de leur histoire.
 
 h2.brand#form Formulaire de contact
 section.contact-f#contact
@@ -232,13 +259,23 @@ footer.container-fluid
       i#social-gp.fa.fa-google-plus-square.fa-3x.social
     br
     a.adminLogin(href='/login') Login Admin
-  .footer-made Made by The Gitsy Kings with love and music
+    br 
+    a.mentions(href='http://www.rhe76.com/Mentions_Legales') Mentions légales   
+    br
+    a.CGU(href='https://odyssey.wildcodeschool.fr/mentions-legales') CGU 
+    .footer-made
+      | Made by The Gitsy Kings with 
+      span.heart ❤
+      |  and music
+
+
 
 
 script(type='text/javascript' src='javascripts/timer.js')
 script(type='text/javascript' src='javascripts/login.js')
 script(type='text/javascript' src='javascripts/script.js')
-
+script(type='text/javascript', src='javascripts/loading-bar.js')
+script(type='text/javascript', src='javascripts/progress-bar.js')
 
 script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
