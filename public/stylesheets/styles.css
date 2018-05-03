@@ -437,13 +437,12 @@ span.password {
   margin: auto;
 }
 
-
-#teamGalleryContent .photo-container img {
+#teamGalleryContent .photo-container a img {
   transition: all linear 0.2s;
   transform: scale(1.05, 1.05);
 }
 
-#teamGalleryContent .photo-container:hover img {
+#teamGalleryContent .photo-container:hover a img {
   transition: all linear 0.2s;
   transform: scale(1, 1);
   cursor: pointer;
