@@ -79,15 +79,6 @@ section.team-gallery#team
 
         .container.d-md-block.d-lg-none
           #header-carousel.carousel.slide(data-ride="carousel",data-interval="4000")
-            //- ol.carousel-indicators
-            //-     -var n = 0
-            //-         while n < joueurs.length
-            //-             if n == 0
-            //-                 li.active(data-target="#header-carousel",data-slide-to=n)
-            //-                 - n++   
-            //-             else
-            //-                 li(data-target="#header-carousel",data-slide-to=n)
-            //-                 - n++
             .carousel-inner
               -var x = 0
               -let modalTag = 'player' + x +'-modal'; 
@@ -149,15 +140,6 @@ section.team-gallery#team
                     .jersey
         .container.d-md-block.d-lg-none
           #staff-carousel.carousel.slide(data-ride="carousel",data-interval="4000")
-            //- ol.carousel-indicators
-            //-     -var n = 0
-            //-         while n < joueurs.length
-            //-             if n == 0
-            //-                 li.active(data-target="#header-carousel",data-slide-to=n)
-            //-                 - n++   
-            //-             else
-            //-                 li(data-target="#header-carousel",data-slide-to=n)
-            //-                 - n++
             .carousel-inner
               -var y = 0
               -let modalTagSt = 'staff' + y +'-modal'; 

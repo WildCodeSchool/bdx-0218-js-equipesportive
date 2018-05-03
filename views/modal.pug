@@ -21,7 +21,7 @@
               |  #{joueurs[x].shoot}
             li
               strong Naissance :
-              |  #{joueurs[x].naissance}
+              |  #{joueurs[x].naissance.toISOString().slice(0,10)}
             li
               strong Age :
               |  #{joueurs[x].age} ans

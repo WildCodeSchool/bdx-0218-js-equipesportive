@@ -1,5 +1,3 @@
-
-
 let dataLength = document.getElementById('players-tab').getAttribute('data-length');
 for (let i = 0; i < dataLength; i++) {
     
@@ -84,11 +82,4 @@ for (let i = 0; i < dataLength; i++) {
     }
     barSavesPercent.set((savesPercent*100)/1000);
     document.querySelector(".pl_saves_percent"+i+" .ldBar-label").innerHTML = `${savesPercent} Pénalités`;
-
-    // var barSv = new ldBar(".saves");
-    // barSv.set(0);
-    // var barSvP = new ldBar(".pl_saves_percent");
-    // barSvP.set(0);
-
 }
-// console.log(joueurs.nom);
