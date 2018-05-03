@@ -6,8 +6,9 @@ head
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' type='text/css' href='stylesheets/styles.css')
+  link(rel='stylesheet', type='text/css', href='/stylesheets/loading-bar.css')
 header
-  nav.navbar.navbar-expand-lg.navbar-light.fixed-top
+  nav.navbar.navbar-expand-lg.navbar-light
     .mx-auto.d-sm-flex.d-block.flex-sm-nowrap
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
@@ -28,112 +29,101 @@ header
   section.home#home
     .container-fluid.homePage
       .logo
-        img.img-fluid.mx-auto.d-block.logoUn(src='images/img/rapaces.png', alt='rapaces')
+        img.img-fluid.mx-auto.d-block.logoUn(src=(equipes[(matchs[0].id_domicile) - 1].logo))
         img.img-fluid.mx-auto.d-block.versus(src='images/vs2.png', alt='versus')
-        img.img-fluid.mx-auto.d-block.logoDeux(src='images/equipes/chamonix.png', alt='diables')
-      #demo
+        img.img-fluid.mx-auto.d-block.logoDeux(src=(equipes[(matchs[0].id_exterieur) - 1].logo))
+      #demo(data-current-date=matchs[0].heure)
       video.homeVid(autoplay='', muted='', loop='')
         source(src='images/home.mp4', title='introVIdeo')
   section.titreMatchs#matchs
     h2 Matchs à l'affiche
 
   section.comingMatchs
-    .container-fluid
-      .row.matchs
-        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
-        p 
-          |Samedi 12 Avril
-          br
-          |20:00
-          c
-          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/chamonix.png")
-      .row.matchs
+      -for(let i = 0; i < matchs.length; i++)
+        .container-fluid
+          .row.matchs
+              img.img-fluid.mx-auto.d-block.equipeUne(src=(equipes[(matchs[i].id_domicile) -1 ].logo))
+              p #{matchs[i].heure.toISOString().slice(0,10)}
+                img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
+              img.img-fluid.mx-auto.d-block.equipeDeux(src=(equipes[(matchs[i].id_exterieur)- 1].logo))
 
-        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/rouen.png")
-        p 
-          |Samedi 19 Avril
-          br
-          |21:00
-          c 
-          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/gap.png")
-      .row.matchs
-
-        img.img-fluid.mx-auto.d-block.equipeUne(src="images/equipes/gap.png")
-        p 
-          |Samedi 2 Juin
-          br
-          |21:00
-          c 
-          img.img-fluid.mx-auto.d-block.vs(src='images/vs2.png') 
-        img.img-fluid.mx-auto.d-block.equipeDeux(src="images/equipes/amiens.png")
-
-
-  section.team-gallery#team
+section.team-gallery#team
     h2 Galerie des joueurs
     ul#teamGallery.nav.nav-tabs(role='tablist')
       li.nav-item
-        a#players-tab.nav-link(data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
+        a#players-tab.nav-link(data-length = joueurs.length , data-toggle='tab', href='#players', role='tab', aria-controls='players', aria-selected='true') Les Joueurs
       li.nav-item
         a#staff-tab.nav-link(data-toggle='tab', href='#staff', role='tab', aria-controls='staff', aria-selected='false') Le Staff
     #teamGalleryContent.tab-content
       #players.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='players-tab')
-
-        .container
-          .row#players            
+        
+        .container.d-none.d-lg-block
+          
+          .row            
             - for (let x = 0; x < joueurs.length; x++)
-              -let modalTag = 'player' + x +'-modal';  
-              - let dNone = '';        
-              if (x > 5)
-                - dNone = 'd-none d-lg-block';
-              div(class= dNone).col-xs-1.col-md-6.col-lg-3                  
+              -let modalTag = 'player' + x +'-modal';                
+              .col-xs-1.col-md-6.col-lg-3
                 .photo-container
-                  .photo-background
-                  a(data-toggle='modal', data-target='#player' + x +'-modal')
-                    img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
-                  .photo-caption
-                    .flag
-                      img(src= joueurs[x].flag, alt='Drapeau')
-                    .caption
-                      figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
-                    .jersey
-                      p #1              
-              div(id = modalTag).modal.fade(tabindex='-1', role='dialog', aria-labelledby= modalTag, aria-hidden='true')
-                .modal-dialog(role='document')
-                  .modal-content
-                    .modal-header
-                      button.close(type='button', data-dismiss='modal', aria-label='Close')
-                        span(aria-hidden='true') ×
-                    .modal-body
-                      video(autoplay='autoplay', loop='loop')
-                        source(src= joueurs[x].media, type='video/mp4')
-                      ul.player-identity
-                        li
-                          strong #{joueurs[x].prenom} #{joueurs[x].nom}
-                        li
-                          strong Poste :
-                          |  #{joueurs[x].poste}
-                        li
-                          strong Shoot :
-                          |  #{joueurs[x].shoot}
-                        li
-                          strong Naissance :
-                          |  #{joueurs[x].naissance}
-                        li
-                          strong Age :
-                          |  #{joueurs[x].age} ans
-                        li
-                          strong Nationalité :
-                          img(src= joueurs[x].flag, style='height: 15px;')
-                        li
-                          strong Poids :
-                          |  #{joueurs[x].poids}
-                        li
-                          strong Taille :
-                          |  #{joueurs[x].taille} 
+                    .photo-background
+                    a(data-toggle='modal', data-target='#player' + x +'-modal')
+                      img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
+                    .photo-caption
+                      .flag
+                        img(src= joueurs[x].flag, alt='Drapeau')
+                      .caption
+                        figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
+                      .jersey
+                        p #1          
+              
+
+
+        .container.d-md-block.d-lg-none
+          #header-carousel.carousel.slide(data-ride="carousel",data-interval="4000")
+            .carousel-inner
+              -var x = 0
+              -let modalTag = 'player' + x +'-modal'; 
+              for joueur in joueurs
+                  if x == 0
+                    .carousel-item.active
+                      .photo-container
+                        .photo-background
+                        a(data-toggle='modal', data-target='#player' + x +'-modal')
+                          img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
+                        .photo-caption
+                          .flag
+                            img(src= joueurs[x].flag, alt='Drapeau')
+                          .caption
+                            figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
+                          .jersey
+                            p #1    
+                    -x++
+                  else
+                    .carousel-item
+                      .photo-container
+                        .photo-background
+                        a(data-toggle='modal', data-target='#player' + x +'-modal')
+                          img(src= joueurs[x].photo, alt='Photo de #{joueurs[x].prenom} #{joueurs[x].nom}')
+                        .photo-caption
+                          .flag
+                            img(src= joueurs[x].flag, alt='Drapeau')
+                          .caption
+                            figcaption #{joueurs[x].prenom} #{joueurs[x].nom} 
+                          .jersey
+                            p #1
+                    -x++
+
+            a.left.carousel-control-prev(href="#header-carousel", role="button", data-slide="prev")
+                  span.carousel-control-prev-icon
+            a.right.carousel-control-next(href="#header-carousel", role="button", data-slide="next")
+                  span.carousel-control-next-icon
+
+      include ./modal.pug
+      
+
+
+
       #staff.tab-pane.fade(role='tabpanel', aria-labelledby='staff-tab')
-        .container
+        .container.d-none.d-lg-block
           .row 
             - for (let y = 0; y < staffs.length; y++)
               -let modalTagSt = 'staff' + y +'-modal';   
@@ -144,27 +134,49 @@ header
                     img(src= staffs[y].photo, alt='')
                   .photo-caption
                     .flag
-                      img(src= staffs[y].flag, alt='')
+                      img(src= staffs[y].nationnalité, alt='')
                     .caption
                       figcaption #{staffs[y].nom}
                     .jersey
-                div(id = modalTagSt).modal.fade(tabindex='-1', role='dialog', aria-labelledby=modalTagSt, aria-hidden='true')
-                  .modal-dialog(role='document')
-                    .modal-content
-                      .modal-header
-                        button.close(type='button', data-dismiss='modal', aria-label='Close')
-                          span(aria-hidden='true') ×
-                      .modal-body
-                        img(src=staffs[y].photo, alt='')
-                        ul.player-identity
-                          li
-                            strong #{staffs[y].nom}
-                          li
-                            strong Poste :
-                            |  #{staffs[y].poste}
-                          li
-                            strong Nationalité :
-                            img(src= staffs[y].flag, style='height: 15px;')                    
+        .container.d-md-block.d-lg-none
+          #staff-carousel.carousel.slide(data-ride="carousel",data-interval="4000")
+            .carousel-inner
+              -var y = 0
+              -let modalTagSt = 'staff' + y +'-modal'; 
+              for staff in staffs
+                  if y == 0
+                    .carousel-item.active
+                      .photo-container
+                        .photo-background
+                        a(data-toggle='modal', data-target='#staff' + y +'-modal')
+                          img(src= staffs[y].photo, alt='')
+                        .photo-caption
+                          .flag
+                            img(src= staffs[y].nationnalité, alt='')
+                          .caption
+                            figcaption #{staffs[y].nom}
+                          .jersey
+                    -y++
+                  else
+                    .carousel-item
+                      .photo-container
+                        .photo-background
+                        a(data-toggle='modal', data-target='#staff' + y +'-modal')
+                          img(src= staffs[y].photo, alt='')
+                        .photo-caption
+                          .flag
+                            img(src= staffs[y].nationnalité, alt='')
+                          .caption
+                            figcaption #{staffs[y].nom}
+                          .jersey
+                    -y++
+
+            a.left.carousel-control-prev(href="#staff-carousel", role="button", data-slide="prev")
+                  span.carousel-control-prev-icon
+            a.right.carousel-control-next(href="#staff-carousel", role="button", data-slide="next")
+                  span.carousel-control-next-icon
+
+      include ./staff-modal.pug                    
     h2 Success story     
 section.story#story
 
@@ -257,13 +269,23 @@ footer.container-fluid
       i#social-gp.fa.fa-google-plus-square.fa-3x.social
     br
     a.adminLogin(href='/login') Login Admin
-  .footer-made Made by The Gitsy Kings with love and music
+    br 
+    a.mentions(href='http://www.rhe76.com/Mentions_Legales') Mentions légales   
+    br
+    a.CGU(href='https://odyssey.wildcodeschool.fr/mentions-legales') CGU 
+    .footer-made
+      | Made by The Gitsy Kings with 
+      span.heart ❤
+      |  and music
+
+
 
 
 script(type='text/javascript' src='javascripts/timer.js')
 script(type='text/javascript' src='javascripts/login.js')
 script(type='text/javascript' src='javascripts/script.js')
-
+script(type='text/javascript', src='javascripts/loading-bar.js')
+script(type='text/javascript', src='javascripts/progress-bar.js')
 
 script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
