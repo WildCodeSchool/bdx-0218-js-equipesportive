@@ -1,6 +1,6 @@
-function calcTime() {
+function calcTime(_date) {
     var now = new Date();
-    var nextYear = new Date("Apr 20, 2018 17:15:00").getTime();
+    var nextYear = new Date(_date).getTime();
     var diffMs = nextYear - now;
     var days = Math.floor(diffMs / 1000 / 60 / (60 * 24));
     var diff = new Date(diffMs);
@@ -13,8 +13,9 @@ function calcTime() {
 }
 
 function setTime() {
-    document.getElementById("demo")
-        .innerText = calcTime();
+    const demoNode = document.getElementById("demo");
+    const currentDate = demoNode.getAttribute("data-current-date");
+    demoNode.innerText = calcTime(currentDate);
 }
 
 setInterval(setTime, 1000);

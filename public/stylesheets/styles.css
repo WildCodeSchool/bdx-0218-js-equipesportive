@@ -1,14 +1,3 @@
-/* Maco
-
-HOMEPAGE -----------------------------------------
-
-*/
-
-/* Nabvar------------------------------------------
-*/
-
-/*Compteur*/
-
 @import "//fonts.googleapis.com/css?family=Bangers";
 #demo {
   text-align: center;
@@ -20,9 +9,11 @@ HOMEPAGE -----------------------------------------
 }
 
 /*Fin compteur*/
-li, h3{
+
+li, h3 {
   font-family: bangers;
 }
+
 .navbar ul li {
   font-size: 2rem;
   font-family: Bangers;
@@ -182,19 +173,19 @@ li, h3{
   margin-right: auto;
   width: 10vh;
   height: auto;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 .logo .logoUn {
   width: 40vw;
   height: auto;
-  margin-top: 30%;
+  margin-top: 10%;
 }
 
 .logo .logoDeux {
   width: 40vw;
   height: auto;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 @media (min-device-width: 780px) {
@@ -219,18 +210,18 @@ li, h3{
     margin-right: auto;
     width: 20vh;
     height: 25vh;
-    margin-top: 35vh;
+    margin-top: 15vh;
     opacity: 0.7;
   }
   .logo .logoUn {
     width: 35vw;
     height: auto;
-    margin-top: 40vh;
+    margin-top: 10vh;
   }
   .logo .logoDeux {
     width: 35vw;
     height: auto;
-    margin-top: 40vh;
+    margin-top: 10vh;
   }
   #demo {
     margin-left: auto;
@@ -253,111 +244,116 @@ h3 {
 /* LOGIN BEN */
 
 input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 button {
-    background-color: #4AA0D9;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+  background-color: #4AA0D9;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
 button:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .imgcontainer {
-    text-align: center;
-    margin: 5px 0 6px 0;
-    position: relative;
+  text-align: center;
+  margin: 5px 0 6px 0;
+  position: relative;
 }
 
 img.avatar {
-    width: 22%;
-    border-radius: 50%;
+  width: 22%;
+  border-radius: 50%;
 }
 
 .container {
-    padding: 16px;
+  padding: 16px;
 }
 
 span.password {
-    float: right;
-    padding-top: 16px;
+  float: right;
+  padding-top: 16px;
 }
 
-#id01{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-
+#id01 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto;
-    border: 1px solid #888;
-    width: 80%;
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 80%;
 }
 
 .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
+.close:hover, .close:focus {
+  color: red;
+  cursor: pointer;
 }
 
 .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
+  from {
+    -webkit-transform: scale(0)
+  }
+  to {
+    -webkit-transform: scale(1)
+  }
 }
 
 @keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: scale(1)
+  }
 }
 
 @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
 }
-
 
 /* FIN LOGIN BEN */
 
@@ -403,6 +399,7 @@ span.password {
 }
 
 /*Players section*/
+
 #players, #staff {
   background-color: #4AA0D9;
 }
@@ -416,8 +413,7 @@ span.password {
   margin: 8vh 0 5% 0;
 }
 
-#teamGalleryContent h3,
-.team-gallery h2 {
+#teamGalleryContent h3, .team-gallery h2 {
   text-align: center;
   margin: auto;
 }
@@ -428,14 +424,25 @@ span.password {
   margin: auto;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 20px 0 rgba(43, 52, 62, 0.7);
 }
 
-#teamGalleryContent .photo-container img {
+
+#teamGalleryContent .staff-aligned {
+  min-width: 100%;
+  display: flex;
+}
+
+#teamGalleryContent .staff-aligned img {
+  margin: auto;
+}
+
+#teamGalleryContent .photo-container a img {
   transition: all linear 0.2s;
   transform: scale(1.05, 1.05);
 }
 
-#teamGalleryContent .photo-container:hover img {
+#teamGalleryContent .photo-container:hover a img {
   transition: all linear 0.2s;
   transform: scale(1, 1);
   cursor: pointer;
@@ -537,8 +544,7 @@ span.password {
   border-radius: 0.25rem;
 }
 
-.nav-tabs .nav-link:focus,
-.nav-tabs .nav-link:visited {
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:visited {
   background-color: #4AA0D9;
   border-radius: 0.25rem;
   color: #ffffff;
@@ -579,12 +585,14 @@ span.password {
 .contact {
   margin-top: 1%;
 }
+
 .brand {
   font-size: 2.2rem;
 }
 
 .wrapper {
   box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
+  border-radius: 15px;
 }
 
 .wrapper>* {
@@ -593,6 +601,7 @@ span.password {
 
 .company-info {
   background: #4AA0D9;
+  border-radius: 15px 0 0 15px;
 }
 
 .contact h3 {
@@ -600,8 +609,7 @@ span.password {
   text-decoration: none;
 }
 
-.company-info h3,
-.company-info ul {
+.company-info h3, .company-info ul {
   text-align: center;
   color: #303030;
   margin: 0 1rem 0;
@@ -640,9 +648,7 @@ textarea {
   grid-column: 1 / 3;
 }
 
-.contact form button,
-.contact form input,
-.contact form textarea {
+.contact form button, .contact form input, .contact form textarea {
   width: 100%;
   padding: 1em;
   border: 1px solid #78a388;
@@ -655,8 +661,7 @@ textarea {
   color: white;
 }
 
-.contact form button:hover,
-.contact form button:focus {
+.contact form button:hover, .contact form button:focus {
   background: black;
   outline: 0;
   transition: background-color 1s ease-out;
@@ -676,9 +681,7 @@ textarea {
   .wrapper>* {
     padding: 2em;
   }
-  .company-info h3,
-  .company-info ul,
-  .brand {
+  .company-info h3, .company-info ul, .brand {
     text-align: left;
   }
 }
@@ -717,4 +720,11 @@ footer a {
 
 footer .adminLogin {
   color: grey;
+}
+footer .mentions, footer .CGU {
+  color: grey;
+}
+
+.heart {
+  color: red;
 }
